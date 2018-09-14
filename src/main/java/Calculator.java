@@ -1,21 +1,16 @@
-import oracle.jrockit.jfr.StringConstantPool;
-
-import java.util.*;
-
 public class Calculator {
 
-    public int readExpression(String expression) {
-        String[] expressionArray = expression.split(" ");
-        int ans = Integer.parseInt(expressionArray[0]);
-        for(int i = 0; i < expressionArray.length-2; i+=2){
-            ans = calculate(ans, Integer.parseInt(expressionArray[i+2]), expressionArray[i+1]);
+    public int calculate(String expression) {
+        String[] elements = expression.split(" ");
+        int answer = parseInt(elements[0]);
+        for (int i = 0; i < elements.length - 2; i += 2) {
+            answer = operate(answer, parseInt(elements[i + 2]), elements[i + 1]);
         }
-        return ans;
+        return answer;
     }
 
-    private int calculate(int x, int y, String z) {
-        int ans = 0 ;
-        switch (z) {
+    public int operate(int x, int y, String operator) {
+        switch (operator) {
             case "+":
                 return add(x, y);
             case "-":
@@ -29,19 +24,23 @@ public class Calculator {
         return 0;
     }
 
-    private int add(int a, int b) {
+    public int parseInt(String element){
+        return Integer.parseInt(element);
+    }
+
+    public int add(int a, int b) {
         return a + b;
     }
 
-    private int subtract(int a, int b) {
+    public int subtract(int a, int b) {
         return a - b;
     }
 
-    private int multiply(int a, int b) {
+    public int multiply(int a, int b) {
         return a * b;
     }
 
-    private int divide(int a, int b) {
+    public int divide(int a, int b) {
         return a / b;
     }
 }
