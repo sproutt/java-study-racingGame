@@ -35,13 +35,10 @@ public class Calculator {
         }
     }
 
-    //메인
-    public static void main(String[] args) {
+    public double calculate(String[] elements) {
         double number1, number2, temp, result;
         String operator;
         Operand operand;
-        Calculator calculator = new Calculator();
-        String[] elements = calculator.inputExpression();
 
         //최초에 입력받은 식에서 한 번의 계산을 반복
         temp = Double.parseDouble(elements[0]);
@@ -50,11 +47,17 @@ public class Calculator {
             operator = elements[index];
             number2 = Double.parseDouble(elements[index+1]);
             operand = new Operand(number1, number2);
-            temp = calculator.operate(operand, operator);
+            temp = operate(operand, operator);
         }
 
         result = temp;
-        System.out.println(result);
+        return result;
+    }
+
+    //메인
+    public static void main(String[] args) {
+        Calculator calculator = new Calculator();
+        calculator.calculate(calculator.inputExpression());
     }
 }
 
