@@ -1,72 +1,71 @@
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
 public class Stringcalculator {
-
-
-    //그냥 리스트로 구현하면 순차적으로가져오는 작업 부분의 소스가 너무 길고 추가적인 반복문도 필요하게 되어서 다시 linkedlist로 구현
-     LinkedList<Integer> numbers = new LinkedList<Integer>();
-     LinkedList<Character> operations = new LinkedList<Character>();
-     String trimmedExpression[];
-     String stringNumber = "";
-
-    String[] trimmingExpression(String expression){
-        trimmedExpression = expression.split(" ");
+    String[] trimmingExpression(String expression) {
+        String trimmedExpression[] = expression.split(" ");
         return trimmedExpression;
     }
-
-    char parseStringToCharacter(String string){
-        return string.charAt(0);
+    boolean checkOperand(String string){
+        int ascii = string.charAt(0);
+        if(ascii>=48 && ascii<=57){
+            return true;
+        }
+        return false;
     }
-
-    //숫자 연산자 숫자 형태로 뽑아오는 함수
-    void separateExpression(){
-        for(int i=0;i<trimmedExpression.length;i++) {
-            System.out.println(trimmedExpression[i]);
-            char ch = parseStringToCharacter(trimmedExpression[i]);
-            if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
-                numbers.add(Integer.parseInt(stringNumber));
-                operations.add(ch);
-                stringNumber = "";
-                continue;
-            }
-            stringNumber += ch;
+    boolean checkOperator(String string) {
+        if(string.charAt(0) == '+' ||string.charAt(0) == '-' || string.charAt(0) == '*' ||string.charAt(0) == '/' ) {
+            return true;
+        }
+        return false;
+    }
+    LinkedList<Integer> separateReturnOperands(String trimmedExpression[]){
+        LinkedList<Integer> operands = new LinkedList<Integer>();
+        for (int i = 0; i < trimmedExpression.length; i++) {
+            if(checkOperand(trimmedExpression[i]))operands.add(Integer.parseInt(trimmedExpression[i]));
+        }
+        return operands;
+    }
+    LinkedList<Character> separateReturnOperations(String trimmedExpression[]) {
+        LinkedList<Character> operations = new LinkedList<Character>();
+        for (int i = 0; i < trimmedExpression.length; i++) {
+            if(checkOperator(trimmedExpression[i]))operations.add(trimmedExpression[i].charAt(0));
+        }
+        return operations;
+    }
+    int calculate(LinkedList<Integer> operands, LinkedList<Character> operations) {
+        while (!operations.isEmpty()) {
+            operatorSelect(operations, operands);
+        }
+        return operands.pollFirst();
+    }
+    void operatorSelect(LinkedList<Character> operations, LinkedList<Integer> operands){
+        int first = operands.pollFirst();
+        int second = operands.pollFirst();
+        switch (operations.poll()) {
+            case '+':
+                operands.addFirst(add(first, second));
+                break;
+            case '-':
+                operands.addFirst(subtract(first, second));
+                break;
+            case '*':
+                operands.addFirst(multiply(first, second));
+                break;
+            case '/':
+                operands.addFirst(divide(first, second));
+                break;
         }
     }
-
-    void calculation(){
-        numbers.add(Integer.parseInt(stringNumber));
-        while(!operations.isEmpty()) {
-            int first = numbers.pollFirst();
-            int second = numbers.pollFirst();
-
-            switch(operations.poll()) {
-                case '+':
-                    System.out.println("first : " +first + " , second : " + second);
-                    numbers.addFirst(first + second);
-                    break;
-                case '-':
-                    numbers.addFirst(first - second);
-                    break;
-                case '*':
-                    System.out.println("first : " +first + " , second : " + second);
-                    numbers.addFirst(first * second);
-                    break;
-                case '/':
-                    numbers.addFirst(first / second);
-                    break;
-            }
-        }
-
+    int add(int number1, int number2) {
+        return number1 + number2;
     }
-
-    int printAnswer(){
-        return numbers.pollFirst();
+    int subtract(int number1, int number2){
+        return number1 - number2;
     }
-
-    public static void main(String[] args){
-
+    int multiply(int number1, int number2){
+        return number1 * number2;
+    }
+    int divide(int number1, int number2){
+        return number1 / number2;
     }
 }
