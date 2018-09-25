@@ -4,11 +4,9 @@ import model.Car;
 
 public class ResultView {
 
-    public static void result(){
+    public void printResult(Car[] cars){
         System.out.println("실행 결과");
-    }
 
-    public void carsPosition(Car[] cars){
         for(int i = 0; i < cars.length; i++){
             carPosition(cars[i]);
         }
