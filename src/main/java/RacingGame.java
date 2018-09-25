@@ -8,7 +8,7 @@ public class RacingGame {
         RacingController racingController = new RacingController(car, inputView, resultView);
 
         racingController.input();
-        racingController.racing();
+        racingController.setCarCarPositions(racingController.move());
         racingController.printResult();
     }
 }

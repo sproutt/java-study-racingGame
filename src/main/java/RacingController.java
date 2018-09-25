@@ -11,9 +11,7 @@ public class RacingController {
         this.resultView = resultView;
     }
 
-
-    public int[] move() {
-        int[] carPositions = car.getCarPositions();
+    public int[] oneTimeMove(int[] carPositions) {
 
         for (int i = 0; i < carPositions.length; i++) {
             carPositions[i] += FowardAndStop();
@@ -21,14 +19,15 @@ public class RacingController {
         return carPositions;
     }
 
-    public void racing() {
+    public int[] move() {
         int[] carPositions = car.getCarPositions();
         int time = car.getTime();
 
         for (int i = 0; i < time; i++) {
-            carPositions = move();
+            carPositions = oneTimeMove(carPositions);
         }
-        car.setCarPositions(carPositions);
+
+        return carPositions;
     }
 
     public int FowardAndStop() {
@@ -46,5 +45,25 @@ public class RacingController {
 
     public void printResult() {
         resultView.printResult(car.getCarPositions());
+    }
+
+    public void setCarTime(int time) {
+        car.setTime(time);
+    }
+
+    public int getCarTime() {
+        return car.getTime();
+    }
+
+    public void makeCarCarPositions(int numberOfCar) {
+        car.makeCarPositions(numberOfCar);
+    }
+
+    public void setCarCarPositions(int[] carPositions) {
+        car.setCarPositions(carPositions);
+    }
+
+    public int[] getCarCarPositions() {
+        return car.getCarPositions();
     }
 }
