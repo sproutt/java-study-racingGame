@@ -11,8 +11,15 @@ public class RacingController {
         this.resultView = resultView;
     }
 
-    public int[] oneTimeMove(int[] carPositions) {
+    public int FowardAndStop() {
+        Random random = new Random();
+        int number = random.nextInt(10);
+        if(number < 4) return 0;
 
+        return 1;
+    }
+
+    public int[] oneTimeMove(int[] carPositions) {
         for (int i = 0; i < carPositions.length; i++) {
             carPositions[i] += FowardAndStop();
         }
@@ -28,14 +35,6 @@ public class RacingController {
         }
 
         return carPositions;
-    }
-
-    public int FowardAndStop() {
-        Random random = new Random();
-        int number = random.nextInt(10);
-        if(number < 4) return 0;
-
-        return 1;
     }
 
     public void input() {

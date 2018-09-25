@@ -1,7 +1,7 @@
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 public class RacingControllerTest {
     RacingController racingController;
@@ -29,7 +29,7 @@ public class RacingControllerTest {
     @Test
     public void 전진의경우_1이_멈춤의경우_0이_반환돼야함() {
         int value = racingController.FowardAndStop();
-        Assert.assertTrue(value == 1 || value == 0);
+        assertTrue(value == 1 || value == 0);
     }
 
     @Test
