@@ -34,11 +34,17 @@ public class Game {
         status = true;
     }
 
+    public Car[] getCars() {
+        return cars;
+    }
+
+    public boolean isEnd(){
+        return status;
+    }
+
     public void runTurn(){
         for(int i = 0; i < numberOfCars; i++){
-            if(moveConditional()){
-                cars[i].move();
-            }
+            if(moveConditional()) cars[i].move();
         }
     }
 
@@ -49,11 +55,4 @@ public class Game {
         return false;
     }
 
-    public Car[] getCars() {
-        return cars;
-    }
-
-    public boolean isEnd(){
-        return status;
-    }
 }
