@@ -2,17 +2,9 @@ package view;
 
 import model.Car;
 
-public class Print {
+public class ResultView {
 
-    public void setCarsQuestion(){
-        System.out.println("자동차 대수는 몇 대 인가요?");
-    }
-
-    public void setTryQuestion(){
-        System.out.println("시도할 회수는 몇 회 인가요?");
-    }
-
-    public void result(){
+    public static void result(){
         System.out.println("실행 결과");
     }
 
