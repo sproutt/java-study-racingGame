@@ -5,6 +5,9 @@ public class LogicController {
     private InputView inputView;
     private ResultView resultView;
 
+    public LogicController(){
+
+    }
     public LogicController(Car car[], InputView inputView, ResultView resultView){
         this.car = car;
         this.inputView = inputView;
