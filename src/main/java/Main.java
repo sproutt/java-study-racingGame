@@ -8,11 +8,7 @@ public class Main {
         int num = inputView.inputCars();
         car = racingGame.makeCar(num);
         int count = inputView.inputCounts();
-        for (int i = 0; i < num; i++) {
-            int position = racingGame.move(count);
-            car[i].setPosition(position);
-        }
+        racingGame.startRace(count);
         outputView.operatingOutput(car);
     }
 }
-

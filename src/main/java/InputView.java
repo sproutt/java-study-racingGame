@@ -2,17 +2,15 @@ import java.util.Scanner;
 
 public class InputView {
     Scanner scanner = new Scanner(System.in);
-    private int car;
-    private int count;
 
     public int inputCars() {
         System.out.println("자동차 대수는 몇 대 인가요?");
-        return car = scanner.nextInt();
+        return scanner.nextInt();
     }
 
     public int inputCounts() {
         System.out.println("시도할 횟수는 몇 회 인가요?");
-        return count = scanner.nextInt();
+        return scanner.nextInt();
     }
 }
 

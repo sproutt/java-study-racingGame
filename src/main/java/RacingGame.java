@@ -1,8 +1,9 @@
-import java.util.Random;
+import utils.RandomValueGenerator;
 
 public class RacingGame {
-    static final int BOUNDARY_VALUE = 4;
+    static final private int BOUNDARY_VALUE = 4;
     private Car[] car;
+    private RandomValueGenerator random;
 
     public Car[] makeCar(int num) {
         car = new Car[num];
@@ -13,19 +14,26 @@ public class RacingGame {
     }
 
     public int judgeMovement() {
-        Random random = new Random();
-        int go = random.nextInt(10);
+        random = new RandomValueGenerator();
+        int go = random.getRandomNumber();
         if (go < BOUNDARY_VALUE) return 0;
         return 1;
     }
 
-    public int move(int count) {
+    public int moveCar(int count) {
         int position = 0;
         for (int i = 0; i < count; i++) {
             int go = judgeMovement();
             position += go;
         }
         return position;
+    }
+
+    public void startRace(int count) {
+        for (int i = 0; i < car.length; i++) {
+            int position = moveCar(count);
+            car[i].setPosition(position);
+        }
     }
 
     public void printMove(Car car) {

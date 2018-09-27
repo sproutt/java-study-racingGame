@@ -28,10 +28,17 @@ public class RacingGameTest {
     }
 
     @Test
-    public void moveCar테스트(){
+    public void moveCar테스트() {
         testCar = new Car();
         int count = 3;
-        int position = racingGame.move(count);
+        int position = racingGame.moveCar(count);
         assertNotNull(position);
+    }
+
+    @Test
+    public void startRace테스트() {
+        car = racingGame.makeCar(3);
+        racingGame.startRace(3);
+        assertNotNull(car[1].getPosition());
     }
 }
