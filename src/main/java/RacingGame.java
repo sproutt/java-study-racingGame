@@ -8,13 +8,13 @@ public class RacingGame {
         for (int i = 0; i < car.length; i++) {
             car[i] = new Car();
         }
-        LogicController logicController = new LogicController(car, inputView, resultView);
+        RacingColtroller racingColtroller = new RacingColtroller(car, inputView, resultView);
         int repeatTimes = inputView.inputRepeatTimes();
         for (int i = 0; i < car.length; i++) {
-            car[i].setForwardCounts(logicController.totalMove(repeatTimes));
+            car[i].setForwardCounts(racingColtroller.totalMove(repeatTimes));
         }
         resultView.printResultLabel();
-        logicController.printMovement(car);
+        racingColtroller.printMovement(car);
     }
 
 
