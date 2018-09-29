@@ -3,7 +3,7 @@ package view;
 import model.Car;
 
 public class ResultView {
-    static final String POSITION_MARK = "-";
+    private static final String POSITION_MARK = "-";
 
     public static void printResult(Car[] cars){
         System.out.println("실행 결과");
@@ -14,11 +14,11 @@ public class ResultView {
     }
 
     public static void carPosition(Car car){
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder carPositionString = new StringBuilder();
         for(int i = 0; i < car.getPosition(); i++){
-            stringBuilder.append(POSITION_MARK);
+            carPositionString.append(POSITION_MARK);
         }
 
-        System.out.println(stringBuilder);
+        System.out.println(carPositionString);
     }
 }

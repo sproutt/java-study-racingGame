@@ -3,8 +3,10 @@ package controller;
 import model.Car;
 import utils.RandomValueGenerator;
 
+import static utils.RandomValueGenerator.getRandomNumber;
+
 public class RacingGame {
-    private final int MOVE_CONDITION = 4;
+    private static final int MOVE_CONDITION = 4;
     private boolean status = false;
     private Car[] cars;
 
@@ -25,7 +27,7 @@ public class RacingGame {
 
     public void runTurn(){
         for(int i = 0; i < cars.length; i++){
-            if(new RandomValueGenerator().getRandomNumber(1) >= MOVE_CONDITION) cars[i].move();
+            moveCar(i);
         }
     }
 
@@ -33,5 +35,9 @@ public class RacingGame {
         if(!status); //오류출력
 
         return cars;
+    }
+
+    private void moveCar(int i){
+        if(getRandomNumber(1) >= MOVE_CONDITION) cars[i].move();
     }
 }

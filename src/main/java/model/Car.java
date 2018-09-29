@@ -1,11 +1,7 @@
 package model;
 
 public class Car {
-    private int position;
-
-    public Car() {
-        this.position = 0;
-    }
+    private int position = 0;
 
     public int getPosition() {
         return position;
