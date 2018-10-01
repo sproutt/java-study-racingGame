@@ -1,6 +1,8 @@
+import domain.Car;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.assertNotNull;
+
+import static org.junit.Assert.assertEquals;
 
 public class CarTest {
     Car car;
@@ -10,20 +12,11 @@ public class CarTest {
     }
 
     @Test
-    public void time변수_set과get_테스트() {
-        car.setTime(5);
-        assertNotNull(car.getTime());
-    }
+    public void 위치변수_1증가() {
+        int before = car.getCarPosition();
+        car.move();
+        int after = car.getCarPosition();
 
-    @Test
-    public void carPositions변수_set과get_테스트() {
-        car.setCarPositions(new int[]{1, 1, 0});
-        assertNotNull(car.getCarPositions());
-    }
-
-    @Test
-    public void carPosition변수_배열이_생성돼야함() {
-        car.makeCarPositions(5);
-        assertNotNull(car.getCarPositions());
+        assertEquals(before + 1, after);
     }
 }
