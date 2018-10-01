@@ -1,20 +1,16 @@
 import org.junit.*;
 
+import static org.junit.Assert.assertEquals;
+
 public class RacingGameTest {
-
-    Car car = new Car(5);
-
-    @Test
-    public void distanceTest() {
-        Assert.assertEquals(0, car.distance);
-    }
+    Car car;
+    GameController gameController;
 
     @Test
-    public void isWonTest() {
-        car.Move(car.isWon());
-        if(car.isWon()) {
-            Assert.assertEquals(1, car.distance);
-        }
-        Assert.assertEquals(0, car.distance);
+    public void distance값_증가_확인() {
+        int distanceTest = car.getDistance();
+        car.move();
+
+        assertEquals(distanceTest, car.getDistance());
     }
 }
