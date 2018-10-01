@@ -1,3 +1,5 @@
+import controller.RacingGame;
+import model.Car;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -5,9 +7,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class RacingGameTest {
-    Car[] car;
-    Car testCar;
-    RacingGame racingGame;
+    private Car[] car;
+    private Car testCar;
+    private RacingGame racingGame;
 
     @BeforeEach
     public void setUp() {

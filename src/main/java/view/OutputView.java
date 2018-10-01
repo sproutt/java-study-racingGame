@@ -1,8 +1,12 @@
+package view;
+
+import controller.RacingGame;
+import model.Car;
 
 public class OutputView {
-    private RacingGame racingGame = new RacingGame();
+    private static RacingGame racingGame = new RacingGame();
 
-    public void operatingOutput(Car[] car) {
+    public static void operatingOutput(Car[] car) {
         System.out.println();
         System.out.println("실행결과");
         for (int i = 0; i < car.length; i++) {

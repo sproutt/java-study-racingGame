@@ -1,4 +1,6 @@
 import static org.junit.Assert.assertEquals;
+
+import controller.Calculator;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,9 +1,11 @@
+package controller;
+
+import model.Car;
 import utils.RandomValueGenerator;
 
 public class RacingGame {
-    static final private int BOUNDARY_VALUE = 4;
+    private static final int BOUNDARY_VALUE = 4;
     private Car[] car;
-    private RandomValueGenerator random;
 
     public Car[] makeCar(int num) {
         car = new Car[num];
@@ -14,9 +16,7 @@ public class RacingGame {
     }
 
     public int judgeMovement() {
-        random = new RandomValueGenerator();
-        int go = random.getRandomNumber();
-        if (go < BOUNDARY_VALUE) return 0;
+        if (RandomValueGenerator.getRandomNumber() < BOUNDARY_VALUE) return 0;
         return 1;
     }
 
@@ -42,5 +42,3 @@ public class RacingGame {
         }
     }
 }
-
-

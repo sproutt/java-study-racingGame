@@ -3,9 +3,9 @@ package utils;
 import java.util.Random;
 
 public class RandomValueGenerator {
-    Random random = new Random();
+    private static Random random = new Random();
 
-    public int getRandomNumber() {
+    public static int getRandomNumber() {
         int randomNumber = random.nextInt(10);
         return randomNumber;
     }

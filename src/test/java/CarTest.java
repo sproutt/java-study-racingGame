@@ -1,10 +1,11 @@
+import model.Car;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class CarTest {
-    Car car;
+    private Car car;
 
     @BeforeEach
     public void setUp() {
