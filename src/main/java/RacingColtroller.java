@@ -4,9 +4,9 @@ public class RacingColtroller {
     private Car car[];
     private InputView inputView;
     private ResultView resultView;
+    private static int FORWARDCRITERIA = 4;
 
     public RacingColtroller() {
-
     }
 
     public RacingColtroller(Car car[], InputView inputView, ResultView resultView) {
@@ -15,31 +15,22 @@ public class RacingColtroller {
         this.resultView = resultView;
     }
 
-    public int forwardOrStay() {
+    public boolean isForward() {
         RandomValueGenerator randomNumberGenerator = new RandomValueGenerator();
         int randomNumber = randomNumberGenerator.returnRandomInt();
-        if (randomNumber >= 4)
-            return 1;
-        return 0;
+        if (randomNumber >= FORWARDCRITERIA)
+            return true;
+        return false;
     }
 
-    public int totalMove(int repeatTimes) {
-        int totalMovement = 0;
-        for (int i = 0; i < repeatTimes; i++)
-            totalMovement += forwardOrStay();
-        return totalMovement;
+    public void forwardOrStay(int repeatTimes, int carIndex) {
+        for (int j = 0; j < repeatTimes; j++)
+            repeatProcess(carIndex);
     }
 
-    public void printMovement(Car car[]) {
-        for (int i = 0; i < car.length; i++)
-            printEachCarMovement(car[i]);
-
-    }
-
-    public void printEachCarMovement(Car car) {
-        for (int i = 0; i < car.getForwardCounts(); i++)
-            System.out.print("-");
-        System.out.println();
+    public void repeatProcess(int carIndex) {
+        if (isForward())
+            car[carIndex].move();
     }
 }
 

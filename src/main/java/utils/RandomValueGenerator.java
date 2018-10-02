@@ -1,7 +1,9 @@
 package utils;
-import java.util.Random;
+
+        import java.util.Random;
+
 public class RandomValueGenerator {
-    public int returnRandomInt(){
+    public int returnRandomInt() {
         Random random = new Random();
         return random.nextInt(10);
     }

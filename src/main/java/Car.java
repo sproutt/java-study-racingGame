@@ -1,12 +1,18 @@
+
 public class Car {
-    private int forwardCounts;
+    private int position = 0;
 
-    public void setForwardCounts(int forwardCounts) {
-        this.forwardCounts = forwardCounts;
+    public Car() {
     }
 
-    public int getForwardCounts() {
-        return forwardCounts;
+
+    public void move() {
+        this.position++;
     }
+
+    public int getCarPosition() {
+        return this.position;
+    }
+
 
 }
