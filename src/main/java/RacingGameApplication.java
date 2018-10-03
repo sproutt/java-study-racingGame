@@ -1,17 +1,13 @@
 public class RacingGameApplication {
+    private static RacingGameController racingGame = new RacingGameController();
 
     public static void main(String[] args) {
-        Car car = new Car();
-        RacingGameInputView inputView = new RacingGameInputView();
-        RacingGameOutputView outputView = new RacingGameOutputView();
-        RacingGameController controller = new RacingGameController(car, inputView, outputView);
 
-        int numberOfCars = inputView.inputNumberOfCars();
-        int trials = inputView.inputTrials();
 
-        controller.setNumberOfCars(numberOfCars);
-        controller.setTrials(trials);
-        controller.setCarList();
-        outputView.printCar(controller.getCarList());
+        int numberOfCars = RacingGameInputView.inputNumberOfCars();
+        int trials = RacingGameInputView.inputTrials();
+
+        racingGame.setCars(numberOfCars, trials);
+        RacingGameOutputView.printCars(racingGame.getCars());
     }
 }
