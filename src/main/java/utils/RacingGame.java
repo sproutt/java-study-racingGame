@@ -4,13 +4,17 @@ import domain.Car;
 
 public class RacingGame {
     private int time;
-    private int[] carPositions;
-    private Car car;
     private int FOWARD_NUMBER = 4;
 
-    public RacingGame(int time, int numberOfCars) {
+    public RacingGame(int time) {
         this.time = time;
-        carPositions = new int[numberOfCars];
+    }
+
+    public Car[] setCars(Car[] cars, String[] names) {
+        for(int i = 0; i < names.length; i++) {
+            cars[i] = new Car(names[i]);
+        }
+        return cars;
     }
 
     public boolean isFoward() {
@@ -19,18 +23,26 @@ public class RacingGame {
         return true;
     }
 
-    public int race() {
-        car = new Car();
+    public void race(Car car) {
         for (int i = 0; i < time; i++) {
             if (isFoward()) car.move();
         }
-        return car.getCarPosition();
     }
 
-    public int[] startGame() {
-        for (int i = 0; i < carPositions.length; i++) {
-            carPositions[i] = race();
+    public Car[] startGame(Car[] cars) {
+        for (int i = 0; i < cars.length; i++) {
+             race(cars[i]);
         }
-        return carPositions;
+        return cars;
     }
+
+    public  String[] splitName(String name) {
+        return name.split(",");
+    }
+
+    public int getNumberOfCars(String[] names) {
+        return names.length;
+    }
+
+    public
 }

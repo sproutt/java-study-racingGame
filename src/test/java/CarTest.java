@@ -12,7 +12,7 @@ public class CarTest {
     }
 
     @Test
-    public void 위치변수_1증가() {
+    public void move_위치변수_1증가() {
         int before = car.getCarPosition();
         car.move();
         int after = car.getCarPosition();

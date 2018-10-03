@@ -9,7 +9,6 @@ public class RacingGameTest {
     RacingGame racingGame;
     Car car;
 
-
     @Before
     public void setUp() throws Exception {
         car = new Car();
