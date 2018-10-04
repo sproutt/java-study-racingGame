@@ -18,8 +18,9 @@ public class RacingResultTest {
     @Before
     public void setUp() throws Exception {
         racingGame = new RacingGame(time);
-        cars = new Car[2];
-        cars = racingGame.setCars(cars, "pobi,crong");
+        String nameOfCars = "pobi,crong";
+        Car[] cars = new Car[racingGame.getNumberOfCars(nameOfCars)];
+        cars = racingGame.setCars(cars, nameOfCars);
         cars = racingGame.startGame(cars);
         racingResult = new RacingResult();
         racingResult.updateResult(cars);
