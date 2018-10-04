@@ -3,9 +3,9 @@ package domain;
 import utils.RandomValueGenerator;
 
 public class RacingGame {
-    private int time;
     private static final int FOWARD_NUMBER = 4;
     private static final int BOUND = 10;
+    private int time;
 
     public RacingGame(int time) {
         this.time = time;
@@ -18,6 +18,10 @@ public class RacingGame {
             cars[i].setName(names[i]);
         }
         return cars;
+    }
+
+    public int getNumberOfCars(String nameOfCars) {
+        return nameOfCars.split(",").length;
     }
 
     public boolean isFoward() {
@@ -36,10 +40,5 @@ public class RacingGame {
             race(car);
         }
         return cars;
-    }
-
-
-    public int getNumberOfCars(String nameOfCars) {
-        return nameOfCars.split(",").length;
     }
 }

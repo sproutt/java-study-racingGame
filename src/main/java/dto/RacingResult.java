@@ -8,29 +8,33 @@ public class RacingResult {
     private LinkedList<String> winnerList;
     private Car[] cars;
 
-    public RacingResult(Car[] cars) {
+    public RacingResult() {
         this.winnerList = new LinkedList<>();
+    }
+
+    public int searchMaxCarPosition() {
+        int maxCarPosition = -1;
+        for (Car car : cars) {
+            maxCarPosition = maxCarPosition < car.getCarPosition() ? car.getCarPosition() : maxCarPosition;
+        }
+        return maxCarPosition;
+    }
+
+    public LinkedList<String> checkWinners(int maxCarPosition) {
+        for (Car car : cars) {
+            if (maxCarPosition == car.getCarPosition()) {
+                winnerList.add(car.getName());
+            }
+        }
+        return winnerList;
+    }
+
+    public void updateResult(Car[] cars) {
         this.cars = cars;
-    }
-
-    public void findWinners() {
-        int max_CarPosition = -1;
-        for (Car car : cars) {
-            max_CarPosition = max_CarPosition < car.getCarPosition() ? car.getCarPosition() : max_CarPosition;
-        }
-        for (Car car : cars) {
-            checkWinner(car, max_CarPosition);
-        }
-    }
-
-    public void checkWinner(Car car, int max_CarPosition) {
-        if (max_CarPosition == car.getCarPosition()) {
-            winnerList.add(car.getName());
-        }
+        this.winnerList = checkWinners(searchMaxCarPosition());
     }
 
     public String getWinners() {
-        findWinners();
         StringBuilder winners = new StringBuilder(winnerList.pop());
         while (!winnerList.isEmpty()) {
             winners.append(", " + winnerList.pop());
