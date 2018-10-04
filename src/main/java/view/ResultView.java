@@ -1,39 +1,33 @@
 package view;
 
-import domain.Car;
-
-import java.util.*;
+import dto.CarDto;
+import dto.RacingResult;
 
 public class ResultView {
-    private static char MOVE = '-';
+    private static final char TRACK = '-';
 
-    public static void printResult(Car[] cars) {
+    public static void printResult(RacingResult result) {
         System.out.println("\n실행결과\n");
-        for (int i = 0; i < cars.length; i++) {
-            outputName(cars[i]);
-            outputCarPosition(cars[i]);
+
+        for (CarDto carDto : result.getCars()) {
+            outputName(carDto.getName());
+            outputCarPosition(carDto.getCarPosition());
         }
     }
 
-    public static void outputCarPosition(Car car) {
+    public static void outputName(String name) {
+        System.out.print(name + " : ");
+    }
 
-        for (int i = 0; i < car.getCarPosition(); i++) {
-            System.out.print(MOVE);
+    public static void outputCarPosition(int carPosition) {
+
+        for (int i = 0; i < carPosition; i++) {
+            System.out.print(TRACK);
         }
         System.out.println();
     }
 
-    public static void outputName(Car car) {
-        System.out.print(car.getName() + " : ");
-    }
-
-    public static void printWinner(ArrayList<String> winners) {
-        StringBuilder stringBuilder = new StringBuilder(winners.);
-        // 여기서 멈춤
-
-        for (String winner: winners) {
-            System.out.print(winner);
-        }
-        System.out.print("최종 우승했습니다.");
+    public static void printWinner(String winners) {
+        System.out.print("\n" + winners + "가 최종 우승했습니다.");
     }
 }

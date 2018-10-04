@@ -6,6 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 public class CarTest {
     Car car;
+
     @Before
     public void setUp() throws Exception {
         car = new Car();
