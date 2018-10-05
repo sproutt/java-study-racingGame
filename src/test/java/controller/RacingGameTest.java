@@ -1,6 +1,7 @@
 package controller;
 
-import domain.RacingGameResult;
+import domain.RacingGame;
+import dto.RacingGameResult;
 import org.junit.Before;
 import org.junit.Test;
 

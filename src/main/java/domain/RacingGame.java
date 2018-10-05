@@ -1,11 +1,11 @@
-package controller;
+package domain;
 
-import domain.Car;
-import domain.RacingGameResult;
+import dto.RacingGameResult;
 import utils.RandomValueGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -14,11 +14,12 @@ public class RacingGame {
 
     private List<Car> cars;
 
-    public void setCars(int numberOfCars) {
-        cars = new ArrayList<>(numberOfCars);
+    public void setCars(String carNames) {
+        String[] carArrays = carNames.split(",");
+        cars = new ArrayList<>();
 
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
+        for (int i = 0; i < carArrays.length; i++) {
+            cars.add(new Car(carArrays[i]));
         }
     }
 
@@ -26,7 +27,7 @@ public class RacingGame {
         for (int i = 0; i < tryRound; i++) {
             moveCars();
         }
-        return new RacingGameResult(cars);
+        return new RacingGameResult(cars.stream().map(Car::toCarDTO).collect(Collectors.toList()));
     }
 
     private void moveCars() {
