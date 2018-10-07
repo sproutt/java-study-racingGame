@@ -1,4 +1,4 @@
-package racing;
+package racing.domain;
 
 import racing.dto.RacingGameResult;
 import racing.utils.RandomValueGenerator;

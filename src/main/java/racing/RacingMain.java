@@ -1,5 +1,6 @@
 package racing;
 
+import racing.domain.RacingGame;
 import racing.dto.RacingGameResult;
 import racing.view.InputView;
 import racing.view.OutputView;

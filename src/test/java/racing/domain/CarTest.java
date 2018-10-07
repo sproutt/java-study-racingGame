@@ -1,6 +1,5 @@
 package racing.domain;
 
-import racing.Car;
 import racing.dto.CarDTO;
 import org.junit.Before;
 import org.junit.Test;
