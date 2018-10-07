@@ -1,7 +1,8 @@
-import domain.RacingGame;
-import dto.RacingGameResult;
-import view.InputView;
-import view.OutputView;
+package racing;
+
+import racing.dto.RacingGameResult;
+import racing.view.InputView;
+import racing.view.OutputView;
 
 public class RacingMain {
 

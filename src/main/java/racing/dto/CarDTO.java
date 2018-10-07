@@ -1,4 +1,6 @@
-package dto;
+package racing.dto;
+
+import java.util.Objects;
 
 public class CarDTO {
 
@@ -34,4 +36,25 @@ public class CarDTO {
         System.out.println();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CarDTO carDTO = (CarDTO) o;
+        return distance == carDTO.distance &&
+                Objects.equals(name, carDTO.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, distance);
+    }
+
+    @Override
+    public String toString() {
+        return "CarDTO{" +
+                "name='" + name + '\'' +
+                ", distance=" + distance +
+                '}';
+    }
 }

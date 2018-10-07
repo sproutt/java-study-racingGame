@@ -1,4 +1,4 @@
-package dto;
+package racing.dto;
 
 import java.util.ArrayList;
 import java.util.Comparator;

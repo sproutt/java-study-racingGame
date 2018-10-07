@@ -1,6 +1,6 @@
-package view;
+package racing.view;
 
-import dto.RacingGameResult;
+import racing.dto.RacingGameResult;
 
 public class OutputView {
 
