@@ -1,13 +1,16 @@
+import model.RacingGame;
+import view.RacingGameInputView;
+import view.RacingGameOutputView;
+
 public class RacingGameApplication {
-    private static RacingGameController racingGame = new RacingGameController();
+    private static RacingGame racingGame = new RacingGame();
 
     public static void main(String[] args) {
 
 
-        int numberOfCars = RacingGameInputView.inputNumberOfCars();
-        int trials = RacingGameInputView.inputTrials();
-
-        racingGame.setCars(numberOfCars, trials);
+        racingGame.setCars(RacingGameInputView.inputNumberOfCars());
+        racingGame.start(RacingGameInputView.inputTrials());
         RacingGameOutputView.printCars(racingGame.getCars());
+        RacingGameOutputView.printWinner(racingGame.getWinner());
     }
 }
