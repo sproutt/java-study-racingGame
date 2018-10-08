@@ -11,58 +11,63 @@ public class RacingGame {
     private static final int BOUND_NUMBER = 10;
     private static final int DELAY_TIME = 200;
     private List<Car> cars;
-    private Car car;
 
-    public void setCars(String carsNameString, int trials) {
+    public void setCars(String carsNameString) {
         String[] carsName = carsNameString.split(",");
         cars = new ArrayList<>();
 
         for (int i = 0; i < carsName.length; i++) {
-            car = new Car(carsName[i]);
-            tryMove(trials);
-            cars.add(car);
+            cars.add(new Car(carsName[i]));
         }
     }
 
-    private void tryMove(int trials) {
+    public void start(int trials) {
         for (int i = 0; i < trials; i++) {
-            int number = RandomValueGenerator.makeRandomNumber(BOUND_NUMBER, DELAY_TIME);
-            checkMoveCondition(number);
+            turn();
         }
     }
 
-    private void checkMoveCondition(int number) {
-        if (number >= MOVE_CONDITION_NUMBER) {
-            car.move();
+    private void turn() {
+        for (int i = 0; i < cars.size(); i++) {
+            moveCar(RandomValueGenerator.makeRandomNumber(BOUND_NUMBER, DELAY_TIME),i);
         }
     }
 
-    public List getCars() {
-        return cars;
+    private void moveCar(int randomValue,int index) {
+        if (randomValue >= MOVE_CONDITION_NUMBER) {
+            cars.get(index).move();
+        }
     }
 
     public String getWinner() {
-        List<Car> sortedCars = sortCars(cars);
-        return makeWinnersString(sortedCars);
+        return makeWinnersString(sortCars());
     }
 
-    private List sortCars(List cars) {
+    private List sortCars() {
         List<Car> sortedCars = new ArrayList<>(cars);
         Collections.sort(sortedCars);
         return sortedCars;
     }
 
-    public String makeWinnersString(List<Car> cars) {
+    public String makeWinnersString(List<Car> sortedCars) {
         StringBuilder winnersRankString = new StringBuilder();
-        Car firstCar = cars.get(0);
-        winnersRankString.append(firstCar.getCarName());
+        winnersRankString.append(sortedCars.get(0).getCarName());
 
-        for (int i = 1; i < cars.size(); i++) {
-            if (firstCar.getCarPosition() != cars.get(i).getCarPosition()) {
+        for (int index = 1; index < sortedCars.size(); index++) {
+            if (!isSamePosition(sortedCars.get(0), sortedCars.get(index))) {
                 break;
             }
-            winnersRankString.append(", ").append(cars.get(i).getCarName());
+            winnersRankString.append(", ").append(sortedCars.get(index).getCarName());
         }
         return winnersRankString.toString();
     }
+
+    private boolean isSamePosition(Car firstCar, Car i) {
+        return firstCar.getCarPosition() == i.getCarPosition();
+    }
+
+    public List getCars() {
+        return cars;
+    }
 }
+

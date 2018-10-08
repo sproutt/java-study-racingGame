@@ -8,10 +8,8 @@ public class RacingGameApplication {
     public static void main(String[] args) {
 
 
-        String carsNameString = RacingGameInputView.inputNumberOfCars();
-        int trials = RacingGameInputView.inputTrials();
-
-        racingGame.setCars(carsNameString, trials);
+        racingGame.setCars(RacingGameInputView.inputNumberOfCars());
+        racingGame.start(RacingGameInputView.inputTrials());
         RacingGameOutputView.printCars(racingGame.getCars());
         RacingGameOutputView.printWinner(racingGame.getWinner());
     }

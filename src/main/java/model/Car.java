@@ -1,11 +1,16 @@
 package model;
 
 public class Car implements Comparable<Car>{
-    private int carPosition = 0;
+    private int carPosition;
     private String carName;
 
-    public Car(String carName) {
+    public Car(String carName, int carPosition) {
         this.carName = carName;
+        this.carPosition = carPosition;
+    }
+
+    public Car(String carName){
+        this(carName, 0);
     }
 
     public String getCarName() {
@@ -22,7 +27,7 @@ public class Car implements Comparable<Car>{
 
     @Override
     public int compareTo(Car o) {
-        return this.carPosition > o.carPosition ? -1 : 1;
+        return this.carPosition >  o.carPosition ? -1: 1;
     }
 }
 
