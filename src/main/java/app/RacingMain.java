@@ -2,23 +2,26 @@ package app;
 
 import domain.Car;
 import domain.RacingGame;
-import dto.RacingResult;
+import domain.RacingResult;
+import dto.RacingResultDto;
 import view.InputView;
 import view.ResultView;
+
+import java.util.*;
 
 public class RacingMain {
 
     public static void main(String[] args) {
-        String nameOfCars = InputView.inputNameOfCars();
         RacingGame racingGame = new RacingGame(InputView.inputTime());
         RacingResult racingResult = new RacingResult();
-        Car[] cars = new Car[racingGame.getNumberOfCars(nameOfCars)];
+        RacingResultDto racingResultDto = new RacingResultDto(racingResult);
+        List<Car> cars = new ArrayList<>();
 
-        cars = racingGame.setCars(cars, nameOfCars);
+        cars = racingGame.setCars(cars, InputView.inputNameOfCars());
         cars = racingGame.startGame(cars);
+
         racingResult.updateResult(cars);
 
-        ResultView.printResult(racingResult);
-        ResultView.printWinner(racingResult.getWinners());
+        ResultView.printResult(racingResultDto);
     }
 }

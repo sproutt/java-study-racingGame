@@ -9,6 +9,10 @@ public class CarDto {
         this.car = car;
     }
 
+    public void setName(String name) {
+        car.setName(name);
+    }
+
     public String getName() {
         return car.getName();
     }

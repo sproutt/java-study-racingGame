@@ -1,17 +1,17 @@
 import domain.Car;
 import domain.RacingGame;
-import dto.RacingResult;
+import domain.RacingResult;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.LinkedList;
+import java.util.*;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-public class RacingResultTest {
+public class RacingResultDtoTest {
     RacingGame racingGame;
-    Car[] cars;
+    List<Car> cars = new ArrayList<>();
     RacingResult racingResult;
     int time = 5;
 
@@ -19,7 +19,6 @@ public class RacingResultTest {
     public void setUp() throws Exception {
         racingGame = new RacingGame(time);
         String nameOfCars = "pobi,crong";
-        Car[] cars = new Car[racingGame.getNumberOfCars(nameOfCars)];
         cars = racingGame.setCars(cars, nameOfCars);
         cars = racingGame.startGame(cars);
         racingResult = new RacingResult();

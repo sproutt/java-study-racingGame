@@ -1,6 +1,9 @@
 package domain;
 
+import dto.CarDto;
 import utils.RandomValueGenerator;
+
+import java.util.List;
 
 public class RacingGame {
     private static final int FOWARD_NUMBER = 4;
@@ -9,19 +12,6 @@ public class RacingGame {
 
     public RacingGame(int time) {
         this.time = time;
-    }
-
-    public Car[] setCars(Car[] cars, String nameOfCars) {
-        String[] names = nameOfCars.split(",");
-        for (int i = 0; i < names.length; i++) {
-            cars[i] = new Car();
-            cars[i].setName(names[i]);
-        }
-        return cars;
-    }
-
-    public int getNumberOfCars(String nameOfCars) {
-        return nameOfCars.split(",").length;
     }
 
     public boolean isFoward() {
@@ -35,9 +25,20 @@ public class RacingGame {
         }
     }
 
-    public Car[] startGame(Car[] cars) {
+    public List<Car> startGame(List<Car> cars) {
         for (Car car : cars) {
             race(car);
+        }
+        return cars;
+    }
+
+    public List<Car> setCars(List<Car> cars, String nameOfCars) {
+        String[] names = nameOfCars.split(",");
+        Car car;
+        for (int i = 0; i < names.length; i++) {
+            car = new Car();
+            new CarDto(car).setName(names[i]);
+            cars.add(car);
         }
         return cars;
     }
