@@ -1,19 +1,34 @@
 package view;
 
-public class ResultView {
-    private static char MOVE = '-';
+import dto.CarDto;
+import dto.RacingResultDto;
 
-    public static void printResult(int[] carPositions) {
+public class ResultView {
+    private static final char TRACK = '-';
+
+    public static void printResult(RacingResultDto result) {
         System.out.println("\n실행결과\n");
-        for (int i = 0; i < carPositions.length; i++) {
-            outputOneOfCar(carPositions[i]);
+
+        for (CarDto carDto : result.getCars()) {
+            outputName(carDto.getName());
+            outputCarPosition(carDto.getCarPosition());
         }
+        outputWinner(result.getWinners());
     }
 
-    public static void outputOneOfCar(int carPosition) {
+    public static void outputName(String name) {
+        System.out.print(name + " : ");
+    }
+
+    public static void outputCarPosition(int carPosition) {
+
         for (int i = 0; i < carPosition; i++) {
-            System.out.print(MOVE);
+            System.out.print(TRACK);
         }
         System.out.println();
+    }
+
+    public static void outputWinner(String winners) {
+        System.out.print("\n" + winners + "가 최종 우승했습니다.");
     }
 }
