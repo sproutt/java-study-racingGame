@@ -1,15 +1,19 @@
 package view;
 
 import model.Car;
-import controller.RacingGame;
+import model.RacingGame;
+import model.RacingResult;
+
 
 public class RacingGameMain {
 
     public static void main(String[] args) {
         RacingGame racingGame = new RacingGame();
-
         Car[] car = racingGame.makeCar(InputView.inputCars());
-        racingGame.startRace(InputView.inputCounts());
-        OutputView.operatingOutput(car);
+        RacingResult result = new RacingResult(car);
+        racingGame.startRace(car, InputView.inputCounts());
+        OutputView.printOutput(result);
+        racingGame.foundWinnerPosition(car, racingGame.getWinnersPosition(car));
+        racingGame.printWinner();
     }
 }
