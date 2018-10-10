@@ -1,4 +1,4 @@
-import controller.RacingGame;
+import model.RacingGame;
 import model.Car;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,9 +24,8 @@ public class RacingGameTest {
 
     @Test
     public void makeCar테스트() {
-        int num = 5;
-        car = racingGame.makeCar(num);
-        assertEquals(5, car.length);
+        car = racingGame.makeCar("pobi,crong,honux");
+        assertEquals(3, car.length);
     }
 
     @Test
@@ -38,9 +37,16 @@ public class RacingGameTest {
     }
 
     @Test
-    public void startRace테스트() {
-        car = racingGame.makeCar(3);
-        racingGame.startRace(3);
-        assertNotNull(car[1].getPosition());
+    public void winnerTest() {
+        car = new Car[2];
+        car[0] = new Car();
+        car[1] = new Car();
+        car[0].setRacer("car1");
+        car[0].setPosition(2);
+        car[1].setRacer("car2");
+        car[1].setPosition(3);
+        assertEquals(3, racingGame.getWinnersPosition(car));
     }
+
+
 }

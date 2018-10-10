@@ -1,17 +1,17 @@
 package view;
 
-import controller.RacingGame;
-import model.Car;
+import model.RacingResult;
 
 public class OutputView {
-    private static RacingGame racingGame = new RacingGame();
-
-    public static void operatingOutput(Car[] car) {
+    public static void printOutput(RacingResult result) {
         System.out.println();
-        System.out.println("실행결과");
-        for (int i = 0; i < car.length; i++) {
-            racingGame.printMove(car[i]);
+        System.out.println("실행 결과");
+        for (int i = 0; i < result.getCars().length; i++) {
+            System.out.print(result.getCars()[i].getRacer() + " : ");
+            result.printMove(result.getCars()[i]);
             System.out.println();
         }
+        System.out.println();
     }
 }
+
