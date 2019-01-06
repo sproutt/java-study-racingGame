@@ -2,90 +2,58 @@ import java.util.Scanner;
 
 public class Calculator {
 
-    static Scanner sc = new Scanner(System.in);
 
-    static int answer = 0;
-    static boolean worng_input;
-
-    static String function = "";
-    static char[] array_word;
-
-    public void setAnswer(int answer) {
-        this.answer = answer;
+    int sum(int a,int b){
+        return a+b;
     }
 
-    public int getAnswer() {
-        return this.answer;
+    int subtract(int a, int b){
+        return a-b;
     }
 
-    public static void sum(int now) {
-        answer = answer + now;
+    int multiple(int a, int b){
+        return a*b;
     }
 
-    public static void sub(int now) {
-        answer = answer - now;
+    int divide(int a, int b){
+        return a/b;
     }
 
-    public static void mul(int now) {
-        answer = answer * now;
-    }
-
-    public static void div(int now) {
-        answer = answer / now;
-    }
-
-    public static void takeInput(){
-        function = sc.nextLine();
-        if(function.equals("")) {
-            throw new IllegalArgumentException("입력 없음");
-        }
-    }
-
-    public static void makeArray(){
-        array_word = new char[function.length()];
+    char[] makeArrayFunction(String function){
+        char[] arrayFunction = new char[function.length()];
         for(int i = 0;i<function.length();i++){
-            array_word[i] = (function.charAt(i));
+            arrayFunction[i] = (function.charAt(i));
         }
+        return arrayFunction;
     }
 
-    public static int changeNumber(char alphabet){
+    int changeNumber(char alphabet){
         return (int)(alphabet-'0');
     }
 
-    public static void calculate(char sign, int now) {
-        if (sign == '+') {
-            sum(now);
-        } else if (sign == '-') {
-            sub(now);
-        } else if (sign == '*') {
-            mul(now);
-        } else if (sign == '/') {
-            div(now);
+    int matchFunction(char sign,int answer, int nextNumber){
+        int nowAnswer = 0;
+        if(sign == '+'){
+            nowAnswer = sum(answer,nextNumber);
+        }else if(sign == '-'){
+            nowAnswer = subtract(answer,nextNumber);
+        }else if(sign == '*'){
+            nowAnswer = multiple(answer,nextNumber);
+        }else if(sign == '/'){
+            nowAnswer = divide(answer,nextNumber);
         }
+        return nowAnswer;
     }
 
-    public static void runFunction(){
-        firstAnswer();
-        for(int i = 2;i<array_word.length;i=i+4){
-            calculate(array_word[i],changeNumber(array_word[i+2]));
+    int calculate(String function){
+        char[] arrayFunction = makeArrayFunction(function);
+        int answer = changeNumber(arrayFunction[0]);
+        for(int i = 2;i+2<function.length();i = i+4){
+           answer = matchFunction(arrayFunction[i],answer,changeNumber(arrayFunction[i+2]));
         }
+        return answer;
     }
 
-    public static void printResult() {
-        System.out.println(answer);
-    }
 
-    public static void firstAnswer() {
-        if(function.length()>0) {
-            answer = changeNumber(array_word[0]);
-        }
-    }
-
-    public static void main(String[] args) {
-        takeInput();
-        makeArray();
-        runFunction();
-        printResult();
-    }
 
 }
