@@ -27,4 +27,10 @@ public class CalculatorTest{
     public void 계산테스트(){
         assertEquals(4, calculator.calculate(1, "+", 3));
     }
+
+    @Test
+    public void 문자열분리테스트(){
+        String[] arr = {"4","+","5"};
+        assertEquals( arr , calculator.splitString("4 + 5"));
+    }
 }
