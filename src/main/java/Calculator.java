@@ -1,10 +1,7 @@
 import java.util.Scanner;
 
-
 public class Calculator {
     public static final int infinite = 999999;
-
-
 
     public int add(int i, int j) {
         return i + j;
@@ -43,38 +40,20 @@ public class Calculator {
     }
 
     public int devideString(String[] inputArr) {
-        int before = infinite;
-        String operator = "";
-        int after = infinite;
-        for (int i = 0; i < inputArr.length; i++) {
-            //System.out.println("" + before + ", " + operator + ", " + after);
-            if (before == infinite) {
-                before = Integer.parseInt(inputArr[i]);
-                continue;
-            }
-
-            if (before != infinite && operator == "") {
-                operator = inputArr[i];
-                continue;
-            }
-
-            if (before != infinite && operator != "" && after == infinite) {
-                after = Integer.parseInt(inputArr[i]);
-                //System.out.println("계산 : " + before + operator + after );
-                before = calculate(before, operator, after);
-                //System.out.println("계산 값 : "+before);
-                operator = "";
-                after = infinite;
-                continue;
-            }
-
-        }
         //System.out.println(before);
-        return before;
+        int result = toInt(inputArr[0]);
+        for(int i =0; i<inputArr.length-2; i+=2){
+            result = calculate(result, inputArr[i+1], toInt(inputArr[i+2]));
+        }
+        return result;
     }
 
     public void print(int result) {
         if (result == infinite) System.out.println("잘못 입력하셨습니다");
         if (result != infinite) System.out.println("결과 : " + result);
+    }
+
+    public int toInt(String str){
+        return Integer.parseInt(str);
     }
 }

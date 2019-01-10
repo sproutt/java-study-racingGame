@@ -33,4 +33,9 @@ public class CalculatorTest{
         String[] arr = {"4","+","5"};
         assertEquals( arr , calculator.splitString("4 + 5"));
     }
+    @Test
+    public void 문자열계산테스트(){
+        String[] arr ={"0","+","1","*","13"};
+        assertEquals(13, calculator.devideString(arr));
+    }
 }
