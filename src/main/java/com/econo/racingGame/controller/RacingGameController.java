@@ -1,12 +1,20 @@
 package com.econo.racingGame.controller;
 
 import com.econo.racingGame.model.GameDB;
+import com.econo.racingGame.view.InputVIew;
 
 import java.util.Random;
 
 public class RacingGameController {
 
     final static int MOVEBOUNDARY = 4;
+    public static GameDB gameDB;
+
+    public static void makeGameDB(){
+        gameDB = new GameDB();
+        gameDB.carPositions = new int[InputVIew.carNumber()];
+        gameDB.tryNumber = InputVIew.tryNumber();
+    }
 
     public GameDB makeResult(GameDB gameDB){
         for(int i = 0; i< gameDB.carPositions.length; i++){
