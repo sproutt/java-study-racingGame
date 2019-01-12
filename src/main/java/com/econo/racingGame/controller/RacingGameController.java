@@ -7,8 +7,8 @@ import java.util.Random;
 
 public class RacingGameController {
 
-    public final static int MOVEBOUNDARY = 4;
-    public static GameDB gameDB;
+    private final static int MOVEBOUNDARY = 4;
+    private static GameDB gameDB;
 
     public static void makeGameDB() {
         gameDB = new GameDB();

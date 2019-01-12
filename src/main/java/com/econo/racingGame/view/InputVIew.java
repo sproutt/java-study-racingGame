@@ -2,8 +2,6 @@ package com.econo.racingGame.view;
 
 import java.util.Scanner;
 
-import com.econo.racingGame.model.GameDB;
-
 public class InputVIew {
 
     public static int carNumber() {

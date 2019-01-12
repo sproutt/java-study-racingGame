@@ -7,8 +7,8 @@ import static junit.framework.TestCase.assertEquals;
 
 public class RacingGameControllerTest {
 
-    RacingGameController racingGameController;
-    GameDB gameDB;
+    private RacingGameController racingGameController;
+    private GameDB gameDB;
 
     @Before
     public void setUp() throws Exception {
