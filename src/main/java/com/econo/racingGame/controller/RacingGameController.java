@@ -7,34 +7,34 @@ import java.util.Random;
 
 public class RacingGameController {
 
-    final static int MOVEBOUNDARY = 4;
+    public final static int MOVEBOUNDARY = 4;
     public static GameDB gameDB;
 
-    public static void makeGameDB(){
+    public static void makeGameDB() {
         gameDB = new GameDB();
-        gameDB.carPositions = new int[InputVIew.carNumber()];
-        gameDB.tryNumber = InputVIew.tryNumber();
+        gameDB.makeCarPositions(InputVIew.carNumber());
+        gameDB.setTryNumber(InputVIew.tryNumber());
     }
 
-    public GameDB makeResult(GameDB gameDB){
-        for(int i = 0; i< gameDB.carPositions.length; i++){
-            gameDB.carPositions[i] = individualResult(gameDB);
+    public GameDB makeResult(GameDB gameDB) {
+        for (int i = 0; i < gameDB.getCarPositions().length; i++) {
+            gameDB.getCarPositions()[i] = makeIndividualResult(gameDB);
         }
         return gameDB;
     }
 
-    public int individualResult(GameDB gameDB){
+    public int makeIndividualResult(GameDB gameDB) {
         int individualResult = 0;
-        for(int i = 0; i< gameDB.tryNumber; i++){
+        for (int i = 0; i < gameDB.getTryNumber(); i++) {
             individualResult = individualResult + goStop();
         }
         return individualResult;
     }
 
-    private int goStop(){
+    private int goStop() {
         Random random = new Random();
         int nowResult = random.nextInt(10);
-        if(nowResult>=MOVEBOUNDARY){
+        if (nowResult >= MOVEBOUNDARY) {
             return 1;
         }
         return 0;

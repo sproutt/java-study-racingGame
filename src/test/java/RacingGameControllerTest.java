@@ -14,42 +14,40 @@ public class RacingGameControllerTest {
     public void setUp() throws Exception {
         racingGameController = new RacingGameController();
         gameDB = new GameDB();
-        gameDB.carPositions = new int[3];
-        gameDB.tryNumber = 5;
+        gameDB.makeCarPositions(3);
+        gameDB.setTryNumber(5);
     }
 
     @Test
     public void IndividualResultTest() {
-        assertEquals(true,isUpperBound(racingGameController.individualResult(gameDB), gameDB.tryNumber));
+        assertEquals(true, isUpperBound(racingGameController.makeIndividualResult(gameDB), gameDB.getTryNumber()));
     }
 
     @Test
     public void ResultBoundaryTest() {
-        assertEquals(true,checkBound(racingGameController.makeResult(gameDB)));
+        assertEquals(true, checkBound(racingGameController.makeResult(gameDB)));
     }
 
-    public boolean checkBound(GameDB gameDB){
+    public boolean checkBound(GameDB gameDB) {
         boolean result = true;
-        for(int i = 0; i< gameDB.carPositions.length; i++){
-            result = changeResult(result, gameDB.carPositions[i], gameDB.tryNumber);
+        for (int i = 0; i < gameDB.getCarPositions().length; i++) {
+            result = changeResult(result, gameDB.getCarPositions()[i], gameDB.getTryNumber());
         }
         return result;
     }
 
-    public boolean changeResult(boolean result,int carPosition, int tryNumber){
-        if(result==false){
+    public boolean changeResult(boolean result, int carPosition, int tryNumber) {
+        if (result == false) {
             return false;
         }
-        return isUpperBound(carPosition,tryNumber);
+        return isUpperBound(carPosition, tryNumber);
     }
 
-    public boolean isUpperBound(int carPosition, int tryNumber){
-        if(carPosition>tryNumber){
+    public boolean isUpperBound(int carPosition, int tryNumber) {
+        if (carPosition > tryNumber) {
             return false;
         }
         return true;
     }
 
-
 }
-
