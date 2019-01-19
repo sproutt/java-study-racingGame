@@ -2,7 +2,7 @@ package com.econo.racingGame.view;
 
 import java.util.Scanner;
 
-public class InputVIew {
+public class InputView {
 
     public static int carNumber() {
         Scanner scanner = new Scanner(System.in);

@@ -1,22 +1,22 @@
 package com.econo.racingGame.view;
 
-import com.econo.racingGame.model.GameDB;
+import com.econo.racingGame.model.Car;
 
 public class ResultView {
 
     private static final char BAR = '-';
 
-    public static void printResult(GameDB gameDB) {
-        for (int i = 0; i < gameDB.getCarPositions().length; i++) {
-            printIndividual(gameDB.getCarPositions()[i]);
+    public static void printResult(Car[] cars) {
+        for (int i = 0; i < cars.length; i++) {
+            printBar(cars[i].getMoveDistance());
         }
     }
 
-    private static void printIndividual(int position) {
-        for (int i = 0; i < position; i++) {
+    private static void printBar(int distance){
+        for(int i = 0;i<distance;i++){
             System.out.print(BAR);
         }
-        System.out.println();
+        System.out.println("");
     }
 
 }
