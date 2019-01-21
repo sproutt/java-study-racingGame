@@ -23,22 +23,22 @@ public class RacingGameTest {
 
     @Test
     public void returnDistance() {
-        assertEquals(true, checkDistance(5,racingGame.returnDistance(5)));
+        assertEquals(true, isDistanceEquals(5,racingGame.returnDistance(5)));
     }
 
     @Test
     public void makeCarsTest() {
-        assertEquals(true, checkCars(3,racingGame.makeCars(3,5)));
+        assertEquals(true, isCarnumberEquals(3,racingGame.makeCars(3,5)));
     }
 
-    public boolean checkDistance(int tryNumber,int distance){
+    public boolean isDistanceEquals(int tryNumber, int distance){
         if(tryNumber>=distance){
             return true;
         }
         return false;
     }
 
-    public boolean checkCars(int carNumber,Car[] cars){
+    public boolean isCarnumberEquals(int carNumber, Car[] cars){
         if(cars.length==carNumber){
             return true;
         }
