@@ -3,17 +3,17 @@ package racingGame.view;
 import racingGame.model.Car;
 
 public class OutputView {
-    private final char trace = '-';
+    private static final char TRACE = '-';
 
-    private void drawCars(Car[] cars) {
+    public static void drawCars(Car[] cars) {
         for (int i = 0; i < cars.length; i++) {
             drawTrace(cars[i].getPosition());
         }
     }
 
-    private void drawTrace(int traceCount) {
+    public static void drawTrace(int traceCount) {
         for (int i = 0; i < traceCount; i++) {
-            System.out.print(trace);
+            System.out.print(TRACE);
         }
         System.out.println("차");
     }

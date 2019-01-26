@@ -6,13 +6,16 @@ public class Car {
     private int speed;
     private int position;
 
-    public Car(){
+    public Car() {
+        System.out.println("생성자실행");
         this.speed = 1;
-        this.position=0;
+        this.position = 0;
     }
-    public void move(){
+
+    public void move() {
         this.position += this.speed;
     }
+
     public void setSpeed(int speed) {
         this.speed = speed;
     }
