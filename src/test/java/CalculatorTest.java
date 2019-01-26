@@ -1,7 +1,7 @@
 import static org.junit.Assert.assertEquals;
+
+import calculator.Calculator;
 import org.junit.Test;
-import org.junit.After;
-import org.junit.Before;
 
 public class CalculatorTest{
     Calculator calculator = new Calculator();
