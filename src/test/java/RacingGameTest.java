@@ -1,9 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-public class RacingGameTest extends RacingGame {
+public class RacingGameTest {
     private static RacingGame racingGame = new RacingGame();
 
     @Before
