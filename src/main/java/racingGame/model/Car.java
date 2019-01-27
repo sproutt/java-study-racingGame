@@ -7,7 +7,6 @@ public class Car {
     private int position;
 
     public Car() {
-        System.out.println("생성자실행");
         this.speed = 1;
         this.position = 0;
     }
