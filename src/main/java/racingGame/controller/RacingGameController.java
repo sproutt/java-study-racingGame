@@ -7,8 +7,9 @@ import racingGame.view.OutputView;
 import java.util.Random;
 
 public class RacingGameController {
-    private final int MOVE_BOUNDARY = 4;
-    private int trys;
+    private static final int MOVE_BOUNDARY = 4;
+    private static final int RANDOM_MAX = 10;
+    private int tries;
 
     public static void main(String[] args) {
         RacingGameController racingGame = new RacingGameController();
@@ -27,12 +28,12 @@ public class RacingGameController {
 
     public int getRandomNumber() {
         Random random = new Random();
-        return random.nextInt(10);
+        return random.nextInt(RANDOM_MAX);
     }
 
     public boolean isMove() {
         boolean isMove = false;
-        if (getRandomNumber() >= 4) {
+        if (getRandomNumber() >= MOVE_BOUNDARY) {
             isMove = true;
         }
         return isMove;
