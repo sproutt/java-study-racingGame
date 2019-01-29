@@ -25,15 +25,15 @@ public class RacingGameController {
         return random.nextInt(RANDOM_MAX);
     }
 
-    public boolean isMove() {
-        if (getRandomNumber() >= MOVE_BOUNDARY) {
+    public boolean isMove(int randomNumber) {
+        if (randomNumber >= MOVE_BOUNDARY) {
             return true;
         }
         return false;
     }
 
     public void checkMove(Car car) {
-        if (isMove()) {
+        if (isMove( getRandomNumber() )) {
             car.move();
         }
     }
