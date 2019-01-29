@@ -33,7 +33,7 @@ public class RacingGameController {
     }
 
     public void checkMove(Car car) {
-        if (isMove( getRandomNumber() )) {
+        if (isMove(getRandomNumber())) {
             car.move();
         }
     }

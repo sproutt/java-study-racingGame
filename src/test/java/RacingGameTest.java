@@ -15,20 +15,20 @@ public class RacingGameTest {
     }
 
     @Test
-    public void carMoveTest(){
+    public void carMoveTest() {
         car.move();
         assertEquals(1, car.getPosition());
     }
 
     @Test
-    public void carMoveTestAgain(){
+    public void carMoveTestAgain() {
         car.move();
         car.move();
         assertEquals(2, car.getPosition());
     }
 
     @Test
-    public void HaveToGetSameLengthAfterMakeCars(){
+    public void HaveToGetSameLengthAfterMakeCars() {
         assertEquals(5, racingGame.makeCars(5).length);
     }
 
