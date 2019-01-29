@@ -18,5 +18,4 @@ public class OutputView {
         System.out.println("차");
     }
 
-
 }

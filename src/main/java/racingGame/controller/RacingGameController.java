@@ -9,12 +9,6 @@ import java.util.Random;
 public class RacingGameController {
     private static final int MOVE_BOUNDARY = 4;
     private static final int RANDOM_MAX = 10;
-    private int tries;
-
-    public static void main(String[] args) {
-        RacingGameController racingGame = new RacingGameController();
-        racingGame.playGame(racingGame);
-    }
 
     public Car[] makeCars(int carsNumber) {
         return new Car[carsNumber];
@@ -32,11 +26,10 @@ public class RacingGameController {
     }
 
     public boolean isMove() {
-        boolean isMove = false;
         if (getRandomNumber() >= MOVE_BOUNDARY) {
-            isMove = true;
+            return true;
         }
-        return isMove;
+        return false;
     }
 
     public void checkMove(Car car) {
@@ -45,7 +38,8 @@ public class RacingGameController {
         }
     }
 
-    public void playGame(RacingGameController racingGame) {
+    public void playGame() {
+        RacingGameController racingGame = new RacingGameController();
         Car[] cars = racingGame.makeCars(InputView.getCarsNumber());
         racingGame.moveCars(cars, InputView.getTryNumber());
         OutputView.drawCars(cars);
