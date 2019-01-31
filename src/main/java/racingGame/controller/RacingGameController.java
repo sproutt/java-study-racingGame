@@ -41,6 +41,38 @@ public class RacingGameController {
             car.move();
         }
     }
+    public String getWinners(Car[] cars){
+        String winners = getMaxNumberCarNamesString(cars, getMaxNumber(cars));
+        return winners;
+    }
+    public int getMaxNumber(Car[] cars){
+        int maxNumber=cars[0].getPosition();
+        for(int i=1; i<cars.length; i++){
+            maxNumber = getBiggerNumber(maxNumber, cars[i].getPosition());
+        }
+        return maxNumber;
+    }
+    public String getMaxNumberCarNamesString(Car[] cars, int maxNumber){
+        String carNamesString="";
+        for(int i=0; i<cars.length; i++){
+            carNamesString += getNameIfHaveMaxNumber(cars[i], maxNumber);
+        }
+        return carNamesString.substring(0, carNamesString.length()-2);
+    }
+
+    public String getNameIfHaveMaxNumber(Car car, int maxNumber){
+        if(car.getPosition() == maxNumber){
+            return car.getName()+", ";
+        }
+        return "";
+    }
+
+    public int getBiggerNumber(int originalNumber, int newNumber){
+        if(originalNumber < newNumber){
+            return newNumber;
+        }
+        return originalNumber;
+    }
 
     public void playGame() {
         RacingGameController racingGame = new RacingGameController();

@@ -11,7 +11,7 @@ public class RacingGameTest {
     @Before
     public void beforeSetup() {
         racingGame = new RacingGameController();
-        car = new Car();
+        car = new Car("pobi");
     }
 
     @Test
@@ -29,12 +29,44 @@ public class RacingGameTest {
 
     @Test
     public void HaveToGetSameLengthAfterMakeCars() {
-        assertEquals(5, racingGame.makeCars(5).length);
+        String[] carNames= {"pobi","honux"};
+        assertEquals(2, racingGame.makeCars(carNames).length);
+    }
+
+    @Test
+    public void HaveToGetSameNameAfterMakeCar() {
+        String[] carNames= {"pobi"};
+        assertEquals("pobi", racingGame.makeCars(carNames)[0].getName());
     }
 
     @Test
     public void isMoveReturnTest() {
         assertEquals(true, racingGame.isMove(4));
+    }
+    @Test
+    public void haveToGetMaxNumber(){
+        String[] carNames= {"pobi","honux","crong"};
+        Car[] cars = racingGame.makeCars(carNames);
+        cars[0].move();
+        cars[0].move();
+        assertEquals(2, racingGame.getMaxNumber(cars));
+    }
+
+    @Test
+    public void getNameIfHaveMaxNumber(){
+        String[] carNames= {"pobi","honux","crong"};
+        Car[] cars = racingGame.makeCars(carNames);
+        cars[0].move();
+        assertEquals("pobi", racingGame.getNameIfHaveMaxNumber(cars[0], 1));
+    }
+
+    @Test
+    public void moreMoveCarHaveToWin() {
+        String[] carNames= {"pobi","honux","crong"};
+        Car[] cars = racingGame.makeCars(carNames);
+        cars[0].move();
+        cars[1].move();
+        assertEquals("pobi, honux", racingGame.getWinners(cars));
     }
 
 }

@@ -7,6 +7,7 @@ public class OutputView {
 
     public static void drawCars(Car[] cars) {
         for (int i = 0; i < cars.length; i++) {
+            System.out.print(cars[i].getName()+" : ");
             drawTrace(cars[i].getPosition());
         }
     }
@@ -15,7 +16,6 @@ public class OutputView {
         for (int i = 0; i < traceCount; i++) {
             System.out.print(TRACE);
         }
-        System.out.println("차");
     }
 
 }
