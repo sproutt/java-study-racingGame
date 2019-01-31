@@ -59,7 +59,14 @@ public class RacingGameTest {
         cars[0].move();
         assertEquals("pobi", racingGame.getNameIfHaveMaxNumber(cars[0], 1));
     }
-
+    @Test
+    public void getMaxNumberCarNamesString(){
+        String[] carNames= {"pobi","honux","crong"};
+        Car[] cars = racingGame.makeCars(carNames);
+        cars[0].move();
+        cars[1].move();
+        assertEquals("pobi, honux", racingGame.getMaxNumberCarNamesString(cars, 1));
+    }
     @Test
     public void moreMoveCarHaveToWin() {
         String[] carNames= {"pobi","honux","crong"};

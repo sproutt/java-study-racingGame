@@ -10,6 +10,11 @@ public class RacingGameController {
     private static final int MOVE_BOUNDARY = 4;
     private static final int RANDOM_MAX = 10;
 
+    public static void main(String[] args){
+        RacingGameController racingGameController= new RacingGameController();
+        racingGameController.playGame();
+    }
+
     public Car[] makeCars(String[] carNames) {
         Car[] cars = new Car[carNames.length];
         for(int i =0; i<carNames.length; i++){
@@ -18,8 +23,14 @@ public class RacingGameController {
         return cars;
     }
 
-    public void moveCars(Car[] cars, int trys) {
-        for (int i = 0; i < trys; i++) {
+    public void tryForTryNumber(Car[] cars, int trys){
+        for(int k=0; k<trys; k++){
+            moveCars(cars);
+        }
+    }
+    public void moveCars(Car[] cars) {
+
+        for (int i = 0; i < cars.length; i++) {
             checkMove(cars[i]);
         }
     }
@@ -77,7 +88,7 @@ public class RacingGameController {
     public void playGame() {
         RacingGameController racingGame = new RacingGameController();
         Car[] cars = racingGame.makeCars(InputView.getCarsNames());
-        racingGame.moveCars(cars, InputView.getTryNumber());
-        OutputView.drawCars(cars);
+        racingGame.tryForTryNumber(cars, InputView.getTryNumber());
+        OutputView.drawResults(cars);
     }
 }
