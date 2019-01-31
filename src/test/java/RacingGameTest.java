@@ -29,13 +29,13 @@ public class RacingGameTest {
 
     @Test
     public void HaveToGetSameLengthAfterMakeCars() {
-        String[] carNames= {"pobi","honux"};
+        String[] carNames = {"pobi", "honux"};
         assertEquals(2, racingGame.makeCars(carNames).length);
     }
 
     @Test
     public void HaveToGetSameNameAfterMakeCar() {
-        String[] carNames= {"pobi"};
+        String[] carNames = {"pobi"};
         assertEquals("pobi", racingGame.makeCars(carNames)[0].getName());
     }
 
@@ -43,9 +43,10 @@ public class RacingGameTest {
     public void isMoveReturnTest() {
         assertEquals(true, racingGame.isMove(4));
     }
+
     @Test
-    public void haveToGetMaxNumber(){
-        String[] carNames= {"pobi","honux","crong"};
+    public void haveToGetMaxNumber() {
+        String[] carNames = {"pobi", "honux", "crong"};
         Car[] cars = racingGame.makeCars(carNames);
         cars[0].move();
         cars[0].move();
@@ -53,23 +54,25 @@ public class RacingGameTest {
     }
 
     @Test
-    public void getNameIfHaveMaxNumber(){
-        String[] carNames= {"pobi","honux","crong"};
+    public void getNameIfHaveMaxNumber() {
+        String[] carNames = {"pobi", "honux", "crong"};
         Car[] cars = racingGame.makeCars(carNames);
         cars[0].move();
         assertEquals("pobi", racingGame.getNameIfHaveMaxNumber(cars[0], 1));
     }
+
     @Test
-    public void getMaxNumberCarNamesString(){
-        String[] carNames= {"pobi","honux","crong"};
+    public void getMaxNumberCarNamesString() {
+        String[] carNames = {"pobi", "honux", "crong"};
         Car[] cars = racingGame.makeCars(carNames);
         cars[0].move();
         cars[1].move();
         assertEquals("pobi, honux", racingGame.getMaxNumberCarNamesString(cars, 1));
     }
+
     @Test
     public void moreMoveCarHaveToWin() {
-        String[] carNames= {"pobi","honux","crong"};
+        String[] carNames = {"pobi", "honux", "crong"};
         Car[] cars = racingGame.makeCars(carNames);
         cars[0].move();
         cars[1].move();

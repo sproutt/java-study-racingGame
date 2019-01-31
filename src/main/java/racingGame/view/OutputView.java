@@ -32,7 +32,7 @@ public class OutputView {
 
     public static void drawWinner(Car[] cars) {
         RacingGameController racingGameController = new RacingGameController();
-        System.out.println(racingGameController.getWinners(cars)+"가 최종 우승했습니다.");
+        System.out.println(racingGameController.getWinners(cars) + "가 최종 우승했습니다.");
     }
 
 }

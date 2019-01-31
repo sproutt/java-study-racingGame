@@ -10,24 +10,25 @@ public class RacingGameController {
     private static final int MOVE_BOUNDARY = 4;
     private static final int RANDOM_MAX = 10;
 
-    public static void main(String[] args){
-        RacingGameController racingGameController= new RacingGameController();
+    public static void main(String[] args) {
+        RacingGameController racingGameController = new RacingGameController();
         racingGameController.playGame();
     }
 
     public Car[] makeCars(String[] carNames) {
         Car[] cars = new Car[carNames.length];
-        for(int i =0; i<carNames.length; i++){
+        for (int i = 0; i < carNames.length; i++) {
             cars[i] = new Car(carNames[i]);
         }
         return cars;
     }
 
-    public void tryForTryNumber(Car[] cars, int trys){
-        for(int k=0; k<trys; k++){
+    public void tryForTryNumber(Car[] cars, int trys) {
+        for (int k = 0; k < trys; k++) {
             moveCars(cars);
         }
     }
+
     public void moveCars(Car[] cars) {
 
         for (int i = 0; i < cars.length; i++) {
@@ -52,34 +53,37 @@ public class RacingGameController {
             car.move();
         }
     }
-    public String getWinners(Car[] cars){
+
+    public String getWinners(Car[] cars) {
         String winners = getMaxNumberCarNamesString(cars, getMaxNumber(cars));
         return winners;
     }
-    public int getMaxNumber(Car[] cars){
-        int maxNumber=cars[0].getPosition();
-        for(int i=1; i<cars.length; i++){
+
+    public int getMaxNumber(Car[] cars) {
+        int maxNumber = cars[0].getPosition();
+        for (int i = 1; i < cars.length; i++) {
             maxNumber = getBiggerNumber(maxNumber, cars[i].getPosition());
         }
         return maxNumber;
     }
-    public String getMaxNumberCarNamesString(Car[] cars, int maxNumber){
-        String carNamesString="";
-        for(int i=0; i<cars.length; i++){
+
+    public String getMaxNumberCarNamesString(Car[] cars, int maxNumber) {
+        String carNamesString = "";
+        for (int i = 0; i < cars.length; i++) {
             carNamesString += getNameIfHaveMaxNumber(cars[i], maxNumber);
         }
-        return carNamesString.substring(0, carNamesString.length()-2);
+        return carNamesString.substring(0, carNamesString.length() - 2);
     }
 
-    public String getNameIfHaveMaxNumber(Car car, int maxNumber){
-        if(car.getPosition() == maxNumber){
-            return car.getName()+", ";
+    public String getNameIfHaveMaxNumber(Car car, int maxNumber) {
+        if (car.getPosition() == maxNumber) {
+            return car.getName() + ", ";
         }
         return "";
     }
 
-    public int getBiggerNumber(int originalNumber, int newNumber){
-        if(originalNumber < newNumber){
+    public int getBiggerNumber(int originalNumber, int newNumber) {
+        if (originalNumber < newNumber) {
             return newNumber;
         }
         return originalNumber;
