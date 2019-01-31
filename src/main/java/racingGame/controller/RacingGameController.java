@@ -10,8 +10,12 @@ public class RacingGameController {
     private static final int MOVE_BOUNDARY = 4;
     private static final int RANDOM_MAX = 10;
 
-    public Car[] makeCars(int carsNumber) {
-        return new Car[carsNumber];
+    public Car[] makeCars(String[] carNames) {
+        Car[] cars = new Car[carNames.length];
+        for(int i =0; i<carNames.length; i++){
+            cars[i] = new Car(carNames[i]);
+        }
+        return cars;
     }
 
     public void moveCars(Car[] cars, int trys) {
@@ -40,7 +44,7 @@ public class RacingGameController {
 
     public void playGame() {
         RacingGameController racingGame = new RacingGameController();
-        Car[] cars = racingGame.makeCars(InputView.getCarsNumber());
+        Car[] cars = racingGame.makeCars(InputView.getCarsNames());
         racingGame.moveCars(cars, InputView.getTryNumber());
         OutputView.drawCars(cars);
     }

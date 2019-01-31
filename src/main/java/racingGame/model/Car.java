@@ -3,10 +3,13 @@ package racingGame.model;
 import calculator.Calculator;
 
 public class Car {
+
+    private String name;
     private int speed;
     private int position;
 
-    public Car() {
+    public Car(String name) {
+        this.name = name;
         this.speed = 1;
         this.position = 0;
     }
