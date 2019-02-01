@@ -84,10 +84,4 @@ public class RacingGame {
         return originalNumber;
     }
 
-    public void playGame() {
-        RacingGame racingGame = new RacingGame();
-        Car[] cars = racingGame.makeCars(InputView.getCarsNames());
-        racingGame.tryForTryNumber(cars, InputView.getTryNumber());
-        OutputView.drawResults(cars);
-    }
 }
