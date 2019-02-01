@@ -1,6 +1,6 @@
 package racingGame.view;
 
-import racingGame.controller.RacingGameController;
+import racingGame.controller.RacingGame;
 import racingGame.model.Car;
 
 public class OutputView {
@@ -31,8 +31,8 @@ public class OutputView {
     }
 
     public static void drawWinner(Car[] cars) {
-        RacingGameController racingGameController = new RacingGameController();
-        System.out.println(racingGameController.getWinners(cars) + "가 최종 우승했습니다.");
+        RacingGame racingGame = new RacingGame();
+        System.out.println(racingGame.getWinners(cars) + "가 최종 우승했습니다.");
     }
 
 }

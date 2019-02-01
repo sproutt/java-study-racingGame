@@ -6,14 +6,9 @@ import racingGame.view.OutputView;
 
 import java.util.Random;
 
-public class RacingGameController {
+public class RacingGame {
     private static final int MOVE_BOUNDARY = 4;
     private static final int RANDOM_MAX = 10;
-
-    public static void main(String[] args) {
-        RacingGameController racingGameController = new RacingGameController();
-        racingGameController.playGame();
-    }
 
     public Car[] makeCars(String[] carNames) {
         Car[] cars = new Car[carNames.length];
@@ -90,7 +85,7 @@ public class RacingGameController {
     }
 
     public void playGame() {
-        RacingGameController racingGame = new RacingGameController();
+        RacingGame racingGame = new RacingGame();
         Car[] cars = racingGame.makeCars(InputView.getCarsNames());
         racingGame.tryForTryNumber(cars, InputView.getTryNumber());
         OutputView.drawResults(cars);

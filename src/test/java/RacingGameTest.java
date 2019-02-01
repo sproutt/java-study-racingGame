@@ -1,16 +1,16 @@
 import org.junit.*;
-import racingGame.controller.RacingGameController;
+import racingGame.controller.RacingGame;
 import racingGame.model.Car;
 
 import static org.junit.Assert.assertEquals;
 
 public class RacingGameTest {
-    private RacingGameController racingGame;
+    private RacingGame racingGame;
     private Car car;
 
     @Before
     public void beforeSetup() {
-        racingGame = new RacingGameController();
+        racingGame = new RacingGame();
         car = new Car("pobi");
     }
 
@@ -21,20 +21,20 @@ public class RacingGameTest {
     }
 
     @Test
-    public void carMoveTestAgain() {
+    public void carMoveTestAgainTest() {
         car.move();
         car.move();
         assertEquals(2, car.getPosition());
     }
 
     @Test
-    public void HaveToGetSameLengthAfterMakeCars() {
+    public void HaveToGetSameLengthAfterMakeCarsTest() {
         String[] carNames = {"pobi", "honux"};
         assertEquals(2, racingGame.makeCars(carNames).length);
     }
 
     @Test
-    public void HaveToGetSameNameAfterMakeCar() {
+    public void HaveToGetSameNameAfterMakeCarTest() {
         String[] carNames = {"pobi"};
         assertEquals("pobi", racingGame.makeCars(carNames)[0].getName());
     }
@@ -45,7 +45,7 @@ public class RacingGameTest {
     }
 
     @Test
-    public void haveToGetMaxNumber() {
+    public void haveToGetMaxNumberTest() {
         String[] carNames = {"pobi", "honux", "crong"};
         Car[] cars = racingGame.makeCars(carNames);
         cars[0].move();
@@ -54,7 +54,7 @@ public class RacingGameTest {
     }
 
     @Test
-    public void getNameIfHaveMaxNumber() {
+    public void getNameIfHaveMaxNumberTest() {
         String[] carNames = {"pobi", "honux", "crong"};
         Car[] cars = racingGame.makeCars(carNames);
         cars[0].move();
@@ -62,7 +62,7 @@ public class RacingGameTest {
     }
 
     @Test
-    public void getMaxNumberCarNamesString() {
+    public void getMaxNumberCarNamesStringTest() {
         String[] carNames = {"pobi", "honux", "crong"};
         Car[] cars = racingGame.makeCars(carNames);
         cars[0].move();
@@ -71,7 +71,7 @@ public class RacingGameTest {
     }
 
     @Test
-    public void moreMoveCarHaveToWin() {
+    public void moreMoveCarHaveToWinTest() {
         String[] carNames = {"pobi", "honux", "crong"};
         Car[] cars = racingGame.makeCars(carNames);
         cars[0].move();
