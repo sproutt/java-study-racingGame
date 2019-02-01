@@ -12,7 +12,7 @@ public class RacingGameClient {
         RacingGame racingGame = new RacingGame();
         Car[] cars = racingGame.makeCars(InputView.getCarsNames());
         racingGame.tryForTryNumber(cars, InputView.getTryNumber());
-        OutputView.drawResults(cars);
+        OutputView.drawResults(cars, racingGame.getWinners(cars));
     }
 
 }

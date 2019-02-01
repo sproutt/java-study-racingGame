@@ -6,12 +6,12 @@ import racingGame.model.Car;
 public class OutputView {
     private static final char TRACE = '-';
 
-    public static void drawResults(Car[] cars) {
+    public static void drawResults(Car[] cars, String winners) {
         System.out.println("");
         System.out.println("실행결과");
         System.out.println("");
         drawCars(cars);
-        drawWinner(cars);
+        drawWinner(winners);
     }
 
     public static void drawCars(Car[] cars) {
@@ -30,9 +30,8 @@ public class OutputView {
         System.out.println("");
     }
 
-    public static void drawWinner(Car[] cars) {
-        RacingGame racingGame = new RacingGame();
-        System.out.println(racingGame.getWinners(cars) + "가 최종 우승했습니다.");
+    public static void drawWinner(String winners) {
+        System.out.println(winners + "가 최종 우승했습니다.");
     }
 
 }
