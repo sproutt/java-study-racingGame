@@ -63,11 +63,12 @@ public class RacingGame {
     }
 
     public String getWinnerNames(Car[] cars, int maxNumber) {
-        String carNamesString = "";
+        String carNames = "";
         for (int i = 0; i < cars.length; i++) {
-            carNamesString += getWinnerName(cars[i], maxNumber);
+            carNames += getWinnerName(cars[i], maxNumber);
         }
-        return carNamesString.substring(0, carNamesString.length() - 2);
+        carNames = toWinnerPrintFormat(carNames);
+        return carNames;
     }
 
     public String getWinnerName(Car car, int maxNumber) {
@@ -77,4 +78,7 @@ public class RacingGame {
         return "";
     }
 
+    public String toWinnerPrintFormat(String rawWinnerName) {
+        return rawWinnerName.substring(0, rawWinnerName.length() - 2);
+    }
 }

@@ -7,9 +7,7 @@ public class OutputView {
     private static final char TRACE = '-';
 
     public static void drawResults(Car[] cars, String winners) {
-        System.out.println("");
-        System.out.println("실행결과");
-        System.out.println("");
+        System.out.println("\n실행결과\n");
         drawCars(cars);
         drawWinner(winners);
     }

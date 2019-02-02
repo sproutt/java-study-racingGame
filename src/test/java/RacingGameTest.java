@@ -58,7 +58,7 @@ public class RacingGameTest {
         String[] carNames = {"pobi", "honux", "crong"};
         Car[] cars = racingGame.makeCars(carNames);
         cars[0].move();
-        assertEquals("pobi", racingGame.getNameIfHaveMaxNumber(cars[0], 1));
+        assertEquals("pobi, ", racingGame.getWinnerName(cars[0], 1));
     }
 
     @Test
@@ -67,7 +67,7 @@ public class RacingGameTest {
         Car[] cars = racingGame.makeCars(carNames);
         cars[0].move();
         cars[1].move();
-        assertEquals("pobi, honux", racingGame.getMaxNumberCarNamesString(cars, 1));
+        assertEquals("pobi, honux", racingGame.getWinnerNames(cars, 1));
     }
 
     @Test
@@ -76,7 +76,7 @@ public class RacingGameTest {
         Car[] cars = racingGame.makeCars(carNames);
         cars[0].move();
         cars[1].move();
-        assertEquals("pobi, honux", racingGame.getWinners(cars));
+        assertEquals("pobi, honux", racingGame.findWinners(cars));
     }
 
 }
