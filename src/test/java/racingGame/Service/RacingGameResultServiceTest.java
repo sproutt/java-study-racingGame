@@ -5,6 +5,7 @@ import racingGame.model.Car;
 
 import static org.junit.Assert.*;
 import static racingGame.Service.CarService.makeCars;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameResultServiceTest {
 

@@ -18,11 +18,11 @@ public class CarService{
     public static void moveCars(Car[] cars) {
 
         Arrays.asList(cars).stream()
-                .forEach(car -> move(car));
+                .forEach(car -> move(car, RacingGameUtil.getRandomNumber()));
     }
 
-    public static void move(Car car) {
-        if (RacingGameUtil.isMove(RacingGameUtil.getRandomNumber())) {
+    public static void move(Car car, int randomNumber) {
+        if (RacingGameUtil.isMove(randomNumber)) {
             car.move();
         }
     }

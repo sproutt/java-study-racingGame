@@ -1,3 +1,5 @@
+package racingGame.controller;
+
 import org.junit.*;
 import racingGame.Service.CarService;
 import racingGame.Service.RacingGameResultService;
@@ -47,9 +49,6 @@ public class RacingGameControllerTest {
     public void isMoveReturnTest() {
         assertEquals(true, RacingGameUtil.isMove(4));
     }
-
-
-
 
 
 }
