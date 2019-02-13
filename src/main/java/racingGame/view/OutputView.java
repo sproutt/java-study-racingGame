@@ -1,15 +1,13 @@
 package racingGame.view;
 
-import racingGame.controller.RacingGame;
 import racingGame.model.Car;
 
 public class OutputView {
     private static final char TRACE = '-';
+    private static final String RESULT_MESSAGE="\n실행결과\n";
 
-    public static void drawResults(Car[] cars, String winners) {
-        System.out.println("\n실행결과\n");
-        drawCars(cars);
-        drawWinner(winners);
+    public static void drawResultMessage(){
+        System.out.println(RESULT_MESSAGE);
     }
 
     public static void drawCars(Car[] cars) {
