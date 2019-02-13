@@ -1,6 +1,7 @@
 package racingGame.controller;
 
 import racingGame.Service.CarService;
+import racingGame.Service.RacingGameResultService;
 import racingGame.model.Car;
 import racingGame.view.InputView;
 import racingGame.view.OutputView;
@@ -19,7 +20,7 @@ public class RacingGameController {
     public void drawResults(Car[] cars) {
         OutputView.drawResultMessage();
         OutputView.drawCars(cars);
-        OutputView.drawWinner(CarService.findWinners(cars));
+        OutputView.drawWinner(RacingGameResultService.getWinners(cars));
     }
 
     public Car[] tryForTryNumber(Car[] cars, int trys) {
@@ -28,6 +29,5 @@ public class RacingGameController {
         }
         return cars;
     }
-
 
 }
