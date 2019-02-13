@@ -8,8 +8,7 @@ import racingGame.view.OutputView;
 public class RacingGameClient {
 
     public static void main(String[] args) {
-        RacingGameController racingGameController = new RacingGameController();
-        racingGameController.start(InputView.getCarsNames(),InputView.getTryNumber());
+        new RacingGameController().start(InputView.getCarsNames(), InputView.getTryNumber());
     }
 
 }

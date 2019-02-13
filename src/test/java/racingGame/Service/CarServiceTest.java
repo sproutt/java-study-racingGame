@@ -15,7 +15,7 @@ public class CarServiceTest {
     }
 
     @Test
-    public void moveTest(){
+    public void moveTest() {
         Car car = new Car("a");
         CarService.move(car, 1);
         CarService.move(car, 2);
