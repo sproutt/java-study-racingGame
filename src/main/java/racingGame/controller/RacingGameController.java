@@ -24,9 +24,11 @@ public class RacingGameController {
     }
 
     public Car[] tryForTryNumber(Car[] cars, int trys) {
+
         for (int k = 0; k < trys; k++) {
             CarService.moveCars(cars);
         }
+
         return cars;
     }
 

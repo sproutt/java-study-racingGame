@@ -15,6 +15,7 @@ public class RacingGameResultService {
         for (int i = 1; i < cars.length; i++) {
             maxNumber = Math.max(maxNumber, cars[i].getPosition());
         }
+
         return maxNumber;
     }
 
