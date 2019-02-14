@@ -1,10 +1,7 @@
 package racingGame.controller;
 
 import org.junit.*;
-import racingGame.Service.CarService;
-import racingGame.Service.RacingGameResultService;
-import racingGame.controller.RacingGameController;
-import racingGame.model.Car;
+import racingGame.model.CarDto;
 import racingGame.util.RacingGameUtil;
 
 import static org.junit.Assert.assertEquals;
@@ -12,25 +9,25 @@ import static racingGame.Service.CarService.makeCars;
 
 public class RacingGameControllerTest {
     private RacingGameController racingGameController;
-    private Car car;
+    private CarDto carDto;
 
     @Before
     public void beforeSetup() {
         racingGameController = new RacingGameController();
-        car = new Car("pobi");
+        carDto = new CarDto("pobi");
     }
 
     @Test
     public void carMoveTest() {
-        car.move();
-        assertEquals(1, car.getPosition());
+        carDto.move();
+        assertEquals(1, carDto.getPosition());
     }
 
     @Test
     public void carMoveTestAgainTest() {
-        car.move();
-        car.move();
-        assertEquals(2, car.getPosition());
+        carDto.move();
+        carDto.move();
+        assertEquals(2, carDto.getPosition());
     }
 
     @Test

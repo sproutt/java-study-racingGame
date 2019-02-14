@@ -1,7 +1,5 @@
 package racingGame.util;
 
-import racingGame.model.Car;
-
 import java.util.Random;
 
 public class RacingGameUtil {

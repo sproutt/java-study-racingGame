@@ -1,35 +1,41 @@
 package racingGame.controller;
 
 import racingGame.Service.CarService;
-import racingGame.Service.RacingGameResultService;
-import racingGame.model.Car;
+import racingGame.Service.GameResultService;
+import racingGame.model.CarDto;
+import racingGame.util.RacingGameUtil;
 import racingGame.view.InputView;
 import racingGame.view.OutputView;
 
 import java.util.Arrays;
-import java.util.Random;
+import java.util.List;
 import java.util.stream.IntStream;
 
 
 public class RacingGameController {
 
-    public void start(String[] carsNames, int tryNumber) {
-        drawResults(tryForTryNumber(CarService.makeCars(carsNames), tryNumber));
+    private CarDto[] carDtos;
+    private String winners;
+
+    public void set(String[] carNames){
+        carDtos = CarService.makeCars(carNames);
     }
 
-    public void drawResults(Car[] cars) {
-        OutputView.drawResultMessage();
-        OutputView.drawCars(cars);
-        OutputView.drawWinner(RacingGameResultService.getWinners(cars));
-    }
-
-    public Car[] tryForTryNumber(Car[] cars, int trys) {
-
-        for (int k = 0; k < trys; k++) {
-            CarService.moveCars(cars);
+    public void start(int tryNumber) {
+        for (int k = 0; k < tryNumber; k++) {
+            moveCars(carDtos);
         }
-
-        return cars;
     }
 
+    public static void moveCars(CarDto[] carDtos) {
+
+        Arrays.asList(carDtos).stream()
+                .forEach(car -> CarService.move(car, RacingGameUtil.getRandomNumber()));
+    }
+
+    public void drawResults() {
+        OutputView.drawResultMessage();
+        OutputView.drawCars(carDtos);
+        OutputView.drawWinner(GameResultService.getWinners(carDtos));
+    }
 }

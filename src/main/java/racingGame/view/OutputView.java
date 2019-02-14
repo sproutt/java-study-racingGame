@@ -1,6 +1,6 @@
 package racingGame.view;
 
-import racingGame.model.Car;
+import racingGame.model.CarDto;
 
 public class OutputView {
     private static final char TRACE = '-';
@@ -10,11 +10,11 @@ public class OutputView {
         System.out.println(RESULT_MESSAGE);
     }
 
-    public static void drawCars(Car[] cars) {
+    public static void drawCars(CarDto[] carDtos) {
 
-        for (int i = 0; i < cars.length; i++) {
-            System.out.print(cars[i].getName() + " : ");
-            drawTrace(cars[i].getPosition());
+        for (int i = 0; i < carDtos.length; i++) {
+            System.out.print(carDtos[i].getName() + " : ");
+            drawTrace(carDtos[i].getPosition());
         }
         System.out.println("");
     }
