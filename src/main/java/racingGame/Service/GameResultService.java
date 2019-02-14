@@ -1,51 +1,65 @@
 package racingGame.Service;
 
 import racingGame.model.CarDto;
-import racingGame.model.GameResultDto;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class GameResultService {
+    private static final char TRACE = '-';
 
-    private GameResultDto gameResultDto;
+    private CarDto[] carDtos;
 
-    public GameResultService(){
-        gameResultDto = new GameResultDto();
+    public GameResultService(CarDto[] carDtos) {
+        this.carDtos = carDtos;
     }
 
-    public static String[] getResults() {
-    }
-
-    public String getWinners(CarDto[] carDtos) {
-
-        return getWinnerNames(carDtos, getMaxNumber(carDtos));
+    public String[] getResults() {
+        String[] results = {getTraces(), getWinners(getMaxNumber(carDtos))};
+        return results;
     }
 
     public int getMaxNumber(CarDto[] carDtos) {
-        int maxNumber = carDtos[0].getPosition();
-        for (int i = 1; i < carDtos.length; i++) {
-            maxNumber = Math.max(maxNumber, carDtos[i].getPosition());
-        }
 
-        return maxNumber;
+        return Arrays.stream(carDtos).max((x,y)->x.getPosition() - y.getPosition()).get().getPosition();
     }
 
-    public String getWinnerNames(CarDto[] carDtos, int maxNumber) {
-        String carNames = "";
-        for (int i = 0; i < carDtos.length; i++) {
-            carNames += getWinnerName(carDtos[i], maxNumber);
-        }
-        carNames = toWinnerPrintFormat(carNames);
-        return carNames;
+    public String getWinners(int maxNumber) {
+
+        String[] winners = Arrays.stream(carDtos).filter(car->isWinner(car, maxNumber)).map(CarDto::getName).toArray(String[]::new);
+
+
+        return toWinnerPrintFormat(winners);
     }
 
-    public String getWinnerName(CarDto carDto, int maxNumber) {
+    public boolean isWinner(CarDto carDto, int maxNumber) {
         if (carDto.getPosition() == maxNumber) {
-            return carDto.getName() + ", ";
+            return true;
         }
-        return "";
+        return false;
     }
 
-    public static String toWinnerPrintFormat(String rawWinnerName) {
-        return rawWinnerName.substring(0, rawWinnerName.length() - 2);
+    public String toWinnerPrintFormat(String[] winnerAraay) {
+
+        return Arrays.stream(winnerAraay).collect(Collectors.joining(", "));
     }
 
+    public String getTraces() {
+        String traces = "";
+        for (int i = 0; i < carDtos.length; i++) {
+            traces += carDtos[i].getName() + " : ";
+            traces += getTrace(carDtos[i].getPosition());
+        }
+        return traces + "\n";
+    }
+
+    private String getTrace(int traceCount) {
+        String trace = "";
+        for (int i = 0; i < traceCount; i++) {
+            trace += TRACE;
+        }
+        return trace + "\n";
+    }
 }

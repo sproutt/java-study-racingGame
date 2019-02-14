@@ -12,8 +12,9 @@ public class CarService {
     private static final int RANDOM_MAX = 10;
     private static final int MOVE_BOUNDARY = 4;
 
-    public void makeCars(String[] carNames) {
-        carDtos = IntStream.range(0, carNames.length)
+    public CarDto[] makeCars(String[] carNames) {
+
+        return carDtos = IntStream.range(0, carNames.length)
                 .mapToObj(i -> new CarDto(carNames[i]))
                 .toArray(CarDto[]::new);
     }
@@ -29,11 +30,14 @@ public class CarService {
         }
     }
 
-    public static boolean isMove(int randomNumber) {
+    public boolean isMove(int randomNumber) {
         if (randomNumber >= MOVE_BOUNDARY) {
             return true;
         }
         return false;
+    }
+    public CarDto[] getCars(){
+        return carDtos;
     }
 
 }
