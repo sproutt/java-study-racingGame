@@ -19,11 +19,12 @@ public class CarService {
                 .toArray(CarDto[]::new);
     }
 
-    public void moveCars(){
-        for(CarDto carDto : carDtos){
-            move(carDto , RandomGenerator.getNumber(RANDOM_MAX));
+    public void moveCars() {
+        for (CarDto carDto : carDtos) {
+            move(carDto, RandomGenerator.getNumber(RANDOM_MAX));
         }
     }
+
     public void move(CarDto carDto, int randomNumber) {
         if (isMove(randomNumber)) {
             carDto.setPosition(carDto.getPosition() + carDto.getSpeed());
@@ -32,11 +33,15 @@ public class CarService {
 
     public boolean isMove(int randomNumber) {
         if (randomNumber >= MOVE_BOUNDARY) {
+
             return true;
         }
+
         return false;
     }
-    public CarDto[] getCars(){
+
+    public CarDto[] getCars() {
+
         return carDtos;
     }
 

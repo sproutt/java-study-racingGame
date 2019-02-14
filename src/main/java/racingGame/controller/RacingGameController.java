@@ -8,11 +8,11 @@ public class RacingGameController {
 
     private CarService carService;
 
-    public RacingGameController(){
+    public RacingGameController() {
         carService = new CarService();
     }
 
-    public void set(String[] carNames){
+    public void set(String[] carNames) {
         carService.makeCars(carNames);
     }
 
@@ -20,6 +20,7 @@ public class RacingGameController {
         for (int k = 0; k < tryNumber; k++) {
             carService.moveCars();
         }
+
         return new GameResultService(carService.getCars()).getResults();
     }
 }

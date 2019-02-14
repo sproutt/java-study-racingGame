@@ -18,17 +18,18 @@ public class GameResultService {
 
     public String[] getResults() {
         String[] results = {getTraces(), getWinners(getMaxNumber(carDtos))};
+
         return results;
     }
 
     public int getMaxNumber(CarDto[] carDtos) {
 
-        return Arrays.stream(carDtos).max((x,y)->x.getPosition() - y.getPosition()).get().getPosition();
+        return Arrays.stream(carDtos).max((x, y) -> x.getPosition() - y.getPosition()).get().getPosition();
     }
 
     public String getWinners(int maxNumber) {
 
-        String[] winners = Arrays.stream(carDtos).filter(car->isWinner(car, maxNumber)).map(CarDto::getName).toArray(String[]::new);
+        String[] winners = Arrays.stream(carDtos).filter(car -> isWinner(car, maxNumber)).map(CarDto::getName).toArray(String[]::new);
 
 
         return toWinnerPrintFormat(winners);
@@ -36,8 +37,10 @@ public class GameResultService {
 
     public boolean isWinner(CarDto carDto, int maxNumber) {
         if (carDto.getPosition() == maxNumber) {
+
             return true;
         }
+
         return false;
     }
 
@@ -60,6 +63,7 @@ public class GameResultService {
         for (int i = 0; i < traceCount; i++) {
             trace += TRACE;
         }
+
         return trace + "\n";
     }
 }

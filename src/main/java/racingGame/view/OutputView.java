@@ -15,8 +15,6 @@ public class OutputView {
         System.out.println(Traces);
     }
 
-
-
     public static void drawWinner(String winners) {
         System.out.println(winners + "가 최종 우승했습니다.");
     }
