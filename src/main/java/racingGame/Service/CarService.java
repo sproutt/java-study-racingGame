@@ -1,25 +1,39 @@
 package racingGame.Service;
 
 import racingGame.model.CarDto;
-import racingGame.util.RacingGameUtil;
+import racingGame.utils.RandomGenerator;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.stream.IntStream;
 
 public class CarService {
 
-    public static CarDto[] makeCars(String[] carNames) {
+    private CarDto[] carDtos;
 
-        return IntStream.range(0, carNames.length)
+    private static final int RANDOM_MAX = 10;
+    private static final int MOVE_BOUNDARY = 4;
+
+    public void makeCars(String[] carNames) {
+        carDtos = IntStream.range(0, carNames.length)
                 .mapToObj(i -> new CarDto(carNames[i]))
                 .toArray(CarDto[]::new);
     }
 
-    public static void move(CarDto carDto, int randomNumber) {
-        if (RacingGameUtil.isMove(randomNumber)) {
+    public void moveCars(){
+        for(CarDto carDto : carDtos){
+            move(carDto , RandomGenerator.getNumber(RANDOM_MAX));
+        }
+    }
+    public void move(CarDto carDto, int randomNumber) {
+        if (isMove(randomNumber)) {
             carDto.setPosition(carDto.getPosition() + carDto.getSpeed());
         }
+    }
+
+    public static boolean isMove(int randomNumber) {
+        if (randomNumber >= MOVE_BOUNDARY) {
+            return true;
+        }
+        return false;
     }
 
 }

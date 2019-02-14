@@ -2,7 +2,6 @@ package racingGame.controller;
 
 import org.junit.*;
 import racingGame.model.CarDto;
-import racingGame.util.RacingGameUtil;
 
 import static org.junit.Assert.assertEquals;
 import static racingGame.Service.CarService.makeCars;

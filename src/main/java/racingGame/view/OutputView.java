@@ -6,17 +6,19 @@ public class OutputView {
     private static final char TRACE = '-';
     private static final String RESULT_MESSAGE="\n실행결과\n";
 
-    public static void drawResultMessage(){
+    public static void drawResultMessage(String[] results){
         System.out.println(RESULT_MESSAGE);
+        drawCars(results[0]);
+        drawWinner(results[1]);
     }
 
-    public static void drawCars(CarDto[] carDtos) {
+    public static void drawCars(String Traces) {
 
-        for (int i = 0; i < carDtos.length; i++) {
-            System.out.print(carDtos[i].getName() + " : ");
-            drawTrace(carDtos[i].getPosition());
-        }
-        System.out.println("");
+//        for (int i = 0; i < carDtos.length; i++) {
+//            System.out.print(carDtos[i].getName() + " : ");
+//            drawTrace(carDtos[i].getPosition());
+//        }
+        System.out.println(Traces);
     }
 
     public static void drawTrace(int traceCount) {

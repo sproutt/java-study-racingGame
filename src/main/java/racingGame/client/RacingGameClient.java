@@ -9,8 +9,8 @@ public class RacingGameClient {
     public static void main(String[] args) {
         RacingGameController racingGameController = new RacingGameController();
         racingGameController.set(InputView.getCarsNames());
-        racingGameController.start(InputView.getTryNumber());
-        racingGameController.drawResults();
+        String[] results = racingGameController.play(InputView.getTryNumber());
+        OutputView.drawResultMessage(results);
     }
 
 }
