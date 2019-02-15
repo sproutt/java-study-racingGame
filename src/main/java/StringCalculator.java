@@ -13,6 +13,7 @@ public class StringCalculator {
 
         String num = "";
         char c1, c2;
+
         for(int i =  0  ; i < value.length() -1 ; i++){
             c1 = value.charAt(i);
             c2 = value.charAt(i+1);
