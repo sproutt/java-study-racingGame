@@ -29,8 +29,12 @@ public class Calculator {
         String plotedOperator = inputString.replaceAll("[0-9]+","");
         return plotedOperator;
     }
-    
+
     public void calculates(String inputString) throws Exception {
+        try {
+            if(inputString == null || inputString.isEmpty()){
+                throw new Exception();
+            }
             String[] inputNumber = plotInputNumber(inputString);
             String inputOperator = plotInputOperator(inputString);
             int middleResult = Integer.parseInt(inputNumber[0]);
@@ -38,5 +42,9 @@ public class Calculator {
             for (int i = 0; i < inputOperator.length(); i++) {
                 middleResult = selectCalculate(inputOperator.charAt(i), middleResult, Integer.parseInt(inputNumber[i + 1]));
             }
+        }catch (Exception e){
+            System.out.println("입력 값이 없습니다.");
+            throw e;
+        }
     }
 }
