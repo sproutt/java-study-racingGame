@@ -1,3 +1,6 @@
+import jdk.nashorn.internal.runtime.regexp.joni.exception.ValueException;
+import sun.awt.SunHints;
+
 import java.util.regex.*;
 public class Calculator {
     private double selectCalculate(char operator, double leftNumber, double rightNumber){
@@ -30,6 +33,14 @@ public class Calculator {
         return plotedOperator;
     }
 
+    private String typeConvert(double convertingNumber){
+        if(convertingNumber == (long)convertingNumber){
+            long convertedNumber = (long)convertingNumber;
+            return Long.toString(convertedNumber);
+        }
+        return Double.toString(convertingNumber);
+    }
+
     public String calculates(String inputString) throws Exception {
         try {
             if(inputString == null || inputString.isEmpty()){
@@ -38,11 +49,10 @@ public class Calculator {
             String[] inputNumber = plotInputNumber(inputString);
             String inputOperator = plotInputOperator(inputString);
             double middleResult = Double.parseDouble(inputNumber[0]);
-
             for (int i = 0; i < inputOperator.length(); i++) {
                 middleResult = selectCalculate(inputOperator.charAt(i), middleResult, Double.parseDouble(inputNumber[i + 1]));
             }
-            String result = Double.toString(middleResult);
+            String result = typeConvert(middleResult)
             return result;
         }catch (Exception e){
             return "입력값이 없습니다.";
