@@ -29,4 +29,14 @@ public class Calculator {
         String plotedOperator = inputString.replaceAll("[0-9]+","");
         return plotedOperator;
     }
+    
+    public void calculates(String inputString) throws Exception {
+            String[] inputNumber = plotInputNumber(inputString);
+            String inputOperator = plotInputOperator(inputString);
+            int middleResult = Integer.parseInt(inputNumber[0]);
+
+            for (int i = 0; i < inputOperator.length(); i++) {
+                middleResult = selectCalculate(inputOperator.charAt(i), middleResult, Integer.parseInt(inputNumber[i + 1]));
+            }
+    }
 }
