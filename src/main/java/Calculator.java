@@ -30,7 +30,7 @@ public class Calculator {
         return plotedOperator;
     }
 
-    public void calculates(String inputString) throws Exception {
+    public String calculates(String inputString) throws Exception {
         try {
             if(inputString == null || inputString.isEmpty()){
                 throw new Exception();
@@ -42,9 +42,10 @@ public class Calculator {
             for (int i = 0; i < inputOperator.length(); i++) {
                 middleResult = selectCalculate(inputOperator.charAt(i), middleResult, Integer.parseInt(inputNumber[i + 1]));
             }
+            String result = Integer.toString(middleResult);
+            return result;
         }catch (Exception e){
-            System.out.println("입력 값이 없습니다.");
-            throw e;
+            return "입력값이 없습니다.";
         }
     }
 }

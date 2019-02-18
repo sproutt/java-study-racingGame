@@ -9,4 +9,28 @@ public class CalculatorTest {
     public void setUp(){
         calculator = new Calculator();
     }
+    @Test
+    public void 덧셈() throws Exception {
+        System.out.println(calculator.calculates("3+4"));
+    }
+    @Test
+    public void 뺄셈() throws Exception {
+        System.out.println(calculator.calculates("5-4"));
+    }
+    @Test
+    public void 곱셈() throws Exception {
+        System.out.println(calculator.calculates("5*4"));
+    }
+    @Test
+    public void 나눗셈() throws Exception {
+        System.out.println(calculator.calculates("5/4"));
+    }
+    @Test
+    public void 예외() throws Exception {
+        System.out.println(calculator.calculates(" "));
+    }
+    @Test
+    public void 공백연산() throws Exception {
+        System.out.println(calculator.calculates("5 + 4 - 6 * 3 / 4"));
+    }
 }
