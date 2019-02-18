@@ -1,7 +1,7 @@
 import java.util.regex.*;
 public class Calculator {
-    private int selectCalculate(char operator, int leftNumber, int rightNumber){
-        int result = leftNumber;
+    private double selectCalculate(char operator, double leftNumber, double rightNumber){
+        double result = leftNumber;
         if(operator == '+'){
             result = result + rightNumber;
         }
@@ -37,12 +37,12 @@ public class Calculator {
             }
             String[] inputNumber = plotInputNumber(inputString);
             String inputOperator = plotInputOperator(inputString);
-            int middleResult = Integer.parseInt(inputNumber[0]);
+            double middleResult = Double.parseDouble(inputNumber[0]);
 
             for (int i = 0; i < inputOperator.length(); i++) {
-                middleResult = selectCalculate(inputOperator.charAt(i), middleResult, Integer.parseInt(inputNumber[i + 1]));
+                middleResult = selectCalculate(inputOperator.charAt(i), middleResult, Double.parseDouble(inputNumber[i + 1]));
             }
-            String result = Integer.toString(middleResult);
+            String result = Double.toString(middleResult);
             return result;
         }catch (Exception e){
             return "입력값이 없습니다.";
