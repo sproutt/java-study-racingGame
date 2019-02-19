@@ -36,7 +36,7 @@ public class Calculator {
 
     public boolean isNull(String elements) {
         boolean result = false;
-        if(elements == null || elements.isEmpty()){
+        if (elements == null || elements.isEmpty()) {
             result = true;
         }
         return result;
@@ -55,7 +55,7 @@ public class Calculator {
         Scanner scanner = new Scanner(System.in);
         String inputLine = scanner.nextLine();
         inputLine = inputLine.replaceAll(" ", "");
-        if(isNull(inputLine)){
+        if (isNull(inputLine)) {
             return "-1";
         }
         return inputLine;
