@@ -1,4 +1,6 @@
 public class Calculator {
+    final private int INPUT_ERROR = -1;
+
     public double add(double leftNumber, double rightNumber) {
         return leftNumber + rightNumber;
     }
@@ -50,18 +52,13 @@ public class Calculator {
         return inputLine.split("");
     }
 
-    private String typeConvert(double convertingNumber) {
-        if (convertingNumber == (long) convertingNumber) {
-            long convertedNumber = (long) convertingNumber;
-            return Long.toString(convertedNumber);
-        }
-        return Double.toString(convertingNumber);
-    }
-
     public double multipleCalculation(String inputLine) {
         inputLine = inputLine.replaceAll(" ", "");
         String[] plotedNumber = plotNumber(inputLine);
         String[] plotedOperator = plotOperator(inputLine);
+        if(checkError(plotedNumber)){
+            return INPUT_ERROR;
+        }
         double result = Double.parseDouble(plotedNumber[0]);
         for (int i = 0; i < plotedOperator.length; i++) {
             result = selectOperating(plotedOperator[i], result, Double.parseDouble(plotedNumber[i + 1]));
