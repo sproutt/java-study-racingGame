@@ -1,76 +1,70 @@
 public class Calculator {
-    public String add(double leftNumber, double rightNumber){
-        String[] check = {typeConvert(leftNumber),typeConvert(rightNumber)};
-        if(checkError(check)) return "입력값이 올바르지 않습니다.";
-        return typeConvert(leftNumber+rightNumber);
-    }
-    public String substract(double leftNumber, double rightNumber){
-        String[] check = {typeConvert(leftNumber),typeConvert(rightNumber)};
-        if(checkError(check)) return "입력값이 올바르지 않습니다.";
-        return typeConvert(leftNumber-rightNumber);
-    }
-    public String divide(double leftNumber, double rightNumber){
-        String[] check = {typeConvert(leftNumber),typeConvert(rightNumber)};
-        if(checkError(check)) return "입력값이 올바르지 않습니다.";
-        return typeConvert(leftNumber/rightNumber);
-    }
-    public String multiply(double leftNumber, double rightNumber){
-        String[] check = {typeConvert(leftNumber),typeConvert(rightNumber)};
-        if(checkError(check)) return "입력값이 올바르지 않습니다.";
-        return typeConvert(leftNumber*rightNumber);
+    public double add(double leftNumber, double rightNumber) {
+        return leftNumber + rightNumber;
     }
 
-    private String selectOperating(String operator, double leftNumber, double rightNumber){
-        String result = null;
-        if(operator.equals("+")){
-            result = add(leftNumber,rightNumber);
+    public double substract(double leftNumber, double rightNumber) {
+        return leftNumber - rightNumber;
+    }
+
+    public double divide(double leftNumber, double rightNumber) {
+        return leftNumber / rightNumber;
+    }
+
+    public double multiply(double leftNumber, double rightNumber) {
+        return leftNumber * rightNumber;
+    }
+
+    private double selectOperating(String operator, double leftNumber, double rightNumber) {
+        double result = 0;
+        if (operator.equals("+")) {
+            result = add(leftNumber, rightNumber);
         }
-        if(operator.equals("-")){
-            result = substract(leftNumber,rightNumber);
+        if (operator.equals("-")) {
+            result = substract(leftNumber, rightNumber);
         }
-        if(operator.equals("*")){
-            result = multiply(leftNumber,rightNumber);
+        if (operator.equals("*")) {
+            result = multiply(leftNumber, rightNumber);
         }
-        if(operator.equals("/")){
-            result = divide(leftNumber,rightNumber);
+        if (operator.equals("/")) {
+            result = divide(leftNumber, rightNumber);
         }
         return result;
     }
 
-    public boolean checkError(String[] element){
+    public boolean checkError(String[] element) {
         boolean result = false;
-        if(element.length == 0) return true;
-        for(int i = 0 ; i < element.length ; i++){
+        if (element.length == 0) return true;
+        for (int i = 0; i < element.length; i++) {
             result = result || element[i].isEmpty();
         }
-        return  result;
+        return result;
     }
 
-    private String[] plotNumber(String inputLine){
+    private String[] plotNumber(String inputLine) {
         return inputLine.split("[+/*-]");
     }
 
-    private  String[] plotOperator(String inputLine){
-        inputLine = inputLine.replaceAll("[0-9]","");
+    private String[] plotOperator(String inputLine) {
+        inputLine = inputLine.replaceAll("[0-9]", "");
         return inputLine.split("");
     }
 
-    private String typeConvert(double convertingNumber){
-        if(convertingNumber == (long)convertingNumber){
-            long convertedNumber = (long)convertingNumber;
+    private String typeConvert(double convertingNumber) {
+        if (convertingNumber == (long) convertingNumber) {
+            long convertedNumber = (long) convertingNumber;
             return Long.toString(convertedNumber);
         }
         return Double.toString(convertingNumber);
     }
 
-    public String multipleCalculation(String inputLine){
-        inputLine = inputLine.replaceAll(" ","");
+    public double multipleCalculation(String inputLine) {
+        inputLine = inputLine.replaceAll(" ", "");
         String[] plotedNumber = plotNumber(inputLine);
         String[] plotedOperator = plotOperator(inputLine);
-        if(checkError(plotedNumber)) return "입력값이 올바르지 않습니다.";
-        String result = plotedNumber[0];
-        for(int i = 0; i < plotedOperator.length ; i++){
-            result = selectOperating(plotedOperator[i],Double.parseDouble(result),Double.parseDouble(plotedNumber[i+1]));
+        double result = Double.parseDouble(plotedNumber[0]);
+        for (int i = 0; i < plotedOperator.length; i++) {
+            result = selectOperating(plotedOperator[i], result, Double.parseDouble(plotedNumber[i + 1]));
         }
         return result;
     }
