@@ -32,7 +32,7 @@ public class CalculatorTest {
 
     @Test
     public void 예외() {
-        assertEquals(true, calculator.isNull(""));
+        assertEquals(true, calculator.isNull(" "));
     }
 
     @Test
