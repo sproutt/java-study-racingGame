@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 public class Calculator {
+    private static final String INPUT_ERROR = "Blanks are not supported.";
+
     public double add(double leftNumber, double rightNumber) {
         return leftNumber + rightNumber;
     }
@@ -17,8 +19,8 @@ public class Calculator {
         return leftNumber * rightNumber;
     }
 
-    public double selectOperating(String operator, double leftNumber, double rightNumber) {
-        double result = -1;
+    public double calculate(String operator, double leftNumber, double rightNumber) {
+        double result = 0;
         if (operator.equals("+")) {
             result = add(leftNumber, rightNumber);
         }
@@ -36,17 +38,18 @@ public class Calculator {
 
     public boolean isNull(String elements) {
         boolean result = false;
+        elements = removeBlank(elements);
         if (elements == null || elements.isEmpty()) {
             result = true;
         }
         return result;
     }
 
-    private String[] splitNumber(String inputLine) {
+    private String[] toNumber(String inputLine) {
         return inputLine.split("[+/*-]");
     }
 
-    private String[] splitOperator(String inputLine) {
+    private String[] toOperator(String inputLine) {
         inputLine = inputLine.replaceAll("[0-9]", "");
         return inputLine.split("");
     }
@@ -54,26 +57,30 @@ public class Calculator {
     public String getExpression() {
         Scanner scanner = new Scanner(System.in);
         String inputLine = scanner.nextLine();
+        if (isNull(inputLine)) {
+            return INPUT_ERROR;
+        }
         return inputLine;
     }
 
-    public double calculate(String inputLine) {
-        inputLine = inputLine.replaceAll(" ", "");
-        if (isNull(inputLine)) {
-            return -1;
-        }
-        String[] splitedNumber = splitNumber(inputLine);
-        String[] splitedOperator = splitOperator(inputLine);
-        double result = Double.parseDouble(splitedNumber[0]);
-        for (int i = 0; i < splitedOperator.length; i++) {
-            result = selectOperating(splitedOperator[i], result, Double.parseDouble(splitedNumber[i + 1]));
+    public String removeBlank(String inputLine) {
+        return inputLine.replaceAll(" ", "");
+    }
+
+    public double progress(String inputLine) {
+        inputLine = removeBlank(inputLine);
+        String[] numbers = toNumber(inputLine);
+        String[] operators = toOperator(inputLine);
+        double result = Double.parseDouble(numbers[0]);
+        for (int i = 0; i < operators.length; i++) {
+            result = calculate(operators[i], result, Double.parseDouble(numbers[i + 1]));
         }
         return result;
     }
 
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
-        calculator.calculate(calculator.getExpression());
+        calculator.progress(calculator.getExpression());
     }
 
 }

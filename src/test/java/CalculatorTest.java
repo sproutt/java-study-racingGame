@@ -37,6 +37,6 @@ public class CalculatorTest {
 
     @Test
     public void 다중연산() {
-        assertEquals(3.0, calculator.calculate("5 + 5 - 6 * 3 / 4"), 0.0);
+        assertEquals(3.0, calculator.progress("5 + 5 - 6 * 3 / 4"), 0.0);
     }
 }
