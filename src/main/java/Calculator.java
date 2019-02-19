@@ -7,17 +7,17 @@ public class Calculator {
     public String substract(double leftNumber, double rightNumber){
         String[] check = {typeConvert(leftNumber),typeConvert(rightNumber)};
         if(checkError(check)) return "입력값이 올바르지 않습니다.";
-        return typeConvert(leftNumber+rightNumber);
+        return typeConvert(leftNumber-rightNumber);
     }
     public String divide(double leftNumber, double rightNumber){
         String[] check = {typeConvert(leftNumber),typeConvert(rightNumber)};
         if(checkError(check)) return "입력값이 올바르지 않습니다.";
-        return typeConvert(leftNumber+rightNumber);
+        return typeConvert(leftNumber/rightNumber);
     }
     public String multiply(double leftNumber, double rightNumber){
         String[] check = {typeConvert(leftNumber),typeConvert(rightNumber)};
         if(checkError(check)) return "입력값이 올바르지 않습니다.";
-        return typeConvert(leftNumber+rightNumber);
+        return typeConvert(leftNumber*rightNumber);
     }
 
     private String selectOperating(String operator, double leftNumber, double rightNumber){
@@ -29,17 +29,18 @@ public class Calculator {
             result = substract(leftNumber,rightNumber);
         }
         if(operator.equals("*")){
-            result = divide(leftNumber,rightNumber);
+            result = multiply(leftNumber,rightNumber);
         }
         if(operator.equals("/")){
-            result = multiply(leftNumber,rightNumber);
+            result = divide(leftNumber,rightNumber);
         }
         return result;
     }
-    private boolean checkError(String[] element){
+
+    public boolean checkError(String[] element){
         boolean result = false;
         if(element.length == 0) return true;
-        for(int i = 0 ; i < element.length - 1 ; i++){
+        for(int i = 0 ; i < element.length ; i++){
             result = result || element[i].isEmpty();
         }
         return  result;

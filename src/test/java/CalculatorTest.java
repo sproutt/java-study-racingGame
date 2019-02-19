@@ -10,27 +10,27 @@ public class CalculatorTest {
         calculator = new Calculator();
     }
     @Test
-    public void 덧셈() throws Exception {
-        assertEquals("7",calculator.calculates("3+4"));
+    public void 덧셈() {
+        assertEquals("7",calculator.add(3,4));
     }
     @Test
     public void 뺄셈() throws Exception {
-        assertEquals("1",calculator.calculates("5-4"));
+        assertEquals("1",calculator.substract(5,4));
     }
     @Test
     public void 곱셈() throws Exception {
-        assertEquals("20",calculator.calculates("5*4"));
+        assertEquals("20",calculator.multiply(4,5));
     }
     @Test
     public void 나눗셈() throws Exception {
-        assertEquals("1.25",calculator.calculates("5/4"));
+        assertEquals("1.25",calculator.divide(5,4));
     }
     @Test
     public void 예외() throws Exception {
-        assertEquals("입력값이 없습니다.",calculator.calculates(" "));
+        assertEquals(true,calculator.checkError(new String[]{""}));
     }
     @Test
-    public void 공백연산() throws Exception {
-        assertEquals("3",calculator.calculates("5 + 5 - 6 * 3 / 4"));
+    public void 다중연산() throws Exception {
+        assertEquals("3",calculator.multipleCalculation("5 + 5 - 6 * 3 / 4"));
     }
 }
