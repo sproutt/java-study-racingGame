@@ -1,25 +1,13 @@
-package racingGame.model;
+package racingGame.domain;
 
-import calculator.Calculator;
-
-public class CarDto {
+public class Car {
 
     private String name;
-    private int speed;
     private int position;
 
-    public CarDto(String name) {
+    public Car(String name) {
         this.name = name;
-        this.speed = 1;
         this.position = 0;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    public int getSpeed() {
-        return speed;
     }
 
     public void setPosition(int position) {

@@ -1,11 +1,9 @@
 package racingGame.view;
 
-import racingGame.model.CarDto;
-
 public class OutputView {
-    private static final String RESULT_MESSAGE="\n실행결과\n";
+    private static final String RESULT_MESSAGE = "\n실행결과\n";
 
-    public static void drawResultMessage(String[] results){
+    public static void drawResultMessage(String[] results) {
         System.out.println(RESULT_MESSAGE);
         drawCars(results[0]);
         drawWinner(results[1]);
