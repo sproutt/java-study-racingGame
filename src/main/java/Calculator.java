@@ -54,14 +54,14 @@ public class Calculator {
     public String getExpression() {
         Scanner scanner = new Scanner(System.in);
         String inputLine = scanner.nextLine();
-        inputLine = inputLine.replaceAll(" ", "");
-        if (isNull(inputLine)) {
-            return "-1";
-        }
         return inputLine;
     }
 
     public double calculate(String inputLine) {
+        inputLine = inputLine.replaceAll(" ", "");
+        if (isNull(inputLine)) {
+            return -1;
+        }
         String[] splitedNumber = splitNumber(inputLine);
         String[] splitedOperator = splitOperator(inputLine);
         double result = Double.parseDouble(splitedNumber[0]);
