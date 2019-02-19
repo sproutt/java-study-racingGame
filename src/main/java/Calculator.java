@@ -34,52 +34,46 @@ public class Calculator {
         return result;
     }
 
-    public boolean checkError(String[] element) {
+    public boolean isNull(String elements) {
         boolean result = false;
-        if (element.length == 0) return true;
-        for (int i = 0; i < element.length; i++) {
-            result = result || element[i].isEmpty();
+        if(elements == null || elements.isEmpty()){
+            result = true;
         }
         return result;
     }
 
-    private String[] plotNumber(String inputLine) {
+    private String[] splitNumber(String inputLine) {
         return inputLine.split("[+/*-]");
     }
 
-    private String[] plotOperator(String inputLine) {
+    private String[] splitOperator(String inputLine) {
         inputLine = inputLine.replaceAll("[0-9]", "");
         return inputLine.split("");
     }
 
-    public String inputExpression() {
+    public String getExpression() {
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
+        String inputLine = scanner.nextLine();
+        inputLine = inputLine.replaceAll(" ", "");
+        if(isNull(inputLine)){
+            return "-1";
+        }
+        return inputLine;
     }
 
-    public double multipleCalculation(String inputLine) {
-        inputLine = inputLine.replaceAll(" ", "");
-        String[] plotedNumber = plotNumber(inputLine);
-        String[] plotedOperator = plotOperator(inputLine);
-        if (checkError(plotedNumber)) {
-            throw new ExpressionException();
-        }
-        double result = Double.parseDouble(plotedNumber[0]);
-        for (int i = 0; i < plotedOperator.length; i++) {
-            result = selectOperating(plotedOperator[i], result, Double.parseDouble(plotedNumber[i + 1]));
+    public double calculate(String inputLine) {
+        String[] splitedNumber = splitNumber(inputLine);
+        String[] splitedOperator = splitOperator(inputLine);
+        double result = Double.parseDouble(splitedNumber[0]);
+        for (int i = 0; i < splitedOperator.length; i++) {
+            result = selectOperating(splitedOperator[i], result, Double.parseDouble(splitedNumber[i + 1]));
         }
         return result;
     }
 
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
-        calculator.multipleCalculation(calculator.inputExpression());
+        calculator.calculate(calculator.getExpression());
     }
 
-}
-
-class ExpressionException extends RuntimeException {
-    ExpressionException() {
-        super("입력이 올바르지 않습니다.");
-    }
 }
