@@ -1,38 +1,40 @@
 public class Calculator {
     public String add(double leftNumber, double rightNumber){
-        String[] check = {Double.toString(leftNumber),Double.toString(rightNumber)};
+        String[] check = {typeConvert(leftNumber),typeConvert(rightNumber)};
         if(checkError(check)) return "입력값이 올바르지 않습니다.";
-        return Double.toString(leftNumber+rightNumber);
+        return typeConvert(leftNumber+rightNumber);
     }
     public String substract(double leftNumber, double rightNumber){
-        String[] check = {Double.toString(leftNumber),Double.toString(rightNumber)};
+        String[] check = {typeConvert(leftNumber),typeConvert(rightNumber)};
         if(checkError(check)) return "입력값이 올바르지 않습니다.";
-        return Double.toString(leftNumber+rightNumber);
+        return typeConvert(leftNumber+rightNumber);
     }
     public String divide(double leftNumber, double rightNumber){
-        String[] check = {Double.toString(leftNumber),Double.toString(rightNumber)};
+        String[] check = {typeConvert(leftNumber),typeConvert(rightNumber)};
         if(checkError(check)) return "입력값이 올바르지 않습니다.";
-        return Double.toString(leftNumber+rightNumber);
+        return typeConvert(leftNumber+rightNumber);
     }
     public String multiply(double leftNumber, double rightNumber){
-        String[] check = {Double.toString(leftNumber),Double.toString(rightNumber)};
+        String[] check = {typeConvert(leftNumber),typeConvert(rightNumber)};
         if(checkError(check)) return "입력값이 올바르지 않습니다.";
-        return Double.toString(leftNumber+rightNumber);
+        return typeConvert(leftNumber+rightNumber);
     }
 
-    private void selectOperating(String operator, double leftNumber, double rightNumber){
+    private String selectOperating(String operator, double leftNumber, double rightNumber){
+        String result = null;
         if(operator.equals("+")){
-            add(leftNumber,rightNumber);
+            result = add(leftNumber,rightNumber);
         }
         if(operator.equals("-")){
-            substract(leftNumber,rightNumber);
+            result = substract(leftNumber,rightNumber);
         }
         if(operator.equals("*")){
-            divide(leftNumber,rightNumber);
+            result = divide(leftNumber,rightNumber);
         }
         if(operator.equals("/")){
-            multiply(leftNumber,rightNumber);
+            result = multiply(leftNumber,rightNumber);
         }
+        return result;
     }
     private boolean checkError(String[] element){
         boolean result = false;
@@ -65,11 +67,11 @@ public class Calculator {
     public String multipleCalculation(String inputLine){
         String[] plotedNumber = plotNumber(inputLine);
         String[] plotedOperator = plotOperator(inputLine);
-        if(check(plotedNumber)){
-            return "입력이 올바르지 않습니다.";
-        }
+        if(checkError(plotedNumber)) return "입력값이 올바르지 않습니다.";
+        String result = plotedNumber[0];
         for(int i = 0; i < plotedOperator.length ; i++){
-
+            result = selectOperating(plotedOperator[i],Double.parseDouble(result),Double.parseDouble(plotedNumber[i+1]));
         }
+        return result;
     }
 }
