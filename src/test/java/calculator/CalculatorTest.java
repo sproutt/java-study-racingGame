@@ -1,5 +1,8 @@
+package calculator;
+
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
 public class CalculatorTest {
@@ -31,12 +34,27 @@ public class CalculatorTest {
     }
 
     @Test
-    public void 예외() {
-        assertEquals(true, calculator.isNull(" "));
+    public void 다중연산() {
+        assertEquals(3.0, calculator.progress("5 + 5 - 6 * 3 / 4"), 0.0);
     }
 
     @Test
-    public void 다중연산() {
-        assertEquals(3.0, calculator.progress("5 + 5 - 6 * 3 / 4"), 0.0);
+    public void 연산자있는덧셈() {
+        assertEquals(8.0, calculator.calculate("+", 5, 3), 0.0);
+    }
+
+    @Test
+    public void 연산자있는뺄셈() {
+        assertEquals(2.0, calculator.calculate("-", 5, 3), 0.0);
+    }
+
+    @Test
+    public void 연산자있는곱셈() {
+        assertEquals(15.0, calculator.calculate("*", 5, 3), 0.0);
+    }
+
+    @Test
+    public void 연산자있는나눗셈() {
+        assertEquals(2.0, calculator.calculate("/", 12, 6), 0.0);
     }
 }
