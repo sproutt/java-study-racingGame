@@ -8,6 +8,7 @@ public class StringCalculator {
                 operandCount++;
             }
         }
+
         return operandCount;
     }
     public static int calculateNumberCount(int operandCount){
