@@ -1,8 +1,6 @@
 import java.util.Scanner;
 
 public class Calculator {
-    private final double INPUT_ERROR = -1;
-
     public double add(double leftNumber, double rightNumber) {
         return leftNumber + rightNumber;
     }
