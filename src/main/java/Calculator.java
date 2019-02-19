@@ -1,18 +1,26 @@
 public class Calculator {
-    public double add(String leftNumber, String rightNmber){
-        return Double.parseDouble(leftNumber) + Double.parseDouble(rightNmber);
+    public String add(double leftNumber, double rightNumber){
+        String[] check = {Double.toString(leftNumber),Double.toString(rightNumber)};
+        if(checkError(check)) return "입력값이 올바르지 않습니다.";
+        return Double.toString(leftNumber+rightNumber);
     }
-    public double substract(String leftNumber, String rightNmber){
-        return Double.parseDouble(leftNumber) - Double.parseDouble(rightNmber);
+    public String substract(double leftNumber, double rightNumber){
+        String[] check = {Double.toString(leftNumber),Double.toString(rightNumber)};
+        if(checkError(check)) return "입력값이 올바르지 않습니다.";
+        return Double.toString(leftNumber+rightNumber);
     }
-    public double divide(String leftNumber, String rightNmber){
-        return Double.parseDouble(leftNumber) / Double.parseDouble(rightNmber);
+    public String divide(double leftNumber, double rightNumber){
+        String[] check = {Double.toString(leftNumber),Double.toString(rightNumber)};
+        if(checkError(check)) return "입력값이 올바르지 않습니다.";
+        return Double.toString(leftNumber+rightNumber);
     }
-    public double multiply(String leftNumber, String rightNmber){
-        return Double.parseDouble(leftNumber) * Double.parseDouble(rightNmber);
+    public String multiply(double leftNumber, double rightNumber){
+        String[] check = {Double.toString(leftNumber),Double.toString(rightNumber)};
+        if(checkError(check)) return "입력값이 올바르지 않습니다.";
+        return Double.toString(leftNumber+rightNumber);
     }
 
-    private void selectOperating(String operator, String leftNumber, String rightNumber){
+    private void selectOperating(String operator, double leftNumber, double rightNumber){
         if(operator.equals("+")){
             add(leftNumber,rightNumber);
         }
@@ -25,6 +33,14 @@ public class Calculator {
         if(operator.equals("/")){
             multiply(leftNumber,rightNumber);
         }
+    }
+    private boolean checkError(String[] element){
+        boolean result = false;
+        if(element.length == 0) return true;
+        for(int i = 0 ; i < element.length - 1 ; i++){
+            result = result || element[i].isEmpty();
+        }
+        return  result;
     }
 
     private String[] plotNumber(String inputLine){
@@ -46,9 +62,14 @@ public class Calculator {
         return Double.toString(convertingNumber);
     }
 
-    public String calculates(String inputLine){
+    public String multipleCalculation(String inputLine){
         String[] plotedNumber = plotNumber(inputLine);
         String[] plotedOperator = plotOperator(inputLine);
+        if(check(plotedNumber)){
+            return "입력이 올바르지 않습니다.";
+        }
+        for(int i = 0; i < plotedOperator.length ; i++){
 
+        }
     }
 }
