@@ -12,18 +12,18 @@ public class Calculator {
         return Double.parseDouble(leftNumber) * Double.parseDouble(rightNmber);
     }
 
-    private void selectCalculate(String operator, String leftNumber, String rightNumber){
+    private void selectOperating(String operator, String leftNumber, String rightNumber){
         if(operator.equals("+")){
             add(leftNumber,rightNumber);
         }
         if(operator.equals("-")){
-            add(leftNumber,rightNumber);
+            substract(leftNumber,rightNumber);
         }
         if(operator.equals("*")){
-            add(leftNumber,rightNumber);
+            divide(leftNumber,rightNumber);
         }
         if(operator.equals("/")){
-            add(leftNumber,rightNumber);
+            multiply(leftNumber,rightNumber);
         }
     }
 
