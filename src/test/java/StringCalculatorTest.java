@@ -2,6 +2,8 @@ import org.junit.Test;
 
 public class StringCalculatorTest {
     @Test
-    public void 문자열덧셈() {
+    public static int add(int a, int b) {
+     a+=b;
+     return a;
     }
 }
