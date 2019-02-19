@@ -47,12 +47,10 @@ public class Calculator {
     }
 
     private String[] plotNumber(String inputLine){
-        inputLine = inputLine.replaceAll(" ","");
         return inputLine.split("[+/*-]");
     }
 
     private  String[] plotOperator(String inputLine){
-        inputLine = inputLine.replaceAll(" ","");
         inputLine = inputLine.replaceAll("[0-9]","");
         return inputLine.split("");
     }
@@ -66,6 +64,7 @@ public class Calculator {
     }
 
     public String multipleCalculation(String inputLine){
+        inputLine = inputLine.replaceAll(" ","");
         String[] plotedNumber = plotNumber(inputLine);
         String[] plotedOperator = plotOperator(inputLine);
         if(checkError(plotedNumber)) return "입력값이 올바르지 않습니다.";
