@@ -1,5 +1,7 @@
+import java.util.Scanner;
+
 public class Calculator {
-    final private int INPUT_ERROR = -1;
+    private final double INPUT_ERROR = -1;
 
     public double add(double leftNumber, double rightNumber) {
         return leftNumber + rightNumber;
@@ -17,8 +19,8 @@ public class Calculator {
         return leftNumber * rightNumber;
     }
 
-    private double selectOperating(String operator, double leftNumber, double rightNumber) {
-        double result = 0;
+    public double selectOperating(String operator, double leftNumber, double rightNumber) {
+        double result = -1;
         if (operator.equals("+")) {
             result = add(leftNumber, rightNumber);
         }
@@ -52,17 +54,34 @@ public class Calculator {
         return inputLine.split("");
     }
 
+    public String inputExpression() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
+
     public double multipleCalculation(String inputLine) {
         inputLine = inputLine.replaceAll(" ", "");
         String[] plotedNumber = plotNumber(inputLine);
         String[] plotedOperator = plotOperator(inputLine);
-        if(checkError(plotedNumber)){
-            return INPUT_ERROR;
+        if (checkError(plotedNumber)) {
+            throw new ExpressionException();
         }
         double result = Double.parseDouble(plotedNumber[0]);
         for (int i = 0; i < plotedOperator.length; i++) {
             result = selectOperating(plotedOperator[i], result, Double.parseDouble(plotedNumber[i + 1]));
         }
         return result;
+    }
+
+    public static void main(String[] args) {
+        Calculator calculator = new Calculator();
+        calculator.multipleCalculation(calculator.inputExpression());
+    }
+
+}
+
+class ExpressionException extends RuntimeException {
+    ExpressionException() {
+        super("입력이 올바르지 않습니다.");
     }
 }
