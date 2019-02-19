@@ -1,33 +1,41 @@
-import java.util.regex.*;
 public class Calculator {
-    private double selectCalculate(char operator, double leftNumber, double rightNumber){
-        double result = leftNumber;
-        if(operator == '+'){
-            result = result + rightNumber;
-        }
-        if(operator == '-'){
-            result = result - rightNumber;
-        }
-        if(operator == '/'){
-            result = result / rightNumber;
-        }
-        if(operator == '*'){
-            result = result * rightNumber;
-        }
-        return result;
+    public double add(String leftNumber, String rightNmber){
+        return Double.parseDouble(leftNumber) + Double.parseDouble(rightNmber);
+    }
+    public double substract(String leftNumber, String rightNmber){
+        return Double.parseDouble(leftNumber) - Double.parseDouble(rightNmber);
+    }
+    public double divide(String leftNumber, String rightNmber){
+        return Double.parseDouble(leftNumber) / Double.parseDouble(rightNmber);
+    }
+    public double multiply(String leftNumber, String rightNmber){
+        return Double.parseDouble(leftNumber) * Double.parseDouble(rightNmber);
     }
 
-    private String[] plotInputNumber(String inputString){
-        inputString = inputString.replaceAll(" ","");
-        Pattern operatorPattern = Pattern.compile("[+*/-]");
-        String[] plotedNumber = operatorPattern.split(inputString);
-        return plotedNumber;
+    private void selectCalculate(String operator, String leftNumber, String rightNumber){
+        if(operator.equals("+")){
+            add(leftNumber,rightNumber);
+        }
+        if(operator.equals("-")){
+            add(leftNumber,rightNumber);
+        }
+        if(operator.equals("*")){
+            add(leftNumber,rightNumber);
+        }
+        if(operator.equals("/")){
+            add(leftNumber,rightNumber);
+        }
     }
 
-    private String plotInputOperator(String inputString){
-        inputString = inputString.replaceAll(" ","");
-        String plotedOperator = inputString.replaceAll("[0-9]+","");
-        return plotedOperator;
+    private String[] plotNumber(String inputLine){
+        inputLine = inputLine.replaceAll(" ","");
+        return inputLine.split("[+/*-]");
+    }
+
+    private  String[] plotOperator(String inputLine){
+        inputLine = inputLine.replaceAll(" ","");
+        inputLine = inputLine.replaceAll("[0-9]","");
+        return inputLine.split("");
     }
 
     private String typeConvert(double convertingNumber){
@@ -38,21 +46,9 @@ public class Calculator {
         return Double.toString(convertingNumber);
     }
 
-    public String calculates(String inputString) throws Exception {
-        try {
-            if(inputString == null || inputString.isEmpty()){
-                throw new Exception();
-            }
-            String[] inputNumber = plotInputNumber(inputString);
-            String inputOperator = plotInputOperator(inputString);
-            double middleResult = Double.parseDouble(inputNumber[0]);
-            for (int i = 0; i < inputOperator.length(); i++) {
-                middleResult = selectCalculate(inputOperator.charAt(i), middleResult, Double.parseDouble(inputNumber[i + 1]));
-            }
-            String result = typeConvert(middleResult);
-            return result;
-        }catch (Exception e){
-            return "입력값이 없습니다.";
-        }
+    public String calculates(String inputLine){
+        String[] plotedNumber = plotNumber(inputLine);
+        String[] plotedOperator = plotOperator(inputLine);
+
     }
 }
