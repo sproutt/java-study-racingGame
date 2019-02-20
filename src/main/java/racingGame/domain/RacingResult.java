@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public class RacingResult {
-    private static final char TRACE = '-';
+    private static final char MARK = '-';
 
     Car[] cars;
 
@@ -50,23 +50,26 @@ public class RacingResult {
     }
 
     public String getTraces() {
-        String traces = "";
 
-        for (Car car : cars) {
-            traces += car.getName() + " : ";
-            traces += getTrace(car.getPosition());
-        }
+        return Arrays.stream(cars).map(this::getCarTraceRecord).collect(Collectors.joining());
+    }
 
-        return traces + "\n";
+    private String getCarTraceRecord(Car car) {
+        return new StringBuffer()
+                .append(car.getName())
+                .append(" : ")
+                .append(getTrace(car.getPosition()))
+                .append("\n")
+                .toString();
     }
 
     private String getTrace(int traceCount) {
-        String trace = "";
+        StringBuffer trace = new StringBuffer();
 
         for (int traceNumber = 0; traceNumber < traceCount; traceNumber++) {
-            trace += TRACE;
+            trace.append(MARK);
         }
 
-        return trace + "\n";
+        return trace.toString();
     }
 }
