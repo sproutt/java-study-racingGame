@@ -51,7 +51,9 @@ public class RacingResult {
 
     public String getTraces() {
 
-        return Arrays.stream(cars).map(this::getCarTraceRecord).collect(Collectors.joining());
+        return Arrays.stream(cars)
+                .map(this::getCarTraceRecord)
+                .collect(Collectors.joining());
     }
 
     private String getCarTraceRecord(Car car) {
