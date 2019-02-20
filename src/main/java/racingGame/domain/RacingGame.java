@@ -2,7 +2,7 @@ package racingGame.domain;
 
 import racingGame.utils.RandomGenerator;
 
-import java.util.stream.IntStream;
+import java.util.Arrays;
 
 public class RacingGame {
 
@@ -10,11 +10,10 @@ public class RacingGame {
 
     private static final int RANDOM_MAX = 10;
     private static final int MOVE_BOUNDARY = 4;
-    private static final int SPEED = 1;
 
     public Car[] makeCars(String[] carNames) {
-        cars = IntStream.range(0, carNames.length)
-                .mapToObj(i -> new Car(carNames[i]))
+        cars = Arrays.stream(carNames)
+                .map(carName -> new Car(carName))
                 .toArray(Car[]::new);
 
         return cars;
@@ -37,7 +36,7 @@ public class RacingGame {
 
     public void move(Car car, int randomNumber) {
         if (isMove(randomNumber)) {
-            car.setPosition(car.getPosition() + SPEED);
+            car.move();
         }
     }
 

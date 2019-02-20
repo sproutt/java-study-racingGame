@@ -9,8 +9,8 @@ public class RacingGameClient {
     public static void main(String[] args) {
 
         RacingGame racingGame = new RacingGame();
-        racingGame.makeCars(InputView.getCarsNames());
-        String[] results = racingGame.play(InputView.getTryNumber());
+        racingGame.makeCars(InputView.readCarsNames());
+        String[] results = racingGame.play(InputView.readTryNumber());
         OutputView.drawResultMessage(results);
     }
 }

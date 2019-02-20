@@ -27,7 +27,6 @@ public class RacingResult {
     }
 
     public String getWinners(int maxNumber) {
-
         String[] winners = Arrays.stream(cars)
                 .filter(car -> isWinner(car, maxNumber))
                 .map(Car::getName)
@@ -47,21 +46,24 @@ public class RacingResult {
 
     public String toWinnerPrintFormat(String[] winnerAraay) {
 
-        return Arrays.stream(winnerAraay).collect(Collectors.joining(", "));
+        return String.join(", ", winnerAraay);
     }
 
     public String getTraces() {
         String traces = "";
-        for (int i = 0; i < cars.length; i++) {
-            traces += cars[i].getName() + " : ";
-            traces += getTrace(cars[i].getPosition());
+
+        for (Car car : cars) {
+            traces += car.getName() + " : ";
+            traces += getTrace(car.getPosition());
         }
+
         return traces + "\n";
     }
 
     private String getTrace(int traceCount) {
         String trace = "";
-        for (int i = 0; i < traceCount; i++) {
+
+        for (int traceNumber = 0; traceNumber < traceCount; traceNumber++) {
             trace += TRACE;
         }
 
