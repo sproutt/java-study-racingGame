@@ -3,53 +3,56 @@ package racing;
 import java.util.Random;
 
 public class RacingGame {
+    private static final int datumPoint = 4;
     private int time;
     private int[] carPositions;
 
-    public int countMove(boolean[] checks, int numberOfTimes) {
-        int count = 0;
-        for (int index = 0; index < numberOfTimes; index++) {
-            count = moveCheck(checks[index], count);
-        }
-        return count;
-    }
-
-    public int moveCheck(boolean check, int count) {
+    public int checkMove(boolean check,int index) {
+        int count = carPositions[index];
         if (check) {
             return ++count;
         }
         return count;
     }
 
-    public int[] setCarPositions(int numberOfCar) {
+    public void setCarPositions(int numberOfCar) {
         carPositions = new int[numberOfCar];
-        return carPositions;
     }
 
     public void setTimes(int numberOfTimes) {
         time = numberOfTimes;
     }
 
-    public boolean isMoing() {
-        Random random = new Random();
-        if (random.nextInt(10) >= 4) {
+    public boolean isMoving(int randomNumber) {
+        if (randomNumber >= datumPoint) {
             return true;
         }
         return false;
     }
 
-    public boolean[] isSelected() {
-        boolean[] selectedMoving = new boolean[time];
-        for (int i = 0; i < time; i++) {
-            selectedMoving[i] = isMoing();
-
-        }
-        return selectedMoving;
+    public int gnerateNumber(){
+        Random random = new Random();
+        return random.nextInt(10);
     }
 
-    public int[] move(int numberOfcars) {
-        for (int index = 0; index < numberOfcars; index++) {
-            carPositions[index] = countMove(isSelected(),time);
+    public boolean[] assembleState() {
+        boolean[] statesOfCar = new boolean[carPositions.length];
+        for (int i = 0; i < carPositions.length; i++) {
+            statesOfCar[i] = isMoving(gnerateNumber());
+        }
+        return statesOfCar;
+    }
+
+    public int[] move(boolean[] checks) {
+        for (int index = 0; index < carPositions.length; index++) {
+            carPositions[index] = checkMove(checks[index],index);
+        }
+        return carPositions;
+    }
+
+    public int[] start() {
+        for (int times = 0; times < time; times++) {
+            carPositions = move(assembleState());
         }
         return carPositions;
     }

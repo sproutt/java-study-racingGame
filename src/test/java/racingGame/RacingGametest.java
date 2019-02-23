@@ -11,25 +11,28 @@ public class RacingGametest {
     RacingGame racingGame;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         racingGame = new RacingGame();
+        racingGame.setTimes(5);
+        racingGame.setCarPositions(3);
     }
 
     @Test
-    public void 전진세기(){
-        boolean[] elemnts = new boolean[]{true,false,true,true,false};
-        assertEquals(3,racingGame.countMove(elemnts,elemnts.length));
+    public void 이동체크() {
+        // 0번 자동차가 이번 시도에서 전진한다면 초기 0에서 1증가되어 1을 반환
+        assertEquals(1, racingGame.checkMove(true, 0));
     }
 
     @Test
-    public void 전진증가(){
-        assertEquals(2,racingGame.moveCheck(true,1));
+    public void 전진중인가() {
+        assertEquals(true, racingGame.isMoving(8));
     }
+
 
     @Test
-    public void 차량초기화(){
-        int[] elements = new int[]{0,0,0};
-        assertArrayEquals(elements,racingGame.setCarPositions(3));
+    public void 각차량의상태() {
+        boolean[] stateOfMoving = new boolean[]{true, false, true};
+        int[] stateOfcar = new int[]{1, 0, 1};
+        assertArrayEquals(stateOfcar, racingGame.move(stateOfMoving));
     }
-
 }

@@ -1,12 +1,13 @@
 package racing;
 
+import racing.view.InputView;
+import racing.view.ResultView;
+
 public class Main {
     public static void main(String[] args) {
         RacingGame racingGame = new RacingGame();
-        int numberOfCar = InputView.receiveNumberOfCar();
-        racingGame.setCarPositions(numberOfCar);
+        racingGame.setCarPositions(InputView.receiveNumberOfCar());
         racingGame.setTimes(InputView.receiveNumberOfTimes());
-        int[] currentCarPositions = racingGame.move(numberOfCar);
-        ResultView.printResult(currentCarPositions);
+        ResultView.printResult(racingGame.start());
     }
 }
