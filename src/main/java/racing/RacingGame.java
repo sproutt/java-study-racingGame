@@ -3,12 +3,12 @@ package racing;
 import java.util.Random;
 
 public class RacingGame {
-    private int time = 1;
+    private int time;
     private int[] carPositions;
 
-    public int countMove(boolean[] checks) {
+    public int countMove(boolean[] checks, int numberOfTimes) {
         int count = 0;
-        for (int index = 0; index < time; index++) {
+        for (int index = 0; index < numberOfTimes; index++) {
             count = moveCheck(checks[index], count);
         }
         return count;
@@ -47,9 +47,9 @@ public class RacingGame {
         return selectedMoving;
     }
 
-    public int[] move() {
-        for (int index = 0; index < carPositions.length; index++) {
-            carPositions[index] = countMove(isSelected());
+    public int[] move(int numberOfcars) {
+        for (int index = 0; index < numberOfcars; index++) {
+            carPositions[index] = countMove(isSelected(),time);
         }
         return carPositions;
     }

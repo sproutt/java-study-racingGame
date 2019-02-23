@@ -18,7 +18,7 @@ public class RacingGametest {
     @Test
     public void 전진세기(){
         boolean[] elemnts = new boolean[]{true,false,true,true,false};
-        assertEquals(3,racingGame.countMove(elemnts));
+        assertEquals(3,racingGame.countMove(elemnts,elemnts.length));
     }
 
     @Test
