@@ -1,14 +1,15 @@
 package racing;
 
-import java.util.Random;
+import java.util.ArrayList;
 
 public class RacingGame {
-    private static final int datumPoint = 4;
+    Utils utils = new Utils();
+    private static final int CRITICAL_POINT = 4;
     private int time;
-    private int[] carPositions;
+    private ArrayList<Integer> carPositions = new ArrayList<>();
 
-    public int checkMove(boolean check,int index) {
-        int count = carPositions[index];
+    public int checkMove(boolean check, int index) {
+        int count = carPositions.get(index);
         if (check) {
             return ++count;
         }
@@ -16,43 +17,36 @@ public class RacingGame {
     }
 
     public void setCarPositions(int numberOfCar) {
-        carPositions = new int[numberOfCar];
+        for (int i = 0; i < numberOfCar; i++) {
+            carPositions.add(0);
+        }
+    }
+
+    public ArrayList<Integer> getCarPositions() {
+        return carPositions;
     }
 
     public void setTimes(int numberOfTimes) {
         time = numberOfTimes;
     }
 
-    public boolean isMoving(int randomNumber) {
-        if (randomNumber >= datumPoint) {
+    public boolean isMoving() {
+        if (utils.generateNumber() >= CRITICAL_POINT) {
             return true;
         }
         return false;
     }
 
-    public int generateNumber(){
-        Random random = new Random();
-        return random.nextInt(10);
-    }
-
-    public boolean[] assembleState() {
-        boolean[] statesOfCar = new boolean[carPositions.length];
-        for (int i = 0; i < carPositions.length; i++) {
-            statesOfCar[i] = isMoving(generateNumber());
-        }
-        return statesOfCar;
-    }
-
-    public int[] move(boolean[] checks) {
-        for (int index = 0; index < carPositions.length; index++) {
-            carPositions[index] = checkMove(checks[index],index);
+    public ArrayList<Integer> move() {
+        for (int index = 0; index < carPositions.size(); index++) {
+            carPositions.set(index, checkMove(isMoving(), index));
         }
         return carPositions;
     }
 
-    public int[] start() {
-        for (int times = 0; times < time; times++) {
-            carPositions = move(assembleState());
+    public ArrayList<Integer> tryOut() {
+        for (int numberOfTimes = 0; numberOfTimes < time; numberOfTimes++) {
+            carPositions = move();
         }
         return carPositions;
     }
