@@ -30,7 +30,7 @@ public class RacingGame {
         return false;
     }
 
-    public int gnerateNumber(){
+    public int generateNumber(){
         Random random = new Random();
         return random.nextInt(10);
     }
@@ -38,7 +38,7 @@ public class RacingGame {
     public boolean[] assembleState() {
         boolean[] statesOfCar = new boolean[carPositions.length];
         for (int i = 0; i < carPositions.length; i++) {
-            statesOfCar[i] = isMoving(gnerateNumber());
+            statesOfCar[i] = isMoving(generateNumber());
         }
         return statesOfCar;
     }
