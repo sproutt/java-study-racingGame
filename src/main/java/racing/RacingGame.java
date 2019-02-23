@@ -3,7 +3,7 @@ package racing;
 import java.util.Random;
 
 public class RacingGame {
-    private int time;
+    private int time = 1;
     private int[] carPositions;
 
     public int countMove(boolean[] checks) {
