@@ -2,27 +2,32 @@ package racingGame;
 
 import org.junit.Before;
 import org.junit.Test;
+import racing.Car;
 import racing.RacingGame;
 
-import java.util.ArrayList;
+import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class RacingGameTest {
-    RacingGame racingGame;
+    private RacingGame racingGame;
 
     @Before
     public void setUp() {
         racingGame = new RacingGame();
-        racingGame.setTimes(3);
-        racingGame.setCarPositions(1);
+        racingGame.setCar(3);
     }
 
     @Test
-    public void 전진중이동체크() {
-        assertEquals(1, racingGame.checkMove(true, 0));
+    public void 선택된차전진() {
+        Car car = new Car();
+        racingGame.moveSelectedCar(car);
+        int result = car.getPosition();
+        assertThat(result, anyOf(is(1), is(0)));
     }
+
 
     @Test
     public void 전진중인가() {
@@ -30,11 +35,12 @@ public class RacingGameTest {
         assertTrue(variable == true || variable == false);
     }
 
-
     @Test
-    public void 반복횟수이하전진확인() {
-        racingGame.tryOut();
-        ArrayList<Integer> positions = racingGame.getCarPositions();
-        assertTrue(positions.get(0) == 0 || positions.get(0) == 1 || positions.get(0) == 2 || positions.get(0) == 3);
+    public void play() {
+        List<Car> cars = racingGame.tryOut(3);
+        assertThat(cars.size(), is(3));
+        assertThat(cars.get(0), notNullValue());
+        assertThat(cars.get(1), notNullValue());
+        assertThat(cars.get(2), notNullValue());
     }
 }

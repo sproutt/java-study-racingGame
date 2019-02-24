@@ -1,53 +1,43 @@
 package racing;
 
+import racing.utils.RandomGenerator;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class RacingGame {
-    Utils utils = new Utils();
-    private static final int CRITICAL_POINT = 4;
-    private int time;
-    private ArrayList<Integer> carPositions = new ArrayList<>();
+    private static final int MIN_NUMBER_FOR_MOVE = 4;
+    public List<Car> cars = new ArrayList<>();
 
-    public int checkMove(boolean check, int index) {
-        int count = carPositions.get(index);
-        if (check) {
-            return ++count;
+    public void moveSelectedCar(Car car) {
+        if (isMoving()) {
+           car.move();
         }
-        return count;
     }
 
-    public void setCarPositions(int numberOfCar) {
+    public void setCar(int numberOfCar) {
         for (int i = 0; i < numberOfCar; i++) {
-            carPositions.add(0);
+            cars.add(new Car());
         }
-    }
-
-    public ArrayList<Integer> getCarPositions() {
-        return carPositions;
-    }
-
-    public void setTimes(int numberOfTimes) {
-        time = numberOfTimes;
     }
 
     public boolean isMoving() {
-        if (utils.generateNumber() >= CRITICAL_POINT) {
+        if (RandomGenerator.generateNumber() >= MIN_NUMBER_FOR_MOVE) {
             return true;
         }
         return false;
     }
 
-    public ArrayList<Integer> move() {
-        for (int index = 0; index < carPositions.size(); index++) {
-            carPositions.set(index, checkMove(isMoving(), index));
+    public void moveCars() {
+        for (Car car : cars) {
+            moveSelectedCar(car);
         }
-        return carPositions;
     }
 
-    public ArrayList<Integer> tryOut() {
-        for (int numberOfTimes = 0; numberOfTimes < time; numberOfTimes++) {
-            carPositions = move();
+    public List<Car> tryOut(int numberOfTimes) {
+        for (int i = 0; i < numberOfTimes; i++) {
+            moveCars();
         }
-        return carPositions;
+        return cars;
     }
 }

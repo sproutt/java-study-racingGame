@@ -1,19 +1,12 @@
 package racing.view;
 
-import java.util.ArrayList;
+import racing.Car;
+import java.util.List;
 
 public class ResultView {
-    public static void printResult(ArrayList<Integer> carPositions) {
-        for (int distance : carPositions) {
-            System.out.println(showDistance(distance));
+    public static void printResult(List<Car> cars) {
+        for (Car car : cars) {
+            car.showDistance();
         }
-    }
-
-    private static String showDistance(int distance) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < distance; i++) {
-            stringBuilder.append("-");
-        }
-        return stringBuilder.toString();
     }
 }
