@@ -2,35 +2,29 @@ import java.util.Scanner;
 
 public class StringCalculator {
 
-    public static String inputOriginalStringAndDeleteSpace() {
+    public static String inputString() {
         Scanner scanner = new Scanner(System.in);
-        String originString = scanner.nextLine();
-        originString = originString.replace(" ", "");
-        return originString;
+        return scanner.nextLine().replace(" ", "");
     }
 
     public static int add(int a, int b) {
-        a += b;
-        return a;
+        return a + b;
     }
 
     public static int minus(int a, int b) {
-        a -= b;
-        return a;
+        return a - b;
     }
 
     public static int multiple(int a, int b) {
-        a *= b;
-        return a;
+        return a * b;
     }
 
     public static int divide(int a, int b) {
-        a /= b;
-        return a;
+        return a / b;
     }
 
-    public static int operandCheck(int operandCount, int[] array, int i) {
-        if (!(array[i] >= 48 && array[i] <= 57)) {
+    public static int operands(int operandCount, int array) {
+        if (!(array >= '0' && array <= '9')) {
             operandCount++;
         }
         return operandCount;
@@ -55,21 +49,18 @@ public class StringCalculator {
     public static int calculateOperandCount(int[] array) {
         int operandCount = 0;
         for (int i = 0; i < array.length; i++) {
-            operandCount = operandCheck(operandCount, array, i);
+            operandCount = operands(operandCount, array[i]);
         }
         return operandCount;
     }
 
-    public static int calculateNumberCount(int operandCount) {
-        return operandCount + 1;
-    }
-
-    public static void makeAnswer(int[] numberArray, int[] operandArray) {
+    public static int makeAnswer(int[] numberArray, int[] operandArray) {
         int tempAnswer = numberArray[0];
         for (int i = 0; i < operandArray.length; i++) {
             tempAnswer = operandCheckAndCalculate(tempAnswer, numberArray, operandArray, i);
         }
         System.out.println(tempAnswer);
+        return tempAnswer;
     }
 
     public static int[] makeStringToArray(String originString) {
@@ -80,46 +71,18 @@ public class StringCalculator {
         return array;
     }
 
-
-    public static int[] returnNumberArrayAndOperandArray(int[] array, int[] numberArray, int[] operandArray, boolean isNumberArray) {
-        int numberArrayIndex = 0;
-        int operandArrayIndex = 0;
-        int tempNum = 0;
-        for (int i = 0; i < array.length; i++) {
-
-            if (i == array.length - 1) {
-                tempNum *= 10;
-                numberArray[numberArrayIndex] = tempNum + array[i] - 48;
-            }
-            if (i != array.length - 1) {
-
-                if (array[i] >= 48 && array[i] <= 57) {
-                    tempNum *= 10;
-                    tempNum += array[i] - 48;
-                }
-                if (!(array[i] >= 48 && array[i] <= 57)) {
-                    operandArray[operandArrayIndex] = array[i];
-                    numberArray[numberArrayIndex] = tempNum;
-                    tempNum = 0;
-                    numberArrayIndex++;
-                    operandArrayIndex++;
-                }
-            }
-        }
-        return (isNumberArray ? numberArray : operandArray);
-    }
-
     public static void main(String[] args) {
-        String originString = inputOriginalStringAndDeleteSpace();
-        int[] array = makeStringToArray(originString);
-
-        int[] numberArray = new int[calculateNumberCount(calculateOperandCount(array))];
+        String originSentence = inputString();
+        int[] array = makeStringToArray(originSentence);
+        int[] numberArray = new int[calculateOperandCount(array) + 1];
         int[] operandArray = new int[calculateOperandCount(array)];
 
-        boolean isNumberArray = true;
-        numberArray = returnNumberArrayAndOperandArray(array, numberArray, operandArray, isNumberArray);
-        operandArray = returnNumberArrayAndOperandArray(array, numberArray, operandArray, !isNumberArray);
-
+        for (int i = 0; i < array.length; i += 2) {
+            numberArray[i / 2] = array[i] - '0';
+        }
+        for (int i = 1; i < array.length; i += 2) {
+            operandArray[i / 2] = array[i];
+        }
         makeAnswer(numberArray, operandArray);
     }
 }
