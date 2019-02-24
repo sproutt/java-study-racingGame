@@ -4,7 +4,7 @@ import racing.Car;
 import java.util.List;
 
 public class ResultView {
-    public static final String BLOCK = "-";
+    private static final String BLOCK = "-";
     public static void printResult(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(showDistance(car));;
