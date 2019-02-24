@@ -7,7 +7,7 @@ import java.util.List;
 
 public class RacingGame {
     private static final int MIN_NUMBER_FOR_MOVE = 4;
-    public List<Car> cars = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
 
     public void moveSelectedCar(Car car) {
         if (isMoving()) {

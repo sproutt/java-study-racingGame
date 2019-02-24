@@ -1,7 +1,6 @@
 package racing;
 
 public class Car {
-    public final String BLOCK = "-";
     private int position;
 
     public Car() {
@@ -14,13 +13,5 @@ public class Car {
 
     public int getPosition() {
         return position;
-    }
-
-    public void showDistance() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            stringBuilder.append(BLOCK);
-        }
-        System.out.println(stringBuilder.toString());
     }
 }
