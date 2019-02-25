@@ -15,9 +15,15 @@ public class RacingGame {
         }
     }
 
-    public void setCar(int numberOfCar) {
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car());
+    public String[] divideCarName(String nameOfCar){
+        return nameOfCar.split(",");
+
+    }
+
+    public void setCar(String nameOfCar) {
+        String[] nameOfCars = divideCarName(nameOfCar);
+        for (String carName : nameOfCars) {
+            cars.add(new Car(carName));
         }
     }
 
