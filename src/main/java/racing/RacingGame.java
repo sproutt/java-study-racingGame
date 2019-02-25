@@ -3,6 +3,7 @@ package racing;
 import racing.utils.RandomGenerator;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class RacingGame {
@@ -46,4 +47,43 @@ public class RacingGame {
         }
         return cars;
     }
+
+    public List<Car> getWinner(){
+        int winnerPosition = calculateMaxPosition();
+        List<Car> winnerCar = new ArrayList<>();
+        for(Car car : cars){
+            winnerCar.add(findCar(car,winnerPosition));
+        }
+        return removeNull(winnerCar);
+    }
+
+    public List<Car> removeNull(List<Car> car){
+        car.remove(null);
+        return car;
+    }
+
+    public Car findCar(Car car, int position){
+        if(car.getPosition()==position){
+            return car;
+        }
+        return null;
+    }
+
+
+    public int comparePosition(int leftCarPosion, int rightCarPosition){
+        if(leftCarPosion>rightCarPosition){
+            return leftCarPosion;
+        }
+        return rightCarPosition;
+    }
+
+    public int calculateMaxPosition(){
+        int winnerPosition = 0;
+        for(Car car : cars){
+            winnerPosition = comparePosition(winnerPosition,car.getPosition());
+        }
+        return winnerPosition;
+    }
+
+
 }

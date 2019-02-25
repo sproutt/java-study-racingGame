@@ -8,5 +8,6 @@ public class Main {
         RacingGame racingGame = new RacingGame();
         racingGame.setCar(InputView.receiveNumberOfCar());
         ResultView.printResult(racingGame.tryOut(InputView.receiveNumberOfTimes()));
+        ResultView.printWinner(racingGame.getWinner());
     }
 }
