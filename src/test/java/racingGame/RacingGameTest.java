@@ -17,7 +17,7 @@ public class RacingGameTest {
     @Before
     public void setUp() {
         racingGame = new RacingGame();
-        racingGame.setCar(3);
+        racingGame.setCar("kiki,hoho");
     }
 
     @Test
@@ -38,9 +38,31 @@ public class RacingGameTest {
     @Test
     public void play() {
         List<Car> cars = racingGame.tryOut(3);
-        assertThat(cars.size(), is(3));
+        assertThat(cars.size(), is(2));
         assertThat(cars.get(0), notNullValue());
         assertThat(cars.get(1), notNullValue());
-        assertThat(cars.get(2), notNullValue());
+    }
+
+    @Test
+    public void 승자찾기() {
+        List<Car> cars = racingGame.getWinner();
+        assertThat(cars.size(), is(2));
+        assertThat(cars.get(0).getName(), is("kiki"));
+        assertThat(cars.get(1).getName(), is("hoho"));
+    }
+
+    @Test
+    public void 포지션비교() {
+        Car car = new Car("kikis");
+        assertThat(racingGame.findCar(car, 0), is(car));
+    }
+
+    @Test
+    public void 더먼거리찾기() {
+        assertThat(racingGame.comparePosition(3, 4), is(4));
+    }
+
+    public void 가장멀리간차의포지션() {
+        assertThat(racingGame.calculateMaxPosition(), is(0));
     }
 }

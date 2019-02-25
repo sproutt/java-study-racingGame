@@ -1,13 +1,16 @@
 package racing.view;
 
 import racing.Car;
+
 import java.util.List;
 
 public class ResultView {
     private static final String BLOCK = "-";
+
     public static void printResult(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(car.getName() + ":" + showDistance(car));;
+            System.out.println(car.getName() + ":" + showDistance(car));
+            ;
         }
     }
 

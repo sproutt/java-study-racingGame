@@ -3,7 +3,6 @@ package racing;
 import racing.utils.RandomGenerator;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class RacingGame {
@@ -12,11 +11,11 @@ public class RacingGame {
 
     public void moveSelectedCar(Car car) {
         if (isMoving()) {
-           car.move();
+            car.move();
         }
     }
 
-    public String[] divideCarName(String nameOfCar){
+    public String[] divideCarName(String nameOfCar) {
         return nameOfCar.split(",");
 
     }
@@ -48,42 +47,40 @@ public class RacingGame {
         return cars;
     }
 
-    public List<Car> getWinner(){
+    public List<Car> getWinner() {
         int winnerPosition = calculateMaxPosition();
         List<Car> winnerCar = new ArrayList<>();
-        for(Car car : cars){
-            winnerCar.add(findCar(car,winnerPosition));
+        for (Car car : cars) {
+            winnerCar.add(findCar(car, winnerPosition));
         }
         return removeNull(winnerCar);
     }
 
-    public List<Car> removeNull(List<Car> car){
+    public List<Car> removeNull(List<Car> car) {
         car.remove(null);
         return car;
     }
 
-    public Car findCar(Car car, int position){
-        if(car.getPosition()==position){
+    public Car findCar(Car car, int position) {
+        if (car.getPosition() == position) {
             return car;
         }
         return null;
     }
 
 
-    public int comparePosition(int leftCarPosion, int rightCarPosition){
-        if(leftCarPosion>rightCarPosition){
+    public int comparePosition(int leftCarPosion, int rightCarPosition) {
+        if (leftCarPosion > rightCarPosition) {
             return leftCarPosion;
         }
         return rightCarPosition;
     }
 
-    public int calculateMaxPosition(){
+    public int calculateMaxPosition() {
         int winnerPosition = 0;
-        for(Car car : cars){
-            winnerPosition = comparePosition(winnerPosition,car.getPosition());
+        for (Car car : cars) {
+            winnerPosition = comparePosition(winnerPosition, car.getPosition());
         }
         return winnerPosition;
     }
-
-
 }
