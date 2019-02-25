@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 public class StringCalculator {
+    private static final int ZERO = 48;
+    private static final int NINE = 57;
 
     public static String inputString() {
         Scanner scanner = new Scanner(System.in);
@@ -24,7 +26,7 @@ public class StringCalculator {
     }
 
     public static int operands(int operandCount, int array) {
-        if (!(array >= '0' && array <= '9')) {
+        if (!(array >= ZERO && array <= NINE)) {
             operandCount++;
         }
         return operandCount;
