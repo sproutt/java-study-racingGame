@@ -45,12 +45,14 @@ public class RacingGame {
 
     public List<Car> getWinner() {
         int winnerPosition = calculateMaxPosition();
-        return cars.stream().filter(car -> car.isSame(winnerPosition)).collect(Collectors.toList());
+        return cars.stream().
+                filter(car -> car.isSame(winnerPosition)).
+                collect(Collectors.toList());
     }
 
     public int calculateMaxPosition() {
         int winnerPosition = 0;
-        for (Car car : cars) {
+        for(Car car : cars){
             winnerPosition = car.checkWinner(winnerPosition);
         }
         return winnerPosition;
