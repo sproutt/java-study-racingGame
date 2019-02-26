@@ -42,4 +42,16 @@ public class RacingGame {
         }
         return cars;
     }
+    public List<Car> getWinner() {
+        int winnerPosition = calculateMaxPosition();
+        return cars.stream().filter(x -> x.isSame(winnerPosition)).collect(Collectors.toList());
+    }
+
+    public int calculateMaxPosition() {
+        int winnerPosition = 0;
+        for (Car car : cars) {
+            winnerPosition = car.checkWinner(winnerPosition);
+        }
+        return winnerPosition;
+    }
 }
