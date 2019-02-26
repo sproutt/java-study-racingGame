@@ -18,8 +18,7 @@ public class RacingGame {
     }
 
     public void setCar(String nameOfCar) {
-        String[] nameOfCars = Splitter.splitCarNames(nameOfCar);
-        for (String carName : nameOfCars) {
+        for (String carName : Splitter.splitCarNames(nameOfCar)) {
             cars.add(new Car(carName));
         }
     }
