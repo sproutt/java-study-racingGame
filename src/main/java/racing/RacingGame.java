@@ -5,6 +5,7 @@ import racing.utils.Splitter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private static final int MIN_NUMBER_FOR_MOVE = 4;
@@ -44,7 +45,7 @@ public class RacingGame {
     }
     public List<Car> getWinner() {
         int winnerPosition = calculateMaxPosition();
-        return cars.stream().filter(x -> x.isSame(winnerPosition)).collect(Collectors.toList());
+        return cars.stream().filter(car -> car.isSame(winnerPosition)).collect(Collectors.toList());
     }
 
     public int calculateMaxPosition() {
