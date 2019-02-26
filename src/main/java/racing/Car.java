@@ -25,4 +25,11 @@ public class Car {
         return this.name;
     }
 
+    public int checkWinner(int anyPosition) {
+        return Math.max(anyPosition, this.position);
+    }
+
+    public boolean isSame(int anyPosition) {
+        return this.position == anyPosition;
+    }
 }
