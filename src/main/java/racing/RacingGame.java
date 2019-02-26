@@ -1,6 +1,7 @@
 package racing;
 
 import racing.utils.Generator;
+import racing.utils.Splitter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ public class RacingGame {
     }
 
     public void setCar(String nameOfCar) {
-        String[] nameOfCars = .splitCarNames(nameOfCar);
+        String[] nameOfCars = Splitter.splitCarNames(nameOfCar);
         for (String carName : nameOfCars) {
             cars.add(new Car(carName));
         }
