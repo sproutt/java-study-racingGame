@@ -24,8 +24,10 @@ public class ResultView {
     public static void printWinner(List<Car> cars) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Car car : cars) {
-            stringBuilder.append(car.getName() + " ");
+            stringBuilder.append(car.getName());
+            stringBuilder.append(" ");
         }
-        System.out.println(stringBuilder.toString() + "가 우승했습니다.");
+        stringBuilder.append("가 우승했습니다.");
+        System.out.println(stringBuilder.toString());
     }
 }
