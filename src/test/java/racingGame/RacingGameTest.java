@@ -52,16 +52,6 @@ public class RacingGameTest {
     }
 
     @Test
-    public void 포지션비교() {
-        Car car = new Car("kikis");
-        assertThat(racingGame.findCar(car, 0), is(car));
-    }
-
-    @Test
-    public void 더먼거리찾기() {
-        assertThat(racingGame.comparePosition(3, 4), is(4));
-    }
-
     public void 가장멀리간차의포지션() {
         assertThat(racingGame.calculateMaxPosition(), is(0));
     }
