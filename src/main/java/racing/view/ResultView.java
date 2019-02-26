@@ -10,7 +10,6 @@ public class ResultView {
     public static void printResult(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.getName() + ":" + showDistance(car));
-            ;
         }
     }
 
