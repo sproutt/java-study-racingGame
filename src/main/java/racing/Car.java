@@ -4,18 +4,6 @@ public class Car {
     private int position;
     private String name;
 
-    public int move() {
-        return ++position;
-    }
-
-    public int getPosition() {
-        return position;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
     public Car() {
         position = 0;
     }
@@ -24,4 +12,17 @@ public class Car {
         position = 0;
         this.name = name;
     }
+
+    public void move() {
+        this.position++;
+    }
+
+    public int getPosition() {
+        return this.position;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
 }

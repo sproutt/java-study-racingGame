@@ -1,6 +1,6 @@
 package racing;
 
-import racing.utils.RandomGenerator;
+import racing.utils.Generator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,20 +15,15 @@ public class RacingGame {
         }
     }
 
-    public String[] divideCarName(String nameOfCar) {
-        return nameOfCar.split(",");
-
-    }
-
     public void setCar(String nameOfCar) {
-        String[] nameOfCars = divideCarName(nameOfCar);
+        String[] nameOfCars = .splitCarNames(nameOfCar);
         for (String carName : nameOfCars) {
             cars.add(new Car(carName));
         }
     }
 
     public boolean isMoving() {
-        if (RandomGenerator.generateNumber() >= MIN_NUMBER_FOR_MOVE) {
+        if (Generator.generateNumber() >= MIN_NUMBER_FOR_MOVE) {
             return true;
         }
         return false;
@@ -45,42 +40,5 @@ public class RacingGame {
             moveCars();
         }
         return cars;
-    }
-
-    public List<Car> getWinner() {
-        int winnerPosition = calculateMaxPosition();
-        List<Car> winnerCar = new ArrayList<>();
-        for (Car car : cars) {
-            winnerCar.add(findCar(car, winnerPosition));
-        }
-        return removeNull(winnerCar);
-    }
-
-    public List<Car> removeNull(List<Car> car) {
-        car.remove(null);
-        return car;
-    }
-
-    public Car findCar(Car car, int position) {
-        if (car.getPosition() == position) {
-            return car;
-        }
-        return null;
-    }
-
-
-    public int comparePosition(int leftCarPosion, int rightCarPosition) {
-        if (leftCarPosion > rightCarPosition) {
-            return leftCarPosion;
-        }
-        return rightCarPosition;
-    }
-
-    public int calculateMaxPosition() {
-        int winnerPosition = 0;
-        for (Car car : cars) {
-            winnerPosition = comparePosition(winnerPosition, car.getPosition());
-        }
-        return winnerPosition;
     }
 }
