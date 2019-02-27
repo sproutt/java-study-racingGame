@@ -12,7 +12,11 @@ import static java.util.Arrays.*;
 public class RacingGame {
     private static final int MIN_NUMBER_FOR_MOVE = 4;
     private List<Car> cars = new ArrayList<>();
-    private int winnerPosition = 0;
+    private int winnerPosition;
+
+    public void RacingGame() {
+        winnerPosition = 0;
+    }
 
     public void moveSelectedCar(Car car) {
         if (isMoving()) {
@@ -37,7 +41,7 @@ public class RacingGame {
         }
     }
 
-    public List<Car> tryOut(int numberOfTimes) {
+    public List<Car> run(int numberOfTimes) {
         for (int i = 0; i < numberOfTimes; i++) {
             moveCars();
         }
@@ -45,14 +49,13 @@ public class RacingGame {
     }
 
     public List<Car> getWinner() {
-        int winnerPosition = calculateMaxPosition();
+        calculateMaxPosition();
         return cars.stream()
                 .filter(car -> car.isSamePosition(winnerPosition))
                 .collect(Collectors.toList());
     }
 
-    public int calculateMaxPosition() {
-        cars.stream().forEach(car -> winnerPosition = car.checkWinner(winnerPosition));
-        return winnerPosition;
+    public void calculateMaxPosition() {
+        cars.stream().forEach(car -> winnerPosition = car.checkMax(winnerPosition));
     }
 }

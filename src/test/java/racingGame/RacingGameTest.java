@@ -37,7 +37,7 @@ public class RacingGameTest {
 
     @Test
     public void play() {
-        List<Car> cars = racingGame.tryOut(3);
+        List<Car> cars = racingGame.run(3);
         assertThat(cars.size(), is(2));
         assertThat(cars.get(0), notNullValue());
         assertThat(cars.get(1), notNullValue());
@@ -49,10 +49,5 @@ public class RacingGameTest {
         assertThat(cars.size(), is(2));
         assertThat(cars.get(0).getName(), is("kiki"));
         assertThat(cars.get(1).getName(), is("hoho"));
-    }
-
-    @Test
-    public void 가장멀리간차의포지션() {
-        assertThat(racingGame.calculateMaxPosition(), is(0));
     }
 }

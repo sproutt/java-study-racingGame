@@ -25,7 +25,7 @@ public class Car {
         return this.name;
     }
 
-    public int checkWinner(int anyPosition) {
+    public int checkMax(int anyPosition) {
         return Math.max(anyPosition, this.position);
     }
 
