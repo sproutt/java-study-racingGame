@@ -2,8 +2,8 @@ package racingGame;
 
 import org.junit.Before;
 import org.junit.Test;
-import racing.Car;
-import racing.RacingGame;
+import racing.model.Car;
+import racing.model.RacingGame;
 
 import java.util.List;
 

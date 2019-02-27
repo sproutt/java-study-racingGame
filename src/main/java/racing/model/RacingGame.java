@@ -1,6 +1,6 @@
-package racing;
+package racing.model;
 
-import racing.utils.Generator;
+import racing.utils.RandomGenerator;
 import racing.utils.Splitter;
 
 import java.util.ArrayList;
@@ -25,13 +25,13 @@ public class RacingGame {
     }
 
     public boolean isMoving() {
-        if (Generator.generateNumber() >= MIN_NUMBER_FOR_MOVE) {
+        if (RandomGenerator.generateNumber() >= MIN_NUMBER_FOR_MOVE) {
             return true;
         }
         return false;
     }
 
-    public void moveCars() {
+    private void moveCars() {
         for (Car car : cars) {
             moveSelectedCar(car);
         }
@@ -47,7 +47,7 @@ public class RacingGame {
     public List<Car> getWinner() {
         int winnerPosition = calculateMaxPosition();
         return cars.stream()
-                .filter(car -> car.isSame(winnerPosition))
+                .filter(car -> car.isSamePosition(winnerPosition))
                 .collect(Collectors.toList());
     }
 

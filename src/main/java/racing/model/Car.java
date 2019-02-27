@@ -1,4 +1,4 @@
-package racing;
+package racing.model;
 
 public class Car {
     private int position;
@@ -29,7 +29,7 @@ public class Car {
         return Math.max(anyPosition, this.position);
     }
 
-    public boolean isSame(int anyPosition) {
+    public boolean isSamePosition(int anyPosition) {
         return this.position == anyPosition;
     }
 }
