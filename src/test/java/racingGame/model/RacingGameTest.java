@@ -45,9 +45,12 @@ public class RacingGameTest {
 
     @Test
     public void 승자찾기() {
-        List<Car> cars = racingGame.getWinner();
-        assertThat(cars.size(), is(2));
-        assertThat(cars.get(0).getName(), is("kiki"));
-        assertThat(cars.get(1).getName(), is("hoho"));
+        assertThat(racingGame.getWinner(),is(racingGame.getCars()));
+    }
+
+    @Test
+    public void 가장먼거리(){
+        racingGame.calculateMaxPosition();
+        assertThat(racingGame.getWinnerPosition(),is(0));
     }
 }

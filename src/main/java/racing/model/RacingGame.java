@@ -28,6 +28,14 @@ public class RacingGame {
         stream(Splitter.splitCarNames(nameOfCar)).forEach(name -> cars.add(new Car(name)));
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public int getWinnerPosition() {
+        return winnerPosition;
+    }
+
     public boolean isMoving() {
         if (RandomGenerator.generateNumber() >= MIN_NUMBER_FOR_MOVE) {
             return true;
