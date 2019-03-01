@@ -1,4 +1,4 @@
-package racingGame;
+package racingGame.model;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -29,11 +29,11 @@ public class CarTest {
     @Test
     public void 더먼거리는() {
         car.move();
-        assertThat(car.checkWinner(0), is(1));
+        assertThat(car.checkMax(0), is(1));
     }
 
     @Test
     public void 이거리가맞습니까() {
-        assertThat(car.isSame(0), is(true));
+        assertThat(car.isSamePosition(0), is(true));
     }
 }
