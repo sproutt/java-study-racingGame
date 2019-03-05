@@ -18,12 +18,6 @@ public class RacingGame {
         winnerPosition = 0;
     }
 
-    public void moveSelectedCar(Car car) {
-        if (isMoving()) {
-            car.move();
-        }
-    }
-
     public void setCar(String nameOfCar) {
         stream(Splitter.splitCarNames(nameOfCar)).forEach(name -> cars.add(new Car(name)));
     }
@@ -36,11 +30,11 @@ public class RacingGame {
         return winnerPosition;
     }
 
-    public boolean isMoving() {
-        if (RandomGenerator.generateNumber() >= MIN_NUMBER_FOR_MOVE) {
-            return true;
+    public List<Car> run(int numberOfTimes) {
+        for (int times = 0; times < numberOfTimes; times++) {
+            moveCars();
         }
-        return false;
+        return cars;
     }
 
     private void moveCars() {
@@ -49,15 +43,20 @@ public class RacingGame {
         }
     }
 
-    public List<Car> run(int numberOfTimes) {
-        for (int i = 0; i < numberOfTimes; i++) {
-            moveCars();
+    public void moveSelectedCar(Car car) {
+        if (isMoving()) {
+            car.move();
         }
-        return cars;
+    }
+
+    public boolean isMoving() {
+        if (RandomGenerator.generateNumber() >= MIN_NUMBER_FOR_MOVE) {
+            return true;
+        }
+        return false;
     }
 
     public List<Car> getWinner() {
-        calculateMaxPosition();
         return cars.stream()
                 .filter(car -> car.isSamePosition(winnerPosition))
                 .collect(Collectors.toList());

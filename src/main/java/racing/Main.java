@@ -9,6 +9,7 @@ public class Main {
         RacingGame racingGame = new RacingGame();
         racingGame.setCar(InputView.receiveNameOfCars());
         ResultView.printResult(racingGame.run(InputView.receiveNumberOfTimes()));
+        racingGame.calculateMaxPosition();
         ResultView.printWinner(racingGame.getWinner());
     }
 }
