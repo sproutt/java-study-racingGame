@@ -1,13 +1,15 @@
 package racing.view;
 
-import racing.Car;
+import racing.model.Car;
+
 import java.util.List;
 
 public class ResultView {
     private static final String BLOCK = "-";
+
     public static void printResult(List<Car> cars) {
         for (Car car : cars) {
-            System.out.println(showDistance(car));;
+            System.out.println(car.getName() + ":" + showDistance(car));
         }
     }
 
@@ -17,5 +19,15 @@ public class ResultView {
             stringBuilder.append(BLOCK);
         }
         return stringBuilder.toString();
+    }
+
+    public static void printWinner(List<Car> cars) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Car car : cars) {
+            stringBuilder.append(car.getName());
+            stringBuilder.append(" ");
+        }
+        stringBuilder.append("가 우승했습니다.");
+        System.out.println(stringBuilder.toString());
     }
 }

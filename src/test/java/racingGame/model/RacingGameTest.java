@@ -1,9 +1,9 @@
-package racingGame;
+package racingGame.model;
 
 import org.junit.Before;
 import org.junit.Test;
-import racing.Car;
-import racing.RacingGame;
+import racing.model.Car;
+import racing.model.RacingGame;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class RacingGameTest {
     @Before
     public void setUp() {
         racingGame = new RacingGame();
-        racingGame.setCar(3);
+        racingGame.setCar("kiki,hoho");
     }
 
     @Test
@@ -37,10 +37,20 @@ public class RacingGameTest {
 
     @Test
     public void play() {
-        List<Car> cars = racingGame.tryOut(3);
-        assertThat(cars.size(), is(3));
+        List<Car> cars = racingGame.run(3);
+        assertThat(cars.size(), is(2));
         assertThat(cars.get(0), notNullValue());
         assertThat(cars.get(1), notNullValue());
-        assertThat(cars.get(2), notNullValue());
+    }
+
+    @Test
+    public void 승자찾기() {
+        assertThat(racingGame.getWinner(),is(racingGame.getCars()));
+    }
+
+    @Test
+    public void 가장먼거리(){
+        racingGame.calculateMaxPosition();
+        assertThat(racingGame.getWinnerPosition(),is(0));
     }
 }
