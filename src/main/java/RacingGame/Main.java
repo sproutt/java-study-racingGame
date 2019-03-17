@@ -2,7 +2,7 @@ package RacingGame;
 
 public class Main {
     public static void main(String[] args) {
-        RacingGame racingGame = new RacingGame();
-        racingGame.inputCondition();
+        ResultView resultView = new ResultView();
+        resultView.PrintCar();
     }
 }

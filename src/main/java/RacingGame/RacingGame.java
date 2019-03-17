@@ -1,50 +1,41 @@
 package RacingGame;
 
-import java.util.Random;
-import java.util.Scanner;
-
-
 public class RacingGame {
-    final int isMove = 4;
+    final int moveRestriction = 4;
     final int canMove = 1;
     final int canNotMove = 0;
 
-    public void inputCondition() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("자동차 대수는 몇 대 인가요?");
-        int numberOfCar = scanner.nextInt();
-        System.out.println("시도할 횟수는 몇 회 인가요?");
-        int numberOfTry = scanner.nextInt();
-        System.out.println("실행결과");
-        for (int i = 0; i < numberOfCar; i++) {
-            printResult(numberOfTry);
+    InputView inputView = new InputView();
+    Utils utils = new Utils();
+    public int numCar = inputView.InputCar();
+    public int numTry = inputView.InputTry();
+
+    public int PositionCheck(int index) {
+
+        int[] positionArray = new int[numCar];
+        for (int i = 0; i < positionArray.length; i++) {
+            positionArray[i] = Car();
         }
+        return positionArray[index];
     }
 
-    public void printResult(int numberOfTry) {
-        for (int j = 0; j < numberOfMovedCount(numberOfTry); j++) {
-            System.out.print("-");
-        }
-        System.out.println();
+    private int Car() {
+        int carPosition = CarMove();
+        return carPosition;
     }
 
-    public int numberOfMovedCount(int numberOfTry) {
-        int movedCount = 0;
-        for (int i = 0; i < numberOfTry; i++) {
-            movedCount += checkMove();
+    private int CarMove() {
+        int moveCount = 0;
+        for (int i = 0; i < numTry; i++) {
+            moveCount += CheckMove();
         }
-        return movedCount;
+        return moveCount;
     }
 
-    public int checkMove() {
-        if (randomGenerator() >= isMove) {
+    private int CheckMove() {
+        if (utils.randomGenerator() >= moveRestriction) {
             return canMove;
         }
         return canNotMove;
-    }
-
-    public int randomGenerator() {
-        Random random = new Random();
-        return random.nextInt(10);
     }
 }
