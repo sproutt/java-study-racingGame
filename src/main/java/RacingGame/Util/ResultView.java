@@ -6,6 +6,7 @@ import java.util.List;
 
 public class ResultView {
     final String resultSign = "출력 결과";
+    final char MOVED  ='-';
     public void readCar(List<Car> carArray){
         System.out.println(resultSign);
         for (int i = 0; i < carArray.size() ; i++) {
@@ -14,7 +15,7 @@ public class ResultView {
     }
     public void printCar(int carPosition){
         for (int i = 0; i < carPosition; i++) {
-            System.out.print('-');
+            System.out.print(MOVED);
         }
         System.out.println();
     }
