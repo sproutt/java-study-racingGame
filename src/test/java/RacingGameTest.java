@@ -1,7 +1,7 @@
 /*
 import Car;
-import RacingGame.RacingGame;
-import Utils;
+import racingGame.racingGame;
+import RandomGenerator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,12 +9,12 @@ import org.junit.Test;
 import static org.junit.Assert.assertNotNull;
 
 public class RacingGameTest {
-    RacingGame racingGame;
+    racingGame racingGame;
     Car car;
-    Utils utils;
+    RandomGenerator utils;
     @Before
     public void setUp() {
-        utils = new Utils();
+        utils = new RandomGenerator();
     }
     @Test
     public void 랜덤생성작동여부(){
