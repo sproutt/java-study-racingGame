@@ -3,7 +3,7 @@ package racingGame.model;
 import racingGame.util.RandomGenerator;
 
 public class Car {
-    private static int MOVE_RESTICTION = 4;
+    private static int MOVE_RESTRICTION = 4;
     private int carPosition = 0;
 
     public int getCarPosition() {
@@ -12,15 +12,22 @@ public class Car {
 
     public int tryGame(int numberOfTry) {
         for (int i = 0; i < numberOfTry; i++) {
-            checkMovement();
+            move();
         }
         return carPosition;
     }
 
-    private int checkMovement() {
-        if (RandomGenerator.randomGenerator() >= MOVE_RESTICTION) {
-            return carPosition++;
+    private int move() {
+        if (isMove() == true) {
+            carPosition++;
         }
         return carPosition;
+    }
+
+    private boolean isMove() {
+        if (RandomGenerator.randomGenerator() >= MOVE_RESTRICTION) {
+            return true;
+        }
+        return false;
     }
 }
