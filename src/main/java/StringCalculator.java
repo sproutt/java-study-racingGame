@@ -3,41 +3,56 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class StringCalculator {
-    public void main(String[] args) {
-        makeResult(input());
-    }
 
     public String input() {
-        Scanner sc = new Scanner(System.in);
-        return sc.nextLine();
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
+
+    public boolean isBlank(String input) {
+        if (input.equals(" ") || input == null)
+            return true;
+        return false;
     }
 
     public int makeResult(String input) {
-        return calculate(operandList(splitBlank(input)), operatorList(splitBlank(input)));
+        if (isBlank(input))
+            throw new RuntimeException();
+        return caculateQueue(operandQueue(splitBlank(input)), operatorQueue(splitBlank(input)));
     }
 
     public String[] splitBlank(String str) {
         return str.split(" ");
     }
 
-    public Queue<Integer> operandList(String[] separatedString) {
-        Queue<Integer> q = new LinkedList<>();
+    public Queue<Integer> operandQueue(String[] separatedString) {
+        Queue<Integer> operandQueue = new LinkedList<>();
         for (int i = 0; i < separatedString.length; i++) {
-            if (isOperand(separatedString[i])) {
-                q.add(toInt(separatedString[i]));
-            }
+            operandQueue = addOperandQueue(operandQueue, separatedString[i]);
         }
-        return q;
+        return operandQueue;
     }
 
-    public Queue<Character> operatorList(String[] separatedString) {
-        Queue<Character> q = new LinkedList<>();
+    public Queue<Character> operatorQueue(String[] separatedString) {
+        Queue<Character> operatorQueue = new LinkedList<>();
         for (int i = 0; i < separatedString.length; i++) {
-            if (isOperator(separatedString[i])) {
-                q.add(separatedString[i].charAt(0));
-            }
+            operatorQueue = addOperatorQueue(operatorQueue, separatedString[i]);
         }
-        return q;
+        return operatorQueue;
+    }
+
+    public Queue<Integer> addOperandQueue(Queue<Integer> operandQueue, String str) {
+        if (isOperand(str)) {
+            operandQueue.add(toInt(str));
+        }
+        return operandQueue;
+    }
+
+    public Queue<Character> addOperatorQueue(Queue<Character> operatorQueue, String str) {
+        if (isOperator(str)) {
+            operatorQueue.add(str.charAt(0));
+        }
+        return operatorQueue;
     }
 
     public boolean isOperand(String str) {
@@ -47,10 +62,6 @@ public class StringCalculator {
         return true;
     }
 
-    public int toInt(String str) {
-        return Integer.parseInt(str);
-    }
-
     public boolean isOperator(String str) {
         if (str.length() != 1) {
             return false;
@@ -58,32 +69,31 @@ public class StringCalculator {
         if (!(str.charAt(0) == '+' || str.charAt(0) == '-' || str.charAt(0) == '/' || str.charAt(0) == '*')) {
             return false;
         }
-
         return true;
     }
 
-    public int calculate(Queue<Integer> operand, Queue<Character> operator) {
+    public int toInt(String str) {
+        return Integer.parseInt(str);
+    }
+
+    public int caculateQueue(Queue<Integer> operand, Queue<Character> operator) {
         int result = operand.poll();
         while (!operand.isEmpty()) {
             result = calculate(result, operator.poll(), operand.poll());
         }
-
         return result;
     }
 
     public int calculate(int firstValue, int operator, int secondValue) {
-        switch (operator) {
-            case '+':
-                return add(firstValue, secondValue);
-            case '-':
-                return subtract(firstValue, secondValue);
-            case '*':
-                return multiply(firstValue, secondValue);
-            case '/':
-                return divide(firstValue, secondValue);
-        }
-
-        return -1;
+        if (operator == '+')
+            return add(firstValue, secondValue);
+        if (operator == '-')
+            return subtract(firstValue, secondValue);
+        if (operator == '*')
+            return multiply(firstValue, secondValue);
+        if (operator == '/')
+            return divide(firstValue, secondValue);
+        throw new RuntimeException();
     }
 
     public int add(int i, int j) {
