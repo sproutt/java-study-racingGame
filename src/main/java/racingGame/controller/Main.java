@@ -9,5 +9,6 @@ public class Main {
         RacingGame racingGame = new RacingGame();
         racingGame.settingCar(InputView.inputCar());
         ResultView.printResult(racingGame.tryAllCarGame(InputView.inputTry()));
+        ResultView.printWinner(racingGame.makeWinners());
     }
 }
