@@ -2,6 +2,8 @@ import java.util.Random;
 
 public class RacingCar {
 
+    final static int CONDITION_TO_MOVE = 4;
+    final static int RANDOM_NUMBER_RANGE = 10;
     private int time;
     private int[] carPosition;
     private int numberOfCars;
@@ -15,6 +17,7 @@ public class RacingCar {
     public void playGame() {
         for (int i = 0; i < time; i++) {
             moveCars();
+            printStatus();
         }
     }
 
@@ -29,26 +32,31 @@ public class RacingCar {
     }
 
     public int randomNumber(int range) {
-        Random random = new Random();
-        return random.nextInt(range);
+        return new Random().nextInt(range);
+    }
+
+    public int getCarPosition(int i) {
+        return carPosition[i];
     }
 
     public boolean canMove(int number) {
-        if (number >= 4) {
+        if (number >= CONDITION_TO_MOVE) {
             return true;
         }
         return false;
     }
 
     public void moveOrStop(int index) {
-        if (canMove(randomNumber(10))) {
+        if (canMove(randomNumber(RANDOM_NUMBER_RANGE))) {
             moveCar(index);
         }
     }
 
     public void printStatus() {
+        System.out.println("-------------------------");
         for (int i = 0; i < numberOfCars; i++) {
             System.out.println(i + 1 + "번째 차의 위치는 " + carPosition[i] + "입니다");
         }
+        System.out.println("-------------------------");
     }
 }
