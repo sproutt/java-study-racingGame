@@ -43,8 +43,4 @@ public class RacingGame {
         }
         return false;
     }
-
-    public List<Car> getCars() {
-        return cars;
-    }
 }
