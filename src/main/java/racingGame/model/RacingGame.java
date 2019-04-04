@@ -6,31 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private List<Car> cars;
-    private List<Car> winnerList;
+    public List<Car> cars;
     private static int MOVE_RESTRICTION = 4;
-    private static int winnerPosition;
 
-
-    public void settingCar(String players) {
+    public void settingCar(String[] names) {
         cars = new ArrayList<>();
-        for (int i = 0; i < countPlayersName(players).length; i++) {
+        for (int i = 0; i < names.length; i++) {
             Car car = new Car();
             cars.add(car);
-            cars.get(i).inputPlayerName(splitPlayersName(players, i));
+            cars.get(i).inputPlayerName(names[i]);
         }
     }
-
-    private String[] countPlayersName(String players) {
-        String[] names = players.split(",");
-        return names;
-    }
-
-    private String splitPlayersName(String players, int index) {
-        String[] names = players.split(",");
-        return names[index];
-    }
-
 
     public List<Car> tryAllCarGame(int numberOfTry) {
         for (Car car : cars) {
@@ -58,33 +44,7 @@ public class RacingGame {
         return false;
     }
 
-    public List<Car> makeWinners() {
-        calculateWinnerPosition(cars);
-        winnerList = new ArrayList<>();
-        for (Car car : cars) {
-            checkWinnerName(car);
-        }
-        return winnerList;
-    }
-
-    private void checkWinnerName(Car car) {
-        if (car.getCarPosition() == winnerPosition) {
-            winnerList.add(car);
-        }
-    }
-
-    private void calculateWinnerPosition(List<Car> cars) {
-        int tempWinnerPosition = 0;
-        for (Car car : cars) {
-            tempWinnerPosition = checkWinnerPosition(tempWinnerPosition, car);
-        }
-        winnerPosition = tempWinnerPosition;
-    }
-
-    private int checkWinnerPosition(int tempWinnerPosition, Car car) {
-        if (car.getCarPosition() > tempWinnerPosition) {
-            tempWinnerPosition = car.getCarPosition();
-        }
-        return tempWinnerPosition;
+    public List<Car> getCars() {
+        return cars;
     }
 }
