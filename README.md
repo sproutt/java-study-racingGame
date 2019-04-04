@@ -8,3 +8,32 @@
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/wwh-techcamp-2018/wwh-docs/blob/master/README.md)
 * [동영상으로 살펴보는 온라인 코드 리뷰 과정](https://youtu.be/a5c9ku-_fok)
+
+
+
+## racingGame-step1 
+
+> 학습 내용
+
+**JUnit** 에서 실패 처리하는 방법
+
+`fail()`, `fail(String message)`
+
+
+
+**여러가지 메소드**
+
+- `assertEquals` : 값
+- `assertNull`, `NotNull` : null
+- `assertTrue`, `assertFalse` : 조건
+- `assertSame`, `NotSame` : 객체 
+
+
+
+**for-each문**
+
+- 배열이나 Collection클래스에서 사용
+- 수행속도가 빠르고 읽기 쉽다
+- 크기를 구하지 않아도 된다
+- 값을 변경할 수 없음.
+- 역순으로 반복 불가
