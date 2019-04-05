@@ -1,4 +1,4 @@
-public class Main {
+public class RacingGameMain {
     public static void main(String[] args) {
         InputView input = new InputView();
         RacingCar racingCar = new RacingCar(input.getInputNumberOfCars(), input.getInputTime());
