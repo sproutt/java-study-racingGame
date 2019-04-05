@@ -52,8 +52,7 @@ public class RacingCar {
 
     public void printResult() {
         for (int i = 0; i < numberOfCars; i++) {
-            cars[i].printProgress();
-            System.out.println();
+            System.out.println(cars[i].getProgressBar());
         }
     }
 }
