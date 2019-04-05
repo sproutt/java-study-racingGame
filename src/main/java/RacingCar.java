@@ -21,8 +21,8 @@ public class RacingCar {
         }
     }
 
-    public void readyGame(){
-        for (int i=0; i<numberOfCars; i++){
+    public void readyGame() {
+        for (int i = 0; i < numberOfCars; i++) {
             cars[i] = new Car();
         }
     }
