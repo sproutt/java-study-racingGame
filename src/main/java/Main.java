@@ -3,6 +3,6 @@ public class Main {
         InputView input = new InputView();
         RacingCar racingCar = new RacingCar(input.getInputNumberOfCars(), input.getInputTime());
         racingCar.playGame();
-        new ResultView().viewRacingCarResult(racingCar);
+        new ResultView().showRacingCarResult(racingCar);
     }
 }

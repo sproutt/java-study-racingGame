@@ -1,5 +1,5 @@
 public class ResultView {
-    public void viewRacingCarResult(RacingCar racingCar){
-        racingCar.printStatus();
+    public void showRacingCarResult(RacingCar racingCar) {
+        racingCar.printResult();
     }
 }

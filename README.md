@@ -30,10 +30,33 @@
 
 
 
-**for-each문**
+> 궁금증
 
-- 배열이나 Collection클래스에서 사용
-- 수행속도가 빠르고 읽기 쉽다
-- 크기를 구하지 않아도 된다
-- 값을 변경할 수 없음.
-- 역순으로 반복 불가
+**private 메소드나 변수를 어떻게 테스트할까?**
+
+private로 선언된 메소드나 변수는 외부에서 접근이 불가능하다. 따라서 테스트클래스에서 접근하기 어렵다. 그렇다고 private를 테스트하기 위해서 public으로 바꾸면 안됨.
+
+테스트가 꼭 필요하다고 생각될 시 하는 법
+
+- Private 변수
+
+  객체  `Field field` 생성 후, `field = privateClass.getClass().getDeclaredField("필드명")`
+
+  `field.setAccessible(true);`(접근 허용)
+
+
+
+- private 메소드
+
+  메소드 객체 `Method method;` 생성 후 해당 객체에 사용하고자 하는 private 메소드를 담아줌 `method = privateclass.getClass().getDeclaredMethod("메소드 이름", 파라미터, 파라미터);`
+
+  `method.setAccessible(true);` (접근 허용) - private 메소드를 접근 할 수 있게됨
+
+  마지막으로 invoke 메소드를 사용해 호출
+
+  `method.invoke(private 메소드를 가진 클래스명, 파라미터, 파라미터, …);`
+
+ [참고 사이트][cocodo.tistory.com/16]
+
+
+

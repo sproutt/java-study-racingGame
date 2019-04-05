@@ -13,7 +13,7 @@ public class RacingCarTest {
 
     @Test
     public void testRandomNumber() {
-        int number = racingCar.randomNumber(10);
+        int number = racingCar.getRandomNumber(10);
 
         if (!(0 <= number && number < 10)) {
             fail("랜덤 수 범위에 맞지 않습니다.");
@@ -24,12 +24,5 @@ public class RacingCarTest {
     public void testCanMove() {
         assertTrue(racingCar.canMove(7));
         assertFalse(racingCar.canMove(2));
-    }
-
-    @Test
-    public void testMoveCar() {
-        int position = racingCar.getCarPosition(2);
-        racingCar.moveCar(2);
-        assertEquals(position + 1, racingCar.getCarPosition(2));
     }
 }
