@@ -12,25 +12,18 @@ public class CarTest {
     Car car;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         car = new Car();
     }
 
     @Test
-    public void testSubmitRecord(){
-        List<Integer> record = new ArrayList<>();
-        car.submitRecord(record);
-        assertEquals(1, record.size());
-        assertEquals(0, (int)record.remove(0));
+    public void testShowTrack() {
+        assertEquals("", car.showTrack('-'));
     }
 
     @Test
-    public void testMove(){
-        List<Integer> record = new ArrayList<>();
-        car.submitRecord(record);
-        int position = record.get(0);
+    public void testShowTrackAfterMove() {
         car.move();
-        car.submitRecord(record);
-        assertEquals(position+1, (int)record.get(1));
+        assertEquals("-", car.showTrack('-'));
     }
 }

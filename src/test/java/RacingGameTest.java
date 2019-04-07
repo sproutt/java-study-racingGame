@@ -18,14 +18,14 @@ public class RacingGameTest {
 
     @Test
     public void test준비하지않고PlayGame(){
-        List<Integer> record = racingGame.playGame();
-        assertEquals(0,record.size());
+        List<Car> tmpCar = racingGame.playGame();
+        assertEquals(0,tmpCar.size());
     }
 
     @Test
     public void test준비하고PlayGame(){
         racingGame.readyGame(3,5);
-        List<Integer> record = racingGame.playGame();
-        assertEquals(3, record.size());
+        List<Car> tmpCar = racingGame.playGame();
+        assertEquals(3, tmpCar.size());
     }
 }
