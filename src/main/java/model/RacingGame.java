@@ -10,25 +10,16 @@ public class RacingGame {
     private final static int RANDOM_NUMBER_RANGE = 10;
     private int numberOfAttempts;
     private List<Car> cars;
-    private List<Integer> record;
 
     public RacingGame() {
         cars = new ArrayList<>();
-        record = new ArrayList<>();
     }
 
-    public List<Integer> playGame() {
+    public List<Car> playGame() {
         for (int i = 0; i < numberOfAttempts; i++) {
             moveCars();
         }
-        gameOver();
-        return record;
-    }
-
-    private void gameOver() {
-        for (Car car : cars) {
-            car.submitRecord(record);
-        }
+        return cars;
     }
 
     public void readyGame(int numberOfCars, int numberOfAttempts) {

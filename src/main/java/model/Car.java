@@ -14,7 +14,11 @@ public class Car {
         position++;
     }
 
-    public void submitRecord(List<Integer> record) {
-        record.add(position);
+    public String showTrack(char trackShape) {
+        StringBuffer track = new StringBuffer();
+        for(int i=0; i<position; i++) {
+            track.append(trackShape);
+        }
+        return track.toString();
     }
 }
