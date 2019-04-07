@@ -8,6 +8,7 @@
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/wwh-techcamp-2018/wwh-docs/blob/master/README.md)
 
+
 * [동영상으로 살펴보는 온라인 코드 리뷰 과정](https://youtu.be/a5c9ku-_fok)
 
 
