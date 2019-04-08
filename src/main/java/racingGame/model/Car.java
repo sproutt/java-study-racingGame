@@ -3,8 +3,21 @@ package racingGame.model;
 public class Car {
     private int carPosition = 0;
     private String playerName;
+    private static int winnerPosition = 0;
 
-    public int getCarPosition() {
+    public void calculateWinnerPosition(){
+        if(carPosition > winnerPosition){
+            winnerPosition = carPosition;
+        }
+    }
+    public boolean settingWinner(){
+        if(this.carPosition == winnerPosition){
+            return true;
+        }
+        return false;
+    }
+
+     public int getCarPosition() {
         return carPosition;
     }
 
@@ -12,12 +25,11 @@ public class Car {
         return playerName;
     }
 
-    public String inputPlayerName(String name) {
-        playerName = name;
-        return playerName;
+    public void setPlayerName(String[] names, int index) {
+        this.playerName = names[index];
     }
 
-    public int move() {
-        return carPosition++;
+    public void move() {
+        carPosition++;
     }
 }

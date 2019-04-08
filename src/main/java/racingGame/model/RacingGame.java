@@ -14,13 +14,14 @@ public class RacingGame {
         for (int i = 0; i < names.length; i++) {
             Car car = new Car();
             cars.add(car);
-            cars.get(i).inputPlayerName(names[i]);
+            cars.get(i).setPlayerName(names,i);
         }
     }
 
     public List<Car> tryAllCarGame(int numberOfTry) {
         for (Car car : cars) {
             tryEachCarGame(car, numberOfTry);
+            car.calculateWinnerPosition();
         }
         return cars;
     }
