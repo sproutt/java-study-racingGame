@@ -8,7 +8,7 @@ public class WinnerGenerator {
 
     public List<Car> makeWinners(List<Car> cars) {
         for (Car car : cars) {
-           addWinnerName(car);
+            addWinnerName(car);
         }
         return winnerList;
     }

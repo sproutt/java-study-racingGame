@@ -7,22 +7,19 @@ import static org.junit.Assert.assertEquals;
 
 public class RacingGameTest {
     RacingGame racingGame;
+    private final static int MIN_MOVED = 0;
+    private final static int SETTING_TRY_NUM = 5;
 
     @Before
     public void setUp() {
         racingGame = new RacingGame();
-        String[] names = {"a","b","c"};
+        String[] names = {"a", "b", "c"};
         racingGame.settingCar(names);
     }
 
     @Test
     public void 차량셋팅확인() {
         assertEquals(3, racingGame.getCars().size());
-    }
-
-    @Test
-    public void 게임실행여부(){
-
     }
 
     @After

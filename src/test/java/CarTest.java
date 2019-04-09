@@ -5,6 +5,7 @@ import racingGame.model.Car;
 
 public class CarTest {
     Car car;
+
     @Before
     public void setUp() {
         car = new Car();

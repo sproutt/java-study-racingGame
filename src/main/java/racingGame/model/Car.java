@@ -5,19 +5,20 @@ public class Car {
     private String playerName;
     private static int winnerPosition = 0;
 
-    public void calculateWinnerPosition(){
-        if(carPosition > winnerPosition){
+    public void calculateWinnerPosition() {
+        if (carPosition > winnerPosition) {
             winnerPosition = carPosition;
         }
     }
-    public boolean settingWinner(){
-        if(this.carPosition == winnerPosition){
+
+    public boolean settingWinner() {
+        if (this.carPosition == winnerPosition) {
             return true;
         }
         return false;
     }
 
-     public int getCarPosition() {
+    public int getCarPosition() {
         return carPosition;
     }
 
