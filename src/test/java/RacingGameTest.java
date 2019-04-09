@@ -1,29 +1,33 @@
-/*
-import Car;
-import racingGame.racingGame;
-import RandomGenerator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import racingGame.model.RacingGame;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
 
 public class RacingGameTest {
-    racingGame racingGame;
-    Car car;
-    RandomGenerator utils;
+    RacingGame racingGame;
+
     @Before
     public void setUp() {
-        utils = new RandomGenerator();
+        racingGame = new RacingGame();
+        String[] names = {"a","b","c"};
+        racingGame.settingCar(names);
     }
+
     @Test
-    public void 랜덤생성작동여부(){
-        assertNotNull(utils.randomGenerator());
+    public void 차량셋팅확인() {
+        assertEquals(3, racingGame.getCars().size());
+    }
+
+    @Test
+    public void 게임실행여부(){
+
     }
 
     @After
-    public void tearDown(){
+    public void tearDown() {
         racingGame = null;
     }
 }
-*/
+

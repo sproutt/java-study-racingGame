@@ -14,7 +14,7 @@ public class RacingGame {
         for (int i = 0; i < names.length; i++) {
             Car car = new Car();
             cars.add(car);
-            cars.get(i).setPlayerName(names,i);
+            cars.get(i).setPlayerName(names, i);
         }
     }
 
@@ -33,15 +33,19 @@ public class RacingGame {
     }
 
     private void move(Car car) {
-        if (isMove()) {
+        if (isMove(RandomGenerator.randomGenerator())) {
             car.move();
         }
     }
 
-    private boolean isMove() {
-        if (RandomGenerator.randomGenerator() >= MOVE_RESTRICTION) {
+    private boolean isMove(int randNum) {
+        if (randNum >= MOVE_RESTRICTION) {
             return true;
         }
         return false;
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }
