@@ -26,6 +26,10 @@ public class Car {
         return playerName;
     }
 
+    public static int getWinnerPosition() {
+        return winnerPosition;
+    }
+
     public void setPlayerName(String[] names, int index) {
         this.playerName = names[index];
     }

@@ -7,8 +7,6 @@ import static org.junit.Assert.assertEquals;
 
 public class RacingGameTest {
     RacingGame racingGame;
-    private final static int MIN_MOVED = 0;
-    private final static int SETTING_TRY_NUM = 5;
 
     @Before
     public void setUp() {

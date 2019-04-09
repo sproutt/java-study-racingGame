@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
 public class WinnerGeneratorTest {
     WinnerGenerator winnerGenerator;
     RacingGame racingGame;
-    private final int WINNER_NOT_ZERO = 1;
+    private static final int WINNER_NOT_ZERO = 1;
 
     @Before
     public void setUp() {
