@@ -14,10 +14,8 @@ public class Car {
         position++;
     }
 
-    public String showTrack(char trackShape) {
+    private String showTrack(char trackShape) {
         StringBuffer track = new StringBuffer();
-        track.append(name);
-        track.append(" : "); //수정
         for(int i=0; i<position; i++) {
             track.append(trackShape);
         }
@@ -30,14 +28,20 @@ public class Car {
         return false;
     }
 
-    public int checkTopScore(int maxRecord){
+    public int checkTopRecord(int maxRecord){
         if(maxRecord<position){
             return position;
         }
         return maxRecord;
     }
+    public String showRecord(char hypen, String blank){
+        StringBuffer sb = new StringBuffer();
+        sb.append(name); sb.append(blank);
+        sb.append(showTrack(hypen));
+        return sb.toString();
+    }
 
-    public String getWinnerCarName(int maxRecord){
+    public String getWinnerName(int maxRecord){
         if(isWin(maxRecord)){
             return name;
         }

@@ -8,7 +8,8 @@ public class RacingGameMain {
     public static void main(String[] args) {
         RacingGame racingGame = new RacingGame();
         racingGame.readyGame(InputView.InputName(), InputView.InputNumberOfAttempts());
-        ResultView.showRacingCarResult(racingGame.playGame());
-        ResultView.showWinner(racingGame);
+        RacingGameResult racingGameResult = new RacingGameResult(racingGame.playGame());
+        ResultView.showRacingCarResult(racingGameResult);
+        ResultView.showWinner(racingGameResult);
     }
 }
