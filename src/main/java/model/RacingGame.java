@@ -23,10 +23,11 @@ public class RacingGame {
         return cars;
     }
 
-    public void readyGame(int numberOfCars, int numberOfAttempts) {
+    public void readyGame(String str, int numberOfAttempts) {
         this.numberOfAttempts = numberOfAttempts;
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
+        String[] splitedName = SplitGenerator.getSplitString(str, ",");
+        for (int i = 0; i < splitedName.length; i++) {
+            cars.add(new Car(splitedName[i]));
         }
     }
 

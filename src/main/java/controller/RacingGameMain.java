@@ -7,7 +7,8 @@ import view.ResultView;
 public class RacingGameMain {
     public static void main(String[] args) {
         RacingGame racingGame = new RacingGame();
-        racingGame.readyGame(InputView.InputNumberOfCars(), InputView.InputTime());
+        racingGame.readyGame(InputView.InputName(), InputView.InputNumberOfAttempts());
         ResultView.showRacingCarResult(racingGame.playGame());
+        ResultView.showWinner(racingGame);
     }
 }

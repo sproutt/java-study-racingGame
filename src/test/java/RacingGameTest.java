@@ -22,10 +22,4 @@ public class RacingGameTest {
         assertEquals(0,tmpCar.size());
     }
 
-    @Test
-    public void test준비하고PlayGame(){
-        racingGame.readyGame(3,5);
-        List<Car> tmpCar = racingGame.playGame();
-        assertEquals(3, tmpCar.size());
-    }
 }
