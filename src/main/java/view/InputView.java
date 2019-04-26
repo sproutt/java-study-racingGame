@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class InputView {
 
     public static int InputNumberOfAttempts() {
-        System.out.println("시도할 횟수는 몇 회 인가요?");
+        System.out.print("시도할 횟수는 몇 회 인가요? ");
         return new Scanner(System.in).nextInt();
     }
 

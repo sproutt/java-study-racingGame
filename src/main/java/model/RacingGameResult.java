@@ -6,41 +6,40 @@ import java.util.List;
 public class RacingGameResult {
 
     private List<Car> cars;
+    private int topRecord;
 
     public RacingGameResult(List<Car> cars){
         this.cars = cars;
+        setTopRecord();
     }
 
-    private int getMaxRecord() {
-        int maxRecord = -1;
+    private void setTopRecord() {
+        topRecord = -1;
         for (Car car : cars) {
-            maxRecord = car.checkTopRecord(maxRecord);
+            topRecord = car.checkTopRecord(topRecord);
         }
-        return maxRecord;
     }
 
-    public String showWinner(){
-        int maxRecord = getMaxRecord();
+    public String getWinners(){
         List<String> winners = new ArrayList<>();
         for (Car car : cars){
-            addWinner(winners, maxRecord, car);
+            addWinner(winners, car);
         }
         return winners.toString();
     }
 
-    private void addWinner(List<String> winners, int maxRecord, Car car){
-        String winnerName = car.getWinnerName(maxRecord);
+    private void addWinner(List<String> winners,  Car car){
+        String winnerName = car.getWinnerName(topRecord);
         if(winnerName!= null){
             winners.add(winnerName);
         }
     }
 
-    public List<String> getRecord(){
-        List<String> carRecord = new ArrayList<>();
+    public List<String> showRecords(char trackShape, String blank){
+        List<String> result = new ArrayList<>();
         for (Car car: cars){
-            carRecord.add(car.showRecord('-', " : "));
+            result.add(car.showRecord(trackShape, blank));
         }
-        return carRecord;
+        return result;
     }
-
 }

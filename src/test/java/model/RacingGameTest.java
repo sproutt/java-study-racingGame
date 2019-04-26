@@ -1,9 +1,7 @@
-import model.Car;
-import model.RacingGame;
+package model;
+
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -17,9 +15,12 @@ public class RacingGameTest {
     }
 
     @Test
-    public void test준비하지않고PlayGame(){
-        List<Car> tmpCar = racingGame.playGame();
-        assertEquals(0,tmpCar.size());
+    public void readyGameTest(){
+    }
+
+    @Test
+    public void playGameTest(){
+
     }
 
 }
