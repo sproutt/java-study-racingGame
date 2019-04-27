@@ -10,17 +10,18 @@ public class RacingGameTest {
     RacingGame racingGame;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         racingGame = new RacingGame();
     }
 
     @Test
-    public void readyGameTest(){
+    public void noReady_PlayGame() {
+        assertEquals("[]", racingGame.playGame().getWinners());
     }
 
     @Test
-    public void playGameTest(){
-
+    public void ready_PlayGameTest() {
+        racingGame.readyGame("one,two,three", 3);
+        assertNotEquals("[]", racingGame.playGame().getWinners());
     }
-
 }

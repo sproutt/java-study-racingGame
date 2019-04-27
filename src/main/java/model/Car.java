@@ -43,10 +43,10 @@ public class Car {
     }
 
     public String showRecord(char trackShape, String blank) {
-        StringBuffer sb = new StringBuffer();
-        sb.append(name)
+        StringBuffer record = new StringBuffer();
+        record.append(name)
                 .append(blank)
                 .append(showTrack(trackShape));
-        return sb.toString();
+        return record.toString();
     }
 }
