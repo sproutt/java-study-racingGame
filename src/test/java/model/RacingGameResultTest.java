@@ -17,8 +17,11 @@ public class RacingGameResultTest {
         List<Car> cars = new LinkedList<>();
         Car winner = new Car("winner");
         Car loser = new Car("loser");
-        winner.move();winner.move();loser.move();
-        cars.add(winner);cars.add(loser);
+        winner.move();
+        winner.move();
+        loser.move();
+        cars.add(winner);
+        cars.add(loser);
         racingGameResult = new RacingGameResult(cars);
     }
 

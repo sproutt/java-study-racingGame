@@ -3,6 +3,9 @@ package model;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class CarTest {
@@ -32,15 +35,15 @@ public class CarTest {
 
     @Test
     public void checkTopRecordTest() {
-        int topRecord = car.checkTopRecord(-1);
         assertEquals(100, car.checkTopRecord(100));
-        assertEquals(topRecord, car.checkTopRecord(-2));
+        assertEquals(0, car.checkTopRecord(-1));
     }
 
     @Test
-    public void getWinnerNameTest() {
+    public void addWinnerTest() {
         int topRecord = car.checkTopRecord(-1);
-        assertEquals("test", car.getWinnerName(topRecord));
-        assertNull(car.getWinnerName(-1));
+        List<String> winners = new ArrayList<>();
+        car.addWinner(winners, topRecord);
+        assertEquals("test", winners.get(0));
     }
 }

@@ -23,16 +23,9 @@ public class RacingGameResult {
     public String getWinners() {
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
-            addWinner(winners, car);
+            car.addWinner(winners, topRecord);
         }
         return winners.toString();
-    }
-
-    private void addWinner(List<String> winners, Car car) {
-        String winnerName = car.getWinnerName(topRecord);
-        if (winnerName != null) {
-            winners.add(winnerName);
-        }
     }
 
     public List<String> showRecords(char trackShape, String blank) {

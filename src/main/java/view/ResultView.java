@@ -19,4 +19,9 @@ public class ResultView {
     public static void showWinner(RacingGameResult racingGameResult) {
         System.out.println("우승자는 " + racingGameResult.getWinners() + "입니다.");
     }
+
+    public static void showResults(RacingGameResult racingGameResult) {
+        showRacingCarResult(racingGameResult);
+        showWinner(racingGameResult);
+    }
 }

@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class Car {
 
     private int position;
@@ -21,17 +23,13 @@ public class Car {
     }
 
     public int checkTopRecord(int topRecord) {
-        if (topRecord < position) {
-            return position;
-        }
-        return topRecord;
+        return Math.max(topRecord, position);
     }
 
-    public String getWinnerName(int topRecord) {
+    public void addWinner(List<String> winners, int topRecord) {
         if (isWin(topRecord)) {
-            return name;
+            winners.add(name);
         }
-        return null;
     }
 
     private String showTrack(char trackShape) {
