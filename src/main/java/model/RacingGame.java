@@ -16,17 +16,18 @@ public class RacingGame {
         cars = new ArrayList<>();
     }
 
-    public List<Car> playGame() {
+    public RacingGameResult playGame() {
         for (int i = 0; i < numberOfAttempts; i++) {
             moveCars();
         }
-        return cars;
+        return new RacingGameResult(cars);
     }
 
-    public void readyGame(int numberOfCars, int numberOfAttempts) {
+    public void readyGame(String carNames, int numberOfAttempts) {
         this.numberOfAttempts = numberOfAttempts;
-        for (int i = 0; i < numberOfCars; i++) {
-            cars.add(new Car());
+        String[] splitedName = SplitGenerator.getSplitString(carNames, ",");
+        for (int i = 0; i < splitedName.length; i++) {
+            cars.add(new Car(splitedName[i]));
         }
     }
 

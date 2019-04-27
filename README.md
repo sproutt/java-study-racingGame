@@ -78,4 +78,3 @@ public void setUp() {
 ```
 
 test 코드를 사용하기 전에 미리 구현할 수 있는 메소드 `@before`, `public void setUp()` 사용
-
