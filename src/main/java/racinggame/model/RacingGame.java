@@ -1,25 +1,27 @@
-package racingGame.model;
+package racinggame.model;
 
-import racingGame.util.RandomGenerator;
+import racinggame.util.RandomGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
-    private List<Car> cars;
+    public List<Car> cars;
     private static int MOVE_RESTRICTION = 4;
 
-    public void settingCar(int numCar) {
+    public void settingCar(String[] names) {
         cars = new ArrayList<>();
-        for (int i = 0; i < numCar; i++) {
+        for (int i = 0; i < names.length; i++) {
             Car car = new Car();
             cars.add(car);
+            cars.get(i).setPlayerName(names, i);
         }
     }
 
     public List<Car> tryAllCarGame(int numberOfTry) {
         for (Car car : cars) {
             tryEachCarGame(car, numberOfTry);
+            car.calculateWinnerPosition();
         }
         return cars;
     }
@@ -31,15 +33,19 @@ public class RacingGame {
     }
 
     private void move(Car car) {
-        if (isMove()) {
-            car.carMove();
+        if (isMove(RandomGenerator.randomGenerator())) {
+            car.move();
         }
     }
 
-    private boolean isMove() {
-        if (RandomGenerator.randomGenerator() >= MOVE_RESTRICTION) {
+    private boolean isMove(int randNum) {
+        if (randNum >= MOVE_RESTRICTION) {
             return true;
         }
         return false;
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }
