@@ -1,7 +1,7 @@
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import racingGame.model.RacingGame;
+import racinggame.model.RacingGame;
 
 import static org.junit.Assert.assertEquals;
 

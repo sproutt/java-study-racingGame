@@ -1,6 +1,6 @@
-package racingGame.model;
+package racinggame.model;
 
-import racingGame.util.RandomGenerator;
+import racinggame.util.RandomGenerator;
 
 import java.util.ArrayList;
 import java.util.List;

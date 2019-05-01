@@ -1,8 +1,8 @@
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import racingGame.model.RacingGame;
-import racingGame.model.WinnerGenerator;
+import racinggame.model.RacingGame;
+import racinggame.model.WinnerGenerator;
 
 import static org.junit.Assert.assertTrue;
 

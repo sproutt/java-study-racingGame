@@ -1,10 +1,10 @@
-package racingGame.util;
+package racinggame.util;
 
-import racingGame.model.Car;
+import racinggame.model.Car;
 
 import java.util.List;
 
-public class ResultView {
+public class ResultView { //ResultView는 유틸이기 때문에 진짜 이미 계산된 우승자 및 출력결과만 출력해야한다.
     private static final String RESULT_SIGN = "실행 결과";
     private static final String WINNER_SIGN = "가 최종 우승했습니다. 축하합니다!!";
     private static final char MOVED = '-';

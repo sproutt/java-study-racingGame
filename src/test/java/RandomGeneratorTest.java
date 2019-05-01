@@ -1,7 +1,7 @@
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import racingGame.util.RandomGenerator;
+import racinggame.util.RandomGenerator;
 
 import static org.junit.Assert.assertNotNull;
 
